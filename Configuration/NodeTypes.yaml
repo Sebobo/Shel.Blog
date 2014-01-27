@@ -1,0 +1,85 @@
+##
+# Document NodeType "BlogEntry"
+#
+'SebastianHelzle.Blog:BlogEntry':
+  superTypes: ['TYPO3.Neos:Document']
+  childNodes:
+    'main':
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Blog entry'
+    icon: 'icon-bullhorn'
+    inspector:
+      groups:
+        'document':
+          label: 'Details'
+  properties:
+    'layout':
+      type: string
+      defaultValue: 'blogEntry'
+    'entrySummary':
+      type: string
+    'entryImage':
+      type: 'TYPO3\Media\Domain\Model\ImageVariant'
+      ui:
+        label: 'Preview image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    'publicationDate':
+      type: date
+      ui:
+        label: 'Publication date'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+
+##
+# A custom "Menu" NodeType for blog entries
+#
+'SebastianHelzle.Blog:LatestBlogEntries':
+  superTypes: ['TYPO3.Neos.NodeTypes:Menu']
+  ui:
+    label: 'Latest blog entries'
+    icon: 'icon-sitemap'
+    inspector:
+      groups:
+        document:
+          label: 'Menu options'
+  properties:
+    startLevel:
+      ui: ~
+    maximumLevels:
+      ui: ~
+    limit:
+      type: integer
+      defaultValue: 5
+      ui:
+        label: 'Entries to show'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+      validation:
+        'TYPO3.Neos/Validation/NotEmptyValidator': []
+    sortingDirection:
+      type: string
+      defaultValue: 'ascending'
+      ui:
+        label: 'Sorting'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              ascending:
+                label: 'Ascending'
+              descending:
+                label: 'Descending'
+    sourceNode:
+      type: reference
+      ui:
+        label: 'Page containing blog entries'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'

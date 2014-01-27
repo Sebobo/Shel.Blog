@@ -1,0 +1,3 @@
+include: Layouts/BlogEntry.ts2
+include: NodeTypes/LatestBlogEntries.ts2
+namespace: TypoScript=TYPO3.TypoScript

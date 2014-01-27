@@ -1,0 +1,15 @@
+##
+# "BlogEntry" layout
+#
+blogEntry = Page
+blogEntry {
+	bodyTag.attributes.class = 'blog-entry'
+	body {
+		templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogEntry.html'
+
+		// Get the previous blog entry by traversing to the node which preceds the current one.
+		// We need to specify the nodetype because there could be other node types like content collections on the same level.
+		previousChapter = ${q(documentNode).prev('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+		nextChapter = ${q(documentNode).next('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+	}
+}

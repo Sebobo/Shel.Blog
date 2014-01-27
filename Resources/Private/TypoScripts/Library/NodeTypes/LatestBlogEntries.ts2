@@ -1,0 +1,19 @@
+##
+# "LatestBlogEntries" element
+#
+prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(TYPO3.Neos.NodeTypes:Menu) {
+  attributes.class = 'blog-latest'
+	entryImageWidth = '100'
+	entryImageHeight = '100'
+
+	# Overwrite standard menu settings
+	startingPoint = ${q(node).property('sourceNode')}
+	filter = 'SebastianHelzle.Blog:BlogEntry'
+
+	# Extra properties for this content element
+	limit = ${q(node).property('limit')}
+	sortingDirection = ${q(node).property('sortingDirection')}
+
+	# Limit the number of blog posts and reverse if sorting is decending
+	items = ${this.sortingDirection == 'descending' ? q(Array.reverse(this.items)).slice(0, this.limit) : q(this.items).slice(0, this.limit)}
+}
