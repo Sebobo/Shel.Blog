@@ -2,10 +2,23 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
 <nav{attributes -> f:format.raw()}>
-	<ul>
+	<ul class="list-group">
 		<f:for each="{items}" as="item">
-			<li>
-				<neos:link.node node="{item.node}">{item.node.properties.title}</neos:link.node>
+			<li class="list-group-item">
+				<span class="badge">
+					<f:if condition="{item.node.properties.publicationDate}">
+						<f:then>
+							{f:format.date(date: item.node.properties.publicationDate, format: 'm/d/Y')}
+						</f:then>
+						<f:else>
+							{f:format.date(date: item.node.properties.lastModified, format: 'm/d/Y')}
+						</f:else>
+					</f:if>
+				</span>
+
+				<strong>
+					<neos:link.node node="{item.node}">{item.node.properties.title}</neos:link.node>
+				</strong>
 
 				<f:if condition="{item.node.properties.entrySummary}">
 					<br>

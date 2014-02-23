@@ -29,11 +29,15 @@
 						</small>
 
 						<neos:contentElement.wrap node="{node}">
-							<h1>{neos:contentElement.editable(property: 'title')}</h1>
+							<h1>
+								{neos:contentElement.editable(property: 'title')}
+							</h1>
 						</neos:contentElement.wrap>
 
 						<neos:contentElement.wrap node="{node}">
-							<h2>{neos:contentElement.editable(property: 'entrySummary')}</h2>
+							<p>
+								{neos:contentElement.editable(property: 'entrySummary')}
+							</p>
 						</neos:contentElement.wrap>
 
 						<f:if condition="{node.properties.entryImage}">
