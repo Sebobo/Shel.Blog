@@ -16,15 +16,21 @@
 					</f:if>
 				</span>
 
+				<f:if condition="{item.node.properties.entryImage}">
+					<figure class="pull-left">
+						<media:image image="{item.node.properties.entryImage}" alt="{item.node.properties.entryImage.alternativeText}" title="{item.node.properties.entryImage.title}" maximumWidth="{entryImageWidth}"  maximumHeight="{entryImageHeight}" class="img-rounded" allowCropping="true" allowUpScaling="true"/>
+					</figure>
+				</f:if>
+
 				<strong>
 					<neos:link.node node="{item.node}">{item.node.properties.title}</neos:link.node>
 				</strong>
 
 				<f:if condition="{item.node.properties.entrySummary}">
-					<br>
-					<small class="text-muted">
+					<br/>
+					<span>
 						{item.node.properties.entrySummary -> f:format.raw()}
-					</small>
+					</span>
 				</f:if>
 			</li>
 		</f:for>

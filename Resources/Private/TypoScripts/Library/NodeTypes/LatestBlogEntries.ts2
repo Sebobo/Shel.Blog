@@ -3,8 +3,8 @@
 #
 prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(TYPO3.Neos.NodeTypes:Menu) {
   attributes.class = 'blog-latest'
-	entryImageWidth = '100'
-	entryImageHeight = '100'
+	entryImageWidth = 50
+	entryImageHeight = 50
 
 	# Overwrite standard menu settings
 	startingPoint = ${q(node).property('sourceNode')}
