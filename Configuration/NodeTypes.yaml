@@ -1,4 +1,49 @@
 ##
+# Document NodeType "BlogFeed"
+#
+'SebastianHelzle.Blog:BlogFeed':
+  superTypes: ['TYPO3.Neos:Document']
+  ui:
+    label: 'Blog feed'
+    icon: 'icon-list-alt'
+    inspector:
+      groups:
+        'document':
+          label: 'Details'
+  properties:
+    limit:
+      type: integer
+      defaultValue: 5
+      ui:
+        label: 'Entries to show'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+      validation:
+        'TYPO3.Neos/Validation/NotEmptyValidator': []
+    authorName:
+      type: string
+      ui:
+        label: 'Author'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    sourceNode:
+      type: reference
+      ui:
+        label: 'Page containing the blog entries for the feed'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    description:
+      type: string
+      ui:
+        label: 'Description for the feed'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+
+##
 # Document NodeType "BlogEntry"
 #
 'SebastianHelzle.Blog:BlogEntry':
@@ -14,19 +59,26 @@
         'document':
           label: 'Details'
   properties:
-    'layout':
+    layout:
       type: string
       defaultValue: 'blogEntry'
-    'entrySummary':
+    authorName:
       type: string
-    'entryImage':
+      ui:
+        label: 'Author'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    entrySummary:
+      type: string
+    entryImage:
       type: 'TYPO3\Media\Domain\Model\ImageVariant'
       ui:
         label: 'Preview image'
         reloadIfChanged: TRUE
         inspector:
           group: 'document'
-    'publicationDate':
+    publicationDate:
       type: date
       ui:
         label: 'Publication date'

@@ -1,14 +1,9 @@
 {
     "name": "sebastianhelzle/blog",
     "type": "typo3-flow-package",
-    "description": "A simple blog based on typoscript and yaml configurations without php",
+    "description": "A simple blog based on typoscript and yaml configurations. Also supports atom feeds.",
     "require": {
       "typo3/neos": "*",
       "typo3/neos-nodetypes": "*"
-    },
-    "autoload": {
-        "psr-0": {
-            "SebastianHelzle\\Blog": "Classes"
-        }
     }
 }

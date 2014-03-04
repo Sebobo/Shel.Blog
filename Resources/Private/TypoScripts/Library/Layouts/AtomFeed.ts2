@@ -1,0 +1,37 @@
+##
+# "BlogFeed" layout
+#
+prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
+	doctype = '<?xml version="1.0" encoding="utf-8"?>'
+	doctype.@position = 'start 100'
+
+	feed = TypoScript:Template
+	feed {
+		@position = 'after doctype'
+		templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/AtomFeed.html'
+		sectionName = 'feed'
+
+		node = ${node}
+		sourceNode = ${q(node).property('sourceNode')}
+		lastUpdatedNode = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
+		requestFormat =  ${request.format}
+
+		entries = TYPO3.TypoScript:Collection {
+			sourceNode = ${q(node).property('sourceNode')}
+			collection = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+
+			itemName = 'node'
+			itemRenderer = TYPO3.TypoScript:Template {
+				templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/AtomFeedEntry.html'
+				node = ${node}
+
+				entryContent = TYPO3.Neos:ContentCollection {
+					nodePath = 'main'
+				}
+			}
+		}
+	}
+}
+
+# Calling a page with the format .atom will automatically call this layout
+atom = SebastianHelzle.Blog:BlogFeed

@@ -1,0 +1,14 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<entry>
+	<title>{node.properties.title}</title>
+	<author>
+		<name>{node.properties.authorName}</name>
+	</author>
+	<link rel="alternate" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
+	<id>urn:uuid:{node.identifier}</id>
+	<updated>{f:format.date(date: node.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
+	<summary>{node.properties.entrySummary}</summary>
+	<content type="html">
+		{entryContent -> f:format.htmlspecialchars()}
+	</content>
+</entry>

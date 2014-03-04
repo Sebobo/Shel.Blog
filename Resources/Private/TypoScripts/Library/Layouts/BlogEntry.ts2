@@ -19,7 +19,6 @@ blogEntry {
 		}
 
 		// Get the previous blog entry by traversing to the node which preceds the current one.
-		// We need to specify the nodetype because there could be other node types like content collections on the same level.
 		previousEntry = ${q(documentNode).prev('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
 		nextEntry = ${q(documentNode).next('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
 	}
