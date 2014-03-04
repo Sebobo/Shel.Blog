@@ -1,9 +1,18 @@
 {
     "name": "sebastianhelzle/blog",
     "type": "typo3-flow-package",
-    "description": "A simple blog based on typoscript and yaml configurations. Also supports atom feeds.",
+    "license": "MIT",
+    "description": "A simple blog for TYPO3 Neos based on typoscript and yaml configurations. Also supports atom feeds.",
     "require": {
       "typo3/neos": "*",
       "typo3/neos-nodetypes": "*"
+    },
+    "suggest": {
+      "typo3/twitter-bootstrap": "The provided templates use bootstrap classes. These can be changed or you can just use the bootstrap package."
+    },
+    "autoload":{
+      "psr-0":{
+        "SebastianHelzle\\Blog": "Classes"
+      }
     }
 }
