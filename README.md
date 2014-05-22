@@ -20,8 +20,23 @@ Include typoscript in your Root.ts2
 
 You can overwrite and modify the different content elements to your needs.
 
+For the route to the atom file to work you need to add the following to your `Routes.yaml`:
+
+		-
+			name:  'ATOM'
+			uriPattern: '{node}.atom'
+			defaults:
+				'@package': 'TYPO3.Neos'
+				'@controller': 'Frontend\Node'
+				'@action': 'show'
+				'@format': 'atom'
+			routeParts:
+				'node':
+					handler: 'TYPO3\Neos\Routing\FrontendNodeRoutePartHandler'
+
 ## Features
 
 * Atom feed support with the feed document type
 * Latest blog entries content element
 * Blog entry with it's own template and navigation elements
+* Social buttons can be easily integrated

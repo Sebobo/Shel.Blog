@@ -16,6 +16,17 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
 		lastUpdatedNode = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
 		requestFormat =  ${request.format}
 
+		@cache {
+			mode = 'cached'
+			entryIdentifier {
+				documentNode = ${documentNode}
+			}
+			entryTags {
+				// Flush the breadcrumb menu on any document node change
+				1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
+			}
+		}
+
 		entries = TYPO3.TypoScript:Collection {
 			sourceNode = ${q(node).property('sourceNode')}
 			collection = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]')}
