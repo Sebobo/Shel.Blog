@@ -1,6 +1,9 @@
 ##
 # "BlogFeed" layout
+# We clear the prototype of the BlogFeed so we don't have inherited
+# properties we don't want and would be contained in the output.
 #
+prototype(SebastianHelzle.Blog:BlogFeed) >
 prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
 	doctype = '<?xml version="1.0" encoding="utf-8"?>'
 	doctype.@position = 'start 100'
@@ -22,7 +25,7 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
 				documentNode = ${documentNode}
 			}
 			entryTags {
-				// Flush the breadcrumb menu on any document node change
+				// Flush the blog feed when a blog entry is changed
 				1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
 			}
 		}
