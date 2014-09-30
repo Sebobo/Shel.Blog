@@ -14,25 +14,16 @@ Install via composer
 
 `composer install sebastianhelzle/blog --save`
 
-Include typoscript in your Root.ts2
-
-`include: resource://SebastianHelzle.Blog/Private/TypoScripts/Library/Root.ts2`
-
 You can overwrite and modify the different content elements to your needs.
 
-For the route to the atom file to work you need to add the following to your `Routes.yaml`:
+For the route to the atom file to work you need to add the following to your `Routes.yaml` in Configuration:
 
-		-
-			name:  'ATOM'
-			uriPattern: '{node}.atom'
-			defaults:
-				'@package': 'TYPO3.Neos'
-				'@controller': 'Frontend\Node'
-				'@action': 'show'
-				'@format': 'atom'
-			routeParts:
-				'node':
-					handler: 'TYPO3\Neos\Routing\FrontendNodeRoutePartHandler'
+	-
+		name: 'Blog'
+		uriPattern: '<BlogSubroutes>'
+		subRoutes:
+			'BlogSubroutes':
+				package: 'SebastianHelzle.Blog'
 
 ## Features
 

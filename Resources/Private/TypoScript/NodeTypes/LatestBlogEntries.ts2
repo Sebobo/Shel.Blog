@@ -1,7 +1,7 @@
 ##
 # "LatestBlogEntries" element
 #
-prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(TYPO3.Neos.NodeTypes:Menu) {
+prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(Neos.NodeTypes:Menu) {
   attributes.class = 'blog-latest'
 	entryImageWidth = 50
 	entryImageHeight = 50

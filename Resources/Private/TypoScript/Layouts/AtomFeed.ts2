@@ -4,7 +4,7 @@
 # properties we don't want and would be contained in the output.
 #
 prototype(SebastianHelzle.Blog:BlogFeed) >
-prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
+prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
 	doctype = '<?xml version="1.0" encoding="utf-8"?>'
 	doctype.@position = 'start 100'
 
@@ -30,16 +30,16 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Array) {
 			}
 		}
 
-		entries = TYPO3.TypoScript:Collection {
+		entries = TypoScript:Collection {
 			sourceNode = ${q(node).property('sourceNode')}
 			collection = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]')}
 
 			itemName = 'node'
-			itemRenderer = TYPO3.TypoScript:Template {
+			itemRenderer = TypoScript:Template {
 				templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/AtomFeedEntry.html'
 				node = ${node}
 
-				entryContent = TYPO3.Neos:ContentCollection {
+				entryContent = Neos:ContentCollection {
 					nodePath = 'main'
 				}
 			}

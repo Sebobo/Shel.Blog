@@ -1,3 +1,6 @@
+namespace: TypoScript=TYPO3.TypoScript
+namespace: Neos=TYPO3.Neos
+
 include: Layouts/BlogEntry.ts2
 include: Layouts/AtomFeed.ts2
 include: NodeTypes/LatestBlogEntries.ts2
