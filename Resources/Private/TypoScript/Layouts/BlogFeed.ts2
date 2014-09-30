@@ -1,0 +1,89 @@
+##
+# This is the content part of our blogfeed.
+# It's used for the xml and the normal html output, just uses different templates for the two cases.
+#
+prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
+	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.xml'
+	sectionName = 'feed'
+
+	node = ${node}
+	requestFormat =  ${request.format}
+
+	# Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
+	title = ${node.properties.title}
+	description = ${node.properties.description}
+	authorName = ${node.properties.authorName}
+	sourceNode = ${q(node).property('sourceNode')}
+	lastUpdatedNode = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			documentNode = ${documentNode}
+		}
+		entryTags {
+			// Flush the blog feed when a blog entry is changed
+			1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
+		}
+	}
+
+	entries = TypoScript:Collection {
+		sourceNode = ${q(node).property('sourceNode')}
+		collection = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+
+		itemName = 'node'
+		itemRenderer = Neos:Content {
+			templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.xml'
+			node = ${node}
+			title = ${node.properties.title}
+			authorName = ${node.properties.authorName}
+			entrySummary = ${node.properties.entrySummary}
+			dateFormat = 'm/d/Y'
+
+			entryImageWidth = 150
+			entryImageHeight = 150
+
+			entryContent = Neos:ContentCollection {
+				nodePath = 'main'
+			}
+		}
+	}
+}
+
+##
+# "BlogFeed" layout
+# We clear the prototype of the BlogFeed so we don't have inherited
+# properties we don't want and would be contained in the output.
+#
+prototype(SebastianHelzle.Blog:BlogFeed) >
+prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
+	doctype = '<?xml version="1.0" encoding="utf-8"?>'
+	doctype.@position = 'start 100'
+
+	feed = SebastianHelzle.Blog:BlogFeedContent {
+		@position = 'after doctype'
+	}
+}
+
+##
+# Html version of the blog feed
+# It's just for rendering the primary content part and not the whole page.
+# This way it will integrate easily into an existing layout.
+#
+prototype(SebastianHelzle.Blog:BlogFeedHtml) < prototype(SebastianHelzle.Blog:BlogFeedContent) {
+	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.html'
+	entries.itemRenderer.templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.html'
+}
+
+##
+# Add a condition to render the primary content differently if we have a Blog feed on the page
+#
+prototype(Neos:PrimaryContent).BlogFeed {
+	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogFeed]')}
+	type = 'SebastianHelzle.Blog:BlogFeedHtml'
+}
+
+##
+# Calling a page with the format .atom will automatically call the xml based layout
+#
+atom = SebastianHelzle.Blog:BlogFeed

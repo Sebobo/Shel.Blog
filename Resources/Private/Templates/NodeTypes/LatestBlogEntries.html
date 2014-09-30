@@ -8,10 +8,10 @@
 				<span class="badge">
 					<f:if condition="{item.node.properties.publicationDate}">
 						<f:then>
-							{f:format.date(date: item.node.properties.publicationDate, format: 'm/d/Y')}
+							{f:format.date(date: item.node.properties.publicationDate, format: dateFormat)}
 						</f:then>
 						<f:else>
-							{f:format.date(date: item.node.properties.lastModified, format: 'm/d/Y')}
+							{f:format.date(date: item.node.properties.lastModified, format: dateFormat)}
 						</f:else>
 					</f:if>
 				</span>

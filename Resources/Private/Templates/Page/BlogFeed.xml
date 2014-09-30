@@ -3,13 +3,13 @@
 <f:section name="feed">
 	<feed xmlns="http://www.w3.org/2005/Atom">
 		<author>
-			<name>{node.properties.authorName}</name>
+			<name>{authorName}</name>
 		</author>
-		<title>{node.properties.title}</title>
-		<subtitle>{node.properties.description}</subtitle>
+		<title>{title}</title>
+		<subtitle>{description}</subtitle>
 		<id>urn:uuid:{node.identifier}</id>
 		<updated>{f:format.date(date: lastUpdatedNode.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
-		<link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: sourceNode, format: 'html')}"/>
+		<link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
 		<link rel="self" type="application/atom+xml" href="{neos:uri.node(absolute: true, node: node)}"/>
 
 		{entries -> f:format.raw()}

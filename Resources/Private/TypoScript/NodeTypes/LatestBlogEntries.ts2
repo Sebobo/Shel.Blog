@@ -1,10 +1,11 @@
 ##
 # "LatestBlogEntries" element
 #
-prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(Neos.NodeTypes:Menu) {
-  attributes.class = 'blog-latest'
+prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(NodeTypes:Menu) {
+	attributes.class = 'blog-latest'
 	entryImageWidth = 50
 	entryImageHeight = 50
+	dateFormat = 'm/d/Y'
 
 	# Overwrite standard menu settings
 	startingPoint = ${q(node).property('sourceNode')}
