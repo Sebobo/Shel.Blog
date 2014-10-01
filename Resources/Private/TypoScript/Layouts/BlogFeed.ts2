@@ -9,16 +9,16 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 	title = ${node.properties.title}
 	description = ${node.properties.description}
 	authorName = ${node.properties.authorName}
+	limit = ${node.properties.limit}
 
 	# override makes the enclosed properties also available to the entry renderer
 	@override {
 		requestFormat =  ${request.format}
-		sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
+		blogEntries = ${q(node.properties.sourceNode ? node.properties.sourceNode : site).find('[instanceof SebastianHelzle.Blog:BlogEntry]').slice(0, this.limit)}
 	}
 
 	# Setup source node to retrieve blog posts from
-	sourceNode = ${sourceNode}
-	lastUpdatedNode = ${q(sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
+	lastUpdatedNode = ${blogEntries.first().get(0)}
 
 	# Select the template depending on the requested format
 	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.' + requestFormat}
@@ -32,7 +32,7 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 	}
 
 	entries = TypoScript:Collection {
-		collection = ${q(sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+		collection = ${blogEntries}
 
 		itemName = 'node'
 		itemRenderer = SebastianHelzle.Blog:BlogEntry {
