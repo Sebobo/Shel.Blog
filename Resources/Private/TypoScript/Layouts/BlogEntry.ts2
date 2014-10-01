@@ -1,25 +1,40 @@
 ##
 # "BlogEntry" layout
 #
-blogEntry = Page
-blogEntry {
-	bodyTag.attributes.class = 'blog-entry'
-	body {
-		templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogEntry.html'
-		sectionName = 'body'
+prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
+	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogEntry.html'
+	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
 
-		title = ${q(node).property('title')}
-		entrySummary = ${q(node).property('entrySummary')}
+	node = ${node}
+	title = ${node.properties.title}
+	entrySummary = ${node.properties.entrySummary}
+	dateFormat = 'm/d/Y'
 
-		content {
-			// Default content section
-			main = PrimaryContent {
-				nodePath = 'main'
-			}
-		}
+	# Fall back to modified date if there is no publication date set
+	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
-		// Get the previous blog entry by traversing to the node which preceds the current one.
-		previousEntry = ${q(documentNode).prev('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
-		nextEntry = ${q(documentNode).next('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+	# Image settings
+	entryImageWidth = 150
+	entryImageHeight = 150
+
+	# Social settings
+	showSocialButtons = false
+	twitterId = ''
+	flattrId = ''
+
+	content = Neos:ContentCollection {
+		nodePath = 'main'
 	}
+
+	// Links to previous and next blog entries
+	previousEntry = ${q(node).prev('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+	nextEntry = ${q(node).next('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+}
+
+##
+# Add a condition to render the primary content differently if we show a blog entry
+#
+prototype(Neos:PrimaryContent).BlogEntry {
+	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+	type = 'SebastianHelzle.Blog:BlogEntry'
 }

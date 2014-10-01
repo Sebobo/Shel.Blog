@@ -18,13 +18,9 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 
 	@cache {
 		mode = 'cached'
-		entryIdentifier {
-			documentNode = ${documentNode}
-		}
-		entryTags {
-			// Flush the blog feed when a blog entry is changed
-			1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
-		}
+		entryIdentifier.documentNode = ${documentNode}
+		// Flush the blog feed when a blog entry is changed
+		entryTags.1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
 	}
 
 	entries = TypoScript:Collection {
@@ -32,20 +28,8 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 		collection = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]')}
 
 		itemName = 'node'
-		itemRenderer = Neos:Content {
+		itemRenderer = SebastianHelzle.Blog:BlogEntry {
 			templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.xml'
-			node = ${node}
-			title = ${node.properties.title}
-			authorName = ${node.properties.authorName}
-			entrySummary = ${node.properties.entrySummary}
-			dateFormat = 'm/d/Y'
-
-			entryImageWidth = 150
-			entryImageHeight = 150
-
-			entryContent = Neos:ContentCollection {
-				nodePath = 'main'
-			}
 		}
 	}
 }
@@ -73,10 +57,11 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
 prototype(SebastianHelzle.Blog:BlogFeedHtml) < prototype(SebastianHelzle.Blog:BlogFeedContent) {
 	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.html'
 	entries.itemRenderer.templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.html'
+	attributes.class = 'blog-feed'
 }
 
 ##
-# Add a condition to render the primary content differently if we have a Blog feed on the page
+# Add a condition to render the primary content differently if we show a blog feed
 #
 prototype(Neos:PrimaryContent).BlogFeed {
 	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogFeed]')}

@@ -1,0 +1,33 @@
+up:
+  comments: 'This is the migration to remove the unnecessary property "layout"'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'SebastianHelzle.Blog:BlogEntry'
+        -
+          type: 'PropertyNotEmpty'
+          settings:
+            propertyName: 'layout'
+      transformations:
+        -
+          type: 'RemoveProperty'
+          settings:
+            property: 'layout'
+down:
+  comments: 'This is the migration to add the property "layout" again'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'SebastianHelzle.Blog:BlogEntry'
+      transformations:
+        -
+          type: 'AddNewProperty'
+          settings:
+            newPropertyName: 'layout'
+            value: 'blogEntry'

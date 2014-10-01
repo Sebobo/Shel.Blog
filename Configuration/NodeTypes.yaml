@@ -59,9 +59,6 @@
         'document':
           label: 'Details'
   properties:
-    layout:
-      type: string
-      defaultValue: 'blogEntry'
     authorName:
       type: string
       ui:

@@ -1,66 +1,38 @@
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<f:section name="metadata">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		</f:section>
+<article class="blog-entry">
+	<header>
+		<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
-		<f:section name="stylesheets"/>
-	</head>
+		<neos:contentElement.wrap node="{node}">
+			<h1>
+				{neos:contentElement.editable(property: 'title')}
+			</h1>
+		</neos:contentElement.wrap>
 
-	<body>
-		<f:section name="body">
-			<div class="container">
-				<section id="content" class="row">
-					<article class="col-md-12">
-						<small>
-							<f:if condition="{node.properties.publicationDate}">
-								<f:then>
-									{f:format.date(date: node.properties.publicationDate, format: 'm/d/Y')}
-								</f:then>
-								<f:else>
-									{f:format.date(date: node.properties.lastModified, format: 'm/d/Y')}
-								</f:else>
-							</f:if>
-						</small>
+		<neos:contentElement.wrap node="{node}">
+			<summary>
+				{neos:contentElement.editable(property: 'entrySummary')}
+			</summary>
+		</neos:contentElement.wrap>
+	</header>
 
-						<neos:contentElement.wrap node="{node}">
-							<h1>
-								{neos:contentElement.editable(property: 'title')}
-							</h1>
-						</neos:contentElement.wrap>
+	<f:if condition="{node.properties.entryImage}">
+		<figure class="blog-entry-image">
+			<media:image image="{node.properties.entryImage}" alt="{node.properties.entryImage.alternativeText}"
+									 title="{node.properties.entryImage.title}"  maximumWidth="{entryImageWidth}"
+									 maximumHeight="{entryImageHeight}" />
+		</figure>
+	</f:if>
 
-						<neos:contentElement.wrap node="{node}">
-							<p>
-								{neos:contentElement.editable(property: 'entrySummary')}
-							</p>
-						</neos:contentElement.wrap>
+	{content -> f:format.raw()}
 
-						<f:if condition="{node.properties.entryImage}">
-							<figure class="blog-entry-image pull-right">
-								<media:image image="{node.properties.entryImage}" alt="{node.properties.entryImage.alternativeText}" title="{node.properties.entryImage.title}"  maximumWidth="{entryImageWidth}"  maximumHeight="{entryImageHeight}" class="img-thumbnail" />
-							</figure>
-						</f:if>
+	<footer>
+		<f:if condition="{showSocialButtons}">
+			<f:render partial="SocialButtons" arguments="{_all}" />
+		</f:if>
 
-						{content.main -> f:format.raw()}
+		<f:render partial="EntryPager" arguments="{_all}" />
+	</footer>
 
-						<nav class="blog-entries-pager text-center">
-							<ul>
-								<f:if condition="{previousEntry}">
-									<li><neos:link.node node="{previousEntry}">{previousEntry.properties.title}</neos:link.node> &mdash;</li>
-								</f:if>
-								<li>{node.properties.title}</li>
-								<f:if condition="{nextEntry}">
-									<li>&mdash; <neos:link.node node="{nextEntry}">{nextEntry.properties.title}</neos:link.node></li>
-								</f:if>
-							</ul>
-						</nav>
-					</article>
-				</section>
-			</div>
-		</f:section>
-	</body>
-</html>
+</article>
