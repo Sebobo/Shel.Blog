@@ -3,21 +3,26 @@
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
 prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
-	sectionName = 'feed'
-
 	node = ${node}
-
-	@override {
-		requestFormat =  ${request.format}
-	}
-	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.' + requestFormat}
 
 	# Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
 	title = ${node.properties.title}
 	description = ${node.properties.description}
 	authorName = ${node.properties.authorName}
-	sourceNode = ${q(node).property('sourceNode')}
-	lastUpdatedNode = ${q(this.sourceNode).children('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
+
+	# override makes the enclosed properties also available to the entry renderer
+	@override {
+		requestFormat =  ${request.format}
+		sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
+	}
+
+	# Setup source node to retrieve blog posts from
+	sourceNode = ${sourceNode}
+	lastUpdatedNode = ${q(sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]').first().get(0)}
+
+	# Select the template depending on the requested format
+	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.' + requestFormat}
+	sectionName = 'feed'
 
 	@cache {
 		mode = 'cached'
@@ -27,8 +32,7 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 	}
 
 	entries = TypoScript:Collection {
-		sourceNode = ${q(node).property('sourceNode')}
-		collection = ${q(this.sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+		collection = ${q(sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]')}
 
 		itemName = 'node'
 		itemRenderer = SebastianHelzle.Blog:BlogEntry {
