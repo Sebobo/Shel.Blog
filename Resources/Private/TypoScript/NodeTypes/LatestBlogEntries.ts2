@@ -1,20 +1,13 @@
 ##
 # "LatestBlogEntries" element
 #
-prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(NodeTypes:Menu) {
+prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(SebastianHelzle.Blog:BlogFeedContent) {
 	attributes.class = 'blog-latest'
-	entryImageWidth = 50
-	entryImageHeight = 50
-	dateFormat = 'm/d/Y'
 
-	# Overwrite standard menu settings
-	startingPoint = ${q(node).property('sourceNode')}
-	filter = 'SebastianHelzle.Blog:BlogEntry'
-
-	# Extra properties for this content element
-	limit = ${q(node).property('limit')}
-	sortingDirection = ${q(node).property('sortingDirection')}
+	sortingDirection = ${node.properties.sortingDirection}
 
 	# Limit the number of blog posts and reverse if sorting is decending
-	items = ${this.sortingDirection == 'descending' ? q(Array.reverse(this.items)).slice(0, this.limit) : q(this.items).slice(0, this.limit)}
+	@override {
+		feedEntries = ${this.sortingDirection == 'descending' ? Array.reverse(this.allEntries.get()) : this.allEntries.get()}
+	}
 }
