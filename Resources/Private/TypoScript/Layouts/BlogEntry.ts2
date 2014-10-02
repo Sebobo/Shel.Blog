@@ -2,7 +2,7 @@
 # "BlogEntry" layout
 #
 prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
-	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogEntry.html'
+	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogEntry.html'
 	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
 
 	node = ${node}

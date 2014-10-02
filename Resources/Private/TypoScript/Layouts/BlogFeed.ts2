@@ -10,18 +10,22 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 	description = ${node.properties.description}
 	authorName = ${node.properties.authorName}
 	limit = ${node.properties.limit}
+	sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
+	allEntries = ${q(this.sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]')}
 
 	# override makes the enclosed properties also available to the entry renderer
 	@override {
 		requestFormat =  ${request.format}
-		blogEntries = ${q(node.properties.sourceNode ? node.properties.sourceNode : site).find('[instanceof SebastianHelzle.Blog:BlogEntry]').slice(0, this.limit)}
+		feedEntries = ${this.allEntries.get()}
+		feedEntries.@process.slice = ${Array.slice(value, 0, this.limit)}
 	}
 
 	# Setup source node to retrieve blog posts from
 	lastUpdatedNode = ${blogEntries.first().get(0)}
 
 	# Select the template depending on the requested format
-	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Page/BlogFeed.' + requestFormat}
+	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogFeed.' + requestFormat}
+	attributes.class = 'blog-feed'
 	sectionName = 'feed'
 
 	@cache {
@@ -32,7 +36,7 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Neos:Content) {
 	}
 
 	entries = TypoScript:Collection {
-		collection = ${blogEntries}
+		collection = ${feedEntries}
 
 		itemName = 'node'
 		itemRenderer = SebastianHelzle.Blog:BlogEntry {
@@ -61,9 +65,7 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
 # It's just for rendering the primary content part and not the whole page.
 # This way it will integrate easily into an existing layout.
 #
-prototype(SebastianHelzle.Blog:BlogFeedHtml) < prototype(SebastianHelzle.Blog:BlogFeedContent) {
-	attributes.class = 'blog-feed'
-}
+prototype(SebastianHelzle.Blog:BlogFeedHtml) < prototype(SebastianHelzle.Blog:BlogFeedContent)
 
 ##
 # Add a condition to render the primary content differently if we show a blog feed

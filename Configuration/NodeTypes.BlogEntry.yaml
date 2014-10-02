@@ -1,0 +1,39 @@
+##
+# Document NodeType "BlogEntry"
+#
+'SebastianHelzle.Blog:BlogEntry':
+  superTypes: ['TYPO3.Neos:Document']
+  childNodes:
+    'main':
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Blog entry'
+    icon: 'icon-bullhorn'
+    inspector:
+      groups:
+        'document':
+          label: 'Details'
+  properties:
+    authorName:
+      type: string
+      ui:
+        label: 'Author'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    entrySummary:
+      type: string
+    entryImage:
+      type: 'TYPO3\Media\Domain\Model\ImageVariant'
+      ui:
+        label: 'Preview image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    publicationDate:
+      type: date
+      ui:
+        label: 'Publication date'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
