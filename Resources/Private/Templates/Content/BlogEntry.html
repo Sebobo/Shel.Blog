@@ -1,6 +1,6 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace media=TYPO3\Media\ViewHelpers}
 <article class="blog-entry">
+
 	<header>
 		<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
@@ -8,9 +8,7 @@
 			<h1>
 				{neos:contentElement.editable(property: 'title')}
 			</h1>
-		</neos:contentElement.wrap>
 
-		<neos:contentElement.wrap node="{node}">
 			<summary>
 				{neos:contentElement.editable(property: 'entrySummary')}
 			</summary>
@@ -18,21 +16,17 @@
 	</header>
 
 	<f:if condition="{node.properties.entryImage}">
-		<figure class="blog-entry-image">
-			<media:image image="{node.properties.entryImage}" alt="{node.properties.entryImage.alternativeText}"
-									 title="{node.properties.entryImage.title}"  maximumWidth="{entryImageWidth}"
-									 maximumHeight="{entryImageHeight}" />
-		</figure>
+		<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
 	</f:if>
 
 	{content -> f:format.raw()}
 
 	<footer>
-		<f:if condition="{showSocialButtons}">
-			<f:render partial="SocialButtons" arguments="{_all}" />
+		<f:if condition="{settings.socialButtons.enabled}">
+			<f:render partial="SocialButtons" arguments="{identifier:node.identifier, settings: settings.socialButtons}" />
 		</f:if>
 
-		<f:render partial="EntryPager" arguments="{_all}" />
+		<f:render partial="EntryPager" arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node}" />
 	</footer>
 
 </article>

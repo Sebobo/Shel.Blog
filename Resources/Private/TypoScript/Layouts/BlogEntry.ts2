@@ -10,17 +10,18 @@ prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
 	entrySummary = ${node.properties.entrySummary}
 	dateFormat = 'm/d/Y'
 
+	settings = ${Configuration.setting('SebastianHelzle.Blog')}
+
 	# Fall back to modified date if there is no publication date set
 	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
 	# Image settings
-	entryImageWidth = 150
-	entryImageHeight = 150
-
-	# Social settings
-	showSocialButtons = false
-	twitterId = ''
-	flattrId = ''
+	imageSettings = TYPO3.TypoScript:Array {
+		width = 150
+		height = 150
+		cropping = false
+		upScaling = false
+	}
 
 	content = Neos:ContentCollection {
 		nodePath = 'main'

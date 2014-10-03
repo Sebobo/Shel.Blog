@@ -1,0 +1,6 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+<figure class="blog-entry-image">
+	<media:image image="{image}" alt="{image.alternativeText}" title="{image.title}"
+							 maximumWidth="{imageSettings.width}" maximumHeight="{imageSettings.height}"
+							 allowCropping="{imageSettings.Cropping}" allowUpScaling="{imageSettings.upScaling}"/>
+</figure>

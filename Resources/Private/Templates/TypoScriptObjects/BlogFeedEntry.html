@@ -13,11 +13,7 @@
 
 	<section>
 		<f:if condition="{node.properties.entryImage}">
-			<figure>
-				<media:image image="{node.properties.entryImage}" alt="{node.properties.entryImage.alternativeText}"
-										 title="{node.properties.entryImage.title}" maximumWidth="{entryImageWidth}"
-										 maximumHeight="{entryImageHeight}" allowCropping="true" allowUpScaling="true"/>
-			</figure>
+			<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
 		</f:if>
 
 		<neos:contentElement.editable property="entrySummary" tag="summary" />

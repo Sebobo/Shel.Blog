@@ -4,7 +4,7 @@
 		<f:if condition="{previousEntry}">
 			<li><neos:link.node node="{previousEntry}">{previousEntry.properties.title}</neos:link.node></li>
 		</f:if>
-		<li>{node.properties.title}</li>
+		<li>{currentEntry.properties.title}</li>
 		<f:if condition="{nextEntry}">
 			<li><neos:link.node node="{nextEntry}">{nextEntry.properties.title}</neos:link.node></li>
 		</f:if>

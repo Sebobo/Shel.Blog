@@ -3,3 +3,10 @@ TYPO3:
     typoScript:
       autoInclude:
         'SebastianHelzle.Blog': TRUE
+
+SebastianHelzle:
+  Blog:
+    socialButtons:
+      enabled: FALSE
+      twitterId: ''
+      flattrId: ''
