@@ -13,7 +13,7 @@
 
 	<section>
 		<f:if condition="{node.properties.entryImage}">
-			<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
+			<f:render partial="EntryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
 		</f:if>
 
 		<neos:contentElement.editable property="entrySummary" tag="summary" />

@@ -2,6 +2,10 @@
 <article class="blog-entry">
 
 	<header>
+		<f:if condition="{node.properties.entryImage}">
+			<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
+		</f:if>
+
 		<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
 		<neos:contentElement.wrap node="{node}">
@@ -14,10 +18,6 @@
 			</summary>
 		</neos:contentElement.wrap>
 	</header>
-
-	<f:if condition="{node.properties.entryImage}">
-		<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
-	</f:if>
 
 	{content -> f:format.raw()}
 

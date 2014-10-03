@@ -11,7 +11,6 @@
 		<updated>{f:format.date(date: lastUpdatedNode.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
 		<link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
 		<link rel="self" type="application/atom+xml" href="{neos:uri.node(absolute: true, node: node)}"/>
-
 		{entries -> f:format.raw()}
 	</feed>
 </f:section>

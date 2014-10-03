@@ -1,7 +1,7 @@
 namespace: TypoScript=TYPO3.TypoScript
-namespace: Neos=TYPO3.Neos
 namespace: NodeTypes=TYPO3.Neos.NodeTypes
 
+include: TypoScriptObjects/BlogFeedContent.ts2
 include: Layouts/BlogEntry.ts2
 include: Layouts/BlogFeed.ts2
 include: NodeTypes/LatestBlogEntries.ts2

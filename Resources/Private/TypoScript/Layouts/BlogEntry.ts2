@@ -1,7 +1,7 @@
 ##
 # "BlogEntry" layout
 #
-prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
+prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Content) {
 	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogEntry.html'
 	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
 
@@ -15,16 +15,17 @@ prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
 	# Fall back to modified date if there is no publication date set
 	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
+	content = ContentCollection {
+		nodePath = 'main'
+	}
+
 	# Image settings
-	imageSettings = TYPO3.TypoScript:Array {
+	imageSettings = TypoScript:RawArray {
+		class = 'blog-entry-image'
 		width = 150
 		height = 150
 		cropping = false
 		upScaling = false
-	}
-
-	content = Neos:ContentCollection {
-		nodePath = 'main'
 	}
 
 	// Links to previous and next blog entries
@@ -35,7 +36,7 @@ prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Neos:Content) {
 ##
 # Add a condition to render the primary content differently if we show a blog entry
 #
-prototype(Neos:PrimaryContent).BlogEntry {
+prototype(PrimaryContent).BlogEntry {
 	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogEntry]')}
 	type = 'SebastianHelzle.Blog:BlogEntry'
 }

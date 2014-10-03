@@ -1,0 +1,46 @@
+##
+# This is the content part of our blogfeed.
+# It's used for the xml and the normal html output, just uses different templates for the two cases.
+#
+prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Content) {
+	node = ${node}
+
+	# Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
+	title = ${node.properties.title}
+	description = ${node.properties.description}
+	authorName = ${node.properties.authorName}
+	limit = ${node.properties.limit}
+	sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
+	allEntries = ${q(this.sourceNode).find('[instanceof SebastianHelzle.Blog:BlogEntry]')}
+
+	# override makes the enclosed properties also available to the entry renderer
+	@override {
+		requestFormat =  ${request.format}
+		feedEntries = ${this.allEntries.get()}
+		feedEntries.@process.slice = ${Array.slice(value, 0, this.limit)}
+	}
+
+	# Setup source node to retrieve blog posts from
+	lastUpdatedNode = ${feedEntries[0]}
+
+	# Select the template depending on the requested format
+	templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogFeed.' + requestFormat}
+	attributes.class = 'blog-feed'
+	sectionName = 'feed'
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier.documentNode = ${documentNode}
+		// Flush the blog feed when a blog entry is changed
+		entryTags.1 = 'NodeType_SebastianHelzle.Blog:BlogEntry'
+	}
+
+	entries = TypoScript:Collection {
+		collection = ${feedEntries}
+
+		itemName = 'node'
+		itemRenderer = SebastianHelzle.Blog:BlogEntry {
+			templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + requestFormat}
+		}
+	}
+}
