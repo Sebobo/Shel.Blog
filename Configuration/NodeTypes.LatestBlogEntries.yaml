@@ -2,7 +2,7 @@
 # A custom "Menu" NodeType for blog entries
 #
 'SebastianHelzle.Blog:LatestBlogEntries':
-  superTypes: ['TYPO3.Neos.NodeTypes:Menu']
+  superTypes: ['TYPO3.Neos:Content']
   ui:
     label: 'Latest blog entries'
     icon: 'icon-sitemap'
@@ -11,10 +11,6 @@
         document:
           label: 'Menu options'
   properties:
-    startLevel:
-      ui: ~
-    maximumLevels:
-      ui: ~
     limit:
       type: integer
       defaultValue: 5

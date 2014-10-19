@@ -2,6 +2,7 @@
 # "LatestBlogEntries" element
 #
 prototype(SebastianHelzle.Blog:LatestBlogEntries) < prototype(SebastianHelzle.Blog:BlogFeedContent) {
+	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
 	attributes.class = 'blog-latest'
 
 	sortingDirection = ${node.properties.sortingDirection}

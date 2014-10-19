@@ -2,7 +2,7 @@
 {namespace media=TYPO3\Media\ViewHelpers}
 <article class="blog-feed-entry">
 	<header>
-		<neos:link.node node="{node}">
+		<neos:link.node node="{node}" section="disqus_thread" data="{disqus-identifier: node.identifier}">
 			<neos:contentElement.editable property="title" tag="h3" />
 		</neos:link.node>
 

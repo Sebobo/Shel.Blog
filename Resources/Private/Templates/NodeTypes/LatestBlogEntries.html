@@ -2,4 +2,5 @@
 	<nav{attributes -> f:format.raw()}>
 		{entries -> f:format.raw()}
 	</nav>
+	<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
 </f:section>

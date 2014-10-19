@@ -10,3 +10,5 @@ SebastianHelzle:
       enabled: FALSE
       twitterId: ''
       flattrId: ''
+    disqus:
+      shortname: ''
