@@ -1,22 +1,25 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
-<article class="blog-feed-entry">
-	<header>
-		<neos:link.node node="{node}" section="disqus_thread" data="{disqus-identifier: node.identifier}">
-			<neos:contentElement.editable property="title" tag="h3" />
-		</neos:link.node>
+<li{attributes -> f:format.raw()}>
+	<article>
+		<header>
+			<h3>
+				<neos:link.node node="{node}" section="disqus_thread" data="{disqus-identifier: node.identifier}">
+					<neos:contentElement.editable property="title" tag="span" />
+				</neos:link.node>
+			</h3>
 
-		<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
+			<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
-		<neos:contentElement.editable property="authorName" tag="address" />
-	</header>
+			<neos:contentElement.editable property="authorName" tag="address" />
+		</header>
 
-	<section>
-		<f:if condition="{node.properties.entryImage}">
-			<f:render partial="EntryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
-		</f:if>
+		<section>
+			<f:if condition="{node.properties.entryImage}">
+				<f:render partial="EntryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
+			</f:if>
 
-		<neos:contentElement.editable property="entrySummary" tag="summary" />
-	</section>
-
-</article>
+			<neos:contentElement.editable property="entrySummary" tag="summary" />
+		</section>
+	</article>
+</li>

@@ -4,6 +4,7 @@
 prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Content) {
 	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogEntry.html'
 	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
+	attributes.class = 'blog-feed-entry'
 
 	node = ${node}
 	title = ${node.properties.title}

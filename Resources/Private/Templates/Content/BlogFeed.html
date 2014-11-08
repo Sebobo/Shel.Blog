@@ -6,7 +6,9 @@
 			<neos:contentElement.editable property="description" tag="h2" />
 		</header>
 
-		{entries -> f:format.raw()}
+		<ul>
+			{entries -> f:format.raw()}
+		</ul>
 
 	</section>
 </f:section>

@@ -1,6 +1,6 @@
 <f:section name="feed">
-	<nav{attributes -> f:format.raw()}>
+	<ul{attributes -> f:format.raw()}>
 		{entries -> f:format.raw()}
-	</nav>
+	</ul>
 	<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
 </f:section>
