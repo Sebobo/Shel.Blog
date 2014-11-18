@@ -7,6 +7,14 @@
       "typo3/neos": "1.1.*",
       "typo3/neos-nodetypes": "1.1.*"
     },
+    "authors": [
+      {
+        "name": "Sebastian Helzle",
+        "email": "sebastian@helzle.net",
+        "homepage": "http://www.sebastianhelzle.net",
+        "role": "Developer"
+      }
+    ],
     "suggest": {
       "typo3/twitter-bootstrap": "The provided templates use bootstrap classes. These can be changed or you can just use the bootstrap package."
     },
