@@ -41,6 +41,7 @@ prototype(SebastianHelzle.Blog:BlogFeedContent) < prototype(Content) {
 		itemName = 'node'
 		itemRenderer = SebastianHelzle.Blog:BlogEntry {
 			templatePath = ${'resource://SebastianHelzle.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + requestFormat}
+			attributes.class = 'blog-feed-entry'
 		}
 	}
 }
