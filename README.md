@@ -10,7 +10,7 @@ All functions of this blog package are based on Typoscript and Yaml configuratio
 
 Install via composer
 
-`composer install sebastianhelzle/blog --save`
+`composer install shel/blog --save`
 
 You can overwrite and modify the different content elements to your needs.
 
@@ -21,7 +21,7 @@ For the route to the atom file to work you need to add the following to your `Ro
 		uriPattern: '<BlogSubroutes>'
 		subRoutes:
 			'BlogSubroutes':
-				package: 'SebastianHelzle.Blog'
+				package: 'Shel.Blog'
 
 
 ## Setup atom(xml)/html feed
