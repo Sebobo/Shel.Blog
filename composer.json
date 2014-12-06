@@ -1,11 +1,11 @@
 {
-    "name": "sebastianhelzle/blog",
+    "name": "shel/blog",
     "type": "typo3-flow-package",
     "license": "MIT",
     "description": "A simple blog for TYPO3 Neos based on typoscript and yaml configurations. Also supports atom feeds.",
     "require": {
-      "typo3/neos": "1.1.*",
-      "typo3/neos-nodetypes": "1.1.*"
+      "typo3/neos": ">=1.1",
+      "typo3/neos-nodetypes": ">=1.1"
     },
     "authors": [
       {
