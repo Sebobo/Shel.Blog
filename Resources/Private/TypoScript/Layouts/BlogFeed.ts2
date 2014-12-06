@@ -3,12 +3,12 @@
 # We clear the prototype of the BlogFeed so we don't have inherited
 # properties we don't want and would be contained in the output.
 #
-prototype(SebastianHelzle.Blog:BlogFeed) >
-prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
+prototype(Shel.Blog:BlogFeed) >
+prototype(Shel.Blog:BlogFeed) < prototype(TypoScript:Array) {
 	doctype = '<?xml version="1.0" encoding="utf-8"?>'
 	doctype.@position = 'start 100'
 
-	feed = SebastianHelzle.Blog:BlogFeedContent {
+	feed = Shel.Blog:BlogFeedContent {
 		@position = 'after doctype'
 	}
 }
@@ -18,17 +18,17 @@ prototype(SebastianHelzle.Blog:BlogFeed) < prototype(TypoScript:Array) {
 # It's just for rendering the primary content part and not the whole page.
 # This way it will integrate easily into an existing layout.
 #
-prototype(SebastianHelzle.Blog:BlogFeedHtml) < prototype(SebastianHelzle.Blog:BlogFeedContent)
+prototype(Shel.Blog:BlogFeedHtml) < prototype(Shel.Blog:BlogFeedContent)
 
 ##
 # Add a condition to render the primary content differently if we show a blog feed
 #
 prototype(PrimaryContent).BlogFeed {
-	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogFeed]')}
-	type = 'SebastianHelzle.Blog:BlogFeedHtml'
+	condition = ${q(node).is('[instanceof Shel.Blog:BlogFeed]')}
+	type = 'Shel.Blog:BlogFeedHtml'
 }
 
 ##
 # Calling a page with the format .atom will automatically call the xml based layout
 #
-atom = SebastianHelzle.Blog:BlogFeed
+atom = Shel.Blog:BlogFeed

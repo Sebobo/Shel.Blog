@@ -1,0 +1,72 @@
+up:
+  comments: 'Migrates the nodeType to the new vendor name'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'SebastianHelzle.Blog:BlogEntry'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:BlogEntry'
+
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'SebastianHelzle.Blog:BlogFeed'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:BlogFeed'
+
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'SebastianHelzle.Blog:LatestBlogEntries'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:LatestBlogEntries'
+down:
+  comments: 'Migrates the nodeType back to the previous vendor name'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:BlogEntry'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'SebastianHelzle.Blog:BlogEntry'
+
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:BlogFeed'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'SebastianHelzle.Blog:BlogFeed'
+
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:LatestBlogEntries'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'SebastianHelzle.Blog:LatestBlogEntries'

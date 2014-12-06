@@ -1,7 +1,7 @@
 ##
 # A custom "Menu" NodeType for blog entries
 #
-'SebastianHelzle.Blog:LatestBlogEntries':
+'Shel.Blog:LatestBlogEntries':
   superTypes: ['TYPO3.Neos:Content']
   ui:
     label: 'Latest blog entries'

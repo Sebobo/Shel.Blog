@@ -1,9 +1,9 @@
 ##
 # "BlogEntry" layout
 #
-prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Content) {
-	templatePath = 'resource://SebastianHelzle.Blog/Private/Templates/Content/BlogEntry.html'
-	partialRootPath = 'resource://SebastianHelzle.Blog/Private/Templates/Partials'
+prototype(Shel.Blog:BlogEntry) < prototype(Content) {
+	templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
+	partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
 	attributes.class = 'blog-entry'
 
 	node = ${node}
@@ -11,7 +11,7 @@ prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Content) {
 	entrySummary = ${node.properties.entrySummary}
 	dateFormat = 'm/d/Y'
 
-	settings = ${Configuration.setting('SebastianHelzle.Blog')}
+	settings = ${Configuration.setting('Shel.Blog')}
 
 	# Fall back to modified date if there is no publication date set
 	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
@@ -30,14 +30,14 @@ prototype(SebastianHelzle.Blog:BlogEntry) < prototype(Content) {
 	}
 
 	// Links to previous and next blog entries
-	previousEntry = ${q(node).prev('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
-	nextEntry = ${q(node).next('[instanceof SebastianHelzle.Blog:BlogEntry]').get(0)}
+	previousEntry = ${q(node).prev('[instanceof Shel.Blog:BlogEntry]').get(0)}
+	nextEntry = ${q(node).next('[instanceof Shel.Blog:BlogEntry]').get(0)}
 }
 
 ##
 # Add a condition to render the primary content differently if we show a blog entry
 #
 prototype(PrimaryContent).BlogEntry {
-	condition = ${q(node).is('[instanceof SebastianHelzle.Blog:BlogEntry]')}
-	type = 'SebastianHelzle.Blog:BlogEntry'
+	condition = ${q(node).is('[instanceof Shel.Blog:BlogEntry]')}
+	type = 'Shel.Blog:BlogEntry'
 }

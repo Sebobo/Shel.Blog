@@ -1,7 +1,7 @@
 ##
 # Document NodeType "BlogFeed"
 #
-'SebastianHelzle.Blog:BlogFeed':
+'Shel.Blog:BlogFeed':
   superTypes: ['TYPO3.Neos:Document']
   ui:
     label: 'Blog feed'

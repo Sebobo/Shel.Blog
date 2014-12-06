@@ -1,7 +1,7 @@
 ##
 # Document NodeType "BlogEntry"
 #
-'SebastianHelzle.Blog:BlogEntry':
+'Shel.Blog:BlogEntry':
   superTypes: ['TYPO3.Neos:Document']
   childNodes:
     'main':

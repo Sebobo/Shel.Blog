@@ -2,9 +2,9 @@ TYPO3:
   Neos:
     typoScript:
       autoInclude:
-        'SebastianHelzle.Blog': TRUE
+        'Shel.Blog': TRUE
 
-SebastianHelzle:
+Shel:
   Blog:
     socialButtons:
       enabled: FALSE
