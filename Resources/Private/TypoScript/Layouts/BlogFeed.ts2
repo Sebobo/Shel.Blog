@@ -4,7 +4,11 @@
 # properties we don't want and would be contained in the output.
 #
 prototype(Shel.Blog:BlogFeed) >
-prototype(Shel.Blog:BlogFeed) < prototype(TypoScript:Array) {
+prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
+	httpResponseHead {
+		headers.Content-Type = 'application/xml'
+	}
+
 	doctype = '<?xml version="1.0" encoding="utf-8"?>'
 	doctype.@position = 'start 100'
 
