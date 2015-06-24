@@ -7,7 +7,6 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	attributes.class = 'blog-entry'
 	sectionName = 'blogEntry'
 
-	node = ${node}
 	title = ${node.properties.title}
 	entrySummary = ${node.properties.entrySummary}
 
