@@ -2,7 +2,8 @@
 # A custom "Menu" NodeType for blog entries
 #
 'Shel.Blog:LatestBlogEntries':
-  superTypes: ['TYPO3.Neos:Content']
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
   ui:
     label: 'Latest blog entries'
     icon: 'icon-sitemap'
@@ -41,6 +42,6 @@
       type: reference
       ui:
         label: 'Page containing blog entries'
-        reloadIfChanged: TRUE
+        reloadPageIfChanged: TRUE
         inspector:
           group: 'document'

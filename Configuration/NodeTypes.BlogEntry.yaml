@@ -29,14 +29,14 @@
         aloha:
           placeholder: 'Enter summary here'
     entryImage:
-      type: 'TYPO3\Media\Domain\Model\ImageVariant'
+      type: 'TYPO3\Media\Domain\Model\ImageInterface'
       ui:
         label: 'Preview image'
         reloadIfChanged: TRUE
         inspector:
           group: 'document'
     publicationDate:
-      type: date
+      type: DateTime
       ui:
         label: 'Publication date'
         reloadIfChanged: TRUE
