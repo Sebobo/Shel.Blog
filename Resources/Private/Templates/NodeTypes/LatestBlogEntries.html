@@ -1,6 +1,19 @@
-<f:section name="feed">
-	<ul{attributes -> f:format.raw()}>
-		{entries -> f:format.raw()}
-	</ul>
-	<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
-</f:section>
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+			xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+	<f:section name="latestBlogEntries">
+		<div{attributes -> f:format.raw()}>
+			<f:if condition="{entries}">
+				<f:then>
+					<ul>
+						{entries -> f:format.raw()}
+					</ul>
+				</f:then>
+				<f:else>
+					<p>No blog entries found</p>
+				</f:else>
+			</f:if>
+			<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
+		</div>
+	</f:section>
+</html>

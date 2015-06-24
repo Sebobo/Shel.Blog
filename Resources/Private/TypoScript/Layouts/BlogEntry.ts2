@@ -5,6 +5,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
 	partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
 	attributes.class = 'blog-entry'
+	sectionName = 'blogEntry'
 
 	node = ${node}
 	title = ${node.properties.title}

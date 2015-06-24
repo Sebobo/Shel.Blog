@@ -11,7 +11,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 	authorName = ${node.properties.authorName}
 	limit = ${node.properties.limit}
 	sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
-	allEntries = ${q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]')}
+	allEntries = ${this.sourceNode ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]') : []}
 
 	# override makes the enclosed properties also available to the entry renderer
 	@override {
@@ -42,6 +42,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 		itemRenderer = Shel.Blog:BlogEntry {
 			templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + requestFormat}
 			attributes.class = 'blog-feed-entry'
+			sectionName = 'blogFeedEntry'
 		}
 	}
 }

@@ -1,14 +1,18 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
-<f:section name="feed">
-	<section{attributes -> f:format.raw()}>
-		<header>
-			<neos:contentElement.editable property="title" tag="h1" />
-			<neos:contentElement.editable property="description" tag="h2" />
-		</header>
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+			xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+			xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+	<f:section name="feed">
+		<section{attributes -> f:format.raw()}>
+			<header>
+				<neos:contentElement.editable property="title" tag="h1" />
+				<neos:contentElement.editable property="description" tag="h2" />
+			</header>
 
-		<ul>
-			{entries -> f:format.raw()}
-		</ul>
+			<ul>
+				{entries -> f:format.raw()}
+			</ul>
 
-	</section>
-</f:section>
+		</section>
+	</f:section>
+</html>

@@ -1,34 +1,40 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
-<article{attributes -> f:format.raw()}>
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+			xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+			xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+	<f:section name="blogEntry">
+		<article{attributes -> f:format.raw()}>
 
-	<header>
-		<f:if condition="{node.properties.entryImage}">
-			<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
-		</f:if>
+			<header>
+				<f:if condition="{node.properties.entryImage}">
+					<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
+				</f:if>
 
-		<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
+				<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
-		<neos:contentElement.wrap node="{node}">
-			<h1>
-				{neos:contentElement.editable(property: 'title')}
-			</h1>
+				<neos:contentElement.wrap node="{node}">
+					<h1>
+						{neos:contentElement.editable(property: 'title')}
+					</h1>
 
-			<summary>
-				{neos:contentElement.editable(property: 'entrySummary')}
-			</summary>
-		</neos:contentElement.wrap>
-	</header>
+					<summary>
+						{neos:contentElement.editable(property: 'entrySummary')}
+					</summary>
+				</neos:contentElement.wrap>
+			</header>
 
-	{content -> f:format.raw()}
+			{content -> f:format.raw()}
 
-	<footer>
-		<f:if condition="{settings.socialButtons.enabled}">
-			<f:render partial="SocialButtons" arguments="{identifier:node.identifier, settings: settings.socialButtons}" />
-		</f:if>
+			<footer>
+				<f:if condition="{settings.socialButtons.enabled}">
+					<f:render partial="SocialButtons" arguments="{identifier:node.identifier, settings: settings.socialButtons}" />
+				</f:if>
 
-		<f:render partial="EntryPager" arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node}" />
-	</footer>
+				<f:render partial="EntryPager" arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node}" />
+			</footer>
 
-	<f:render partial="Disqus" arguments="{node: node, settings: settings}" />
+			<f:render partial="Disqus" arguments="{node: node, settings: settings}" />
 
-</article>
+		</article>
+	</f:section>
+</html>
