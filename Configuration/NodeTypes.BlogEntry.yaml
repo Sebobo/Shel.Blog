@@ -9,6 +9,7 @@
   ui:
     label: 'Blog entry'
     icon: 'icon-bullhorn'
+    inlineEditable: TRUE
     inspector:
       groups:
         'document':
@@ -26,8 +27,10 @@
     entrySummary:
       type: string
       ui:
+        inlineEditable: true
         aloha:
           placeholder: 'Enter summary here'
+          autoparagraph: TRUE
     entryImage:
       type: 'TYPO3\Media\Domain\Model\ImageInterface'
       ui:
