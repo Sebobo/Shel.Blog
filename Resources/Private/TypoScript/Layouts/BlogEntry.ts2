@@ -9,9 +9,9 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	node = ${node}
 	title = ${node.properties.title}
 	entrySummary = ${node.properties.entrySummary}
-	dateFormat = 'm/d/Y'
 
 	settings = ${Configuration.setting('Shel.Blog')}
+	dateFormat = ${this.settings.dateFormat}
 
 	# Fall back to modified date if there is no publication date set
 	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}

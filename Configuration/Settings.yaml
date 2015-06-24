@@ -6,6 +6,7 @@ TYPO3:
 
 Shel:
   Blog:
+    dateFormat: 'm/d/Y'
     socialButtons:
       enabled: FALSE
       twitterId: ''
