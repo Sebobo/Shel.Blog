@@ -30,7 +30,9 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 
 	@cache {
 		mode = 'cached'
-		entryIdentifier.documentNode = ${documentNode}
+		entryIdentifier {
+			node = ${node}
+		}
 		// Flush the blog feed when a blog entry is changed
 		entryTags.1 = 'NodeType_Shel.Blog:BlogEntry'
 	}
