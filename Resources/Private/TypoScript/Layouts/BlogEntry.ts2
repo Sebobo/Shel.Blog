@@ -21,7 +21,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	}
 
 	# Image settings
-	imageSettings = TypoScript:RawArray {
+	imageSettings = TYPO3.TypoScript:RawArray {
 		class = 'blog-entry-image'
 		width = 150
 		height = 150

@@ -6,6 +6,7 @@
   ui:
     label: 'Latest blog entries'
     icon: 'icon-sitemap'
+    inlineEditable: TRUE
     inspector:
       groups:
         document:

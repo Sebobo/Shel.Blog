@@ -35,7 +35,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 		entryTags.1 = 'NodeType_Shel.Blog:BlogEntry'
 	}
 
-	entries = TypoScript:Collection {
+	entries = TYPO3.TypoScript:Collection {
 		collection = ${feedEntries}
 
 		itemName = 'node'

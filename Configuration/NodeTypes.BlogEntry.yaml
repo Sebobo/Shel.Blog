@@ -21,8 +21,13 @@
         reloadIfChanged: TRUE
         inspector:
           group: 'document'
+        aloha:
+          placeholder: 'Enter author here'
     entrySummary:
       type: string
+      ui:
+        aloha:
+          placeholder: 'Enter summary here'
     entryImage:
       type: 'TYPO3\Media\Domain\Model\ImageVariant'
       ui:

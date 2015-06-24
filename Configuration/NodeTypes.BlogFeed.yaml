@@ -42,3 +42,5 @@
         reloadIfChanged: TRUE
         inspector:
           group: 'document'
+        aloha:
+          placeholder: 'Enter feed description here'
