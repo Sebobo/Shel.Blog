@@ -14,9 +14,14 @@
       groups:
         'document':
           label: 'Details'
+  search:
+    fulltext:
+      enable: TRUE
   properties:
     authorName:
       type: string
+      search:
+        fulltextExtractor: "${Indexing.extractHtmlTags(node.properties.authorName)}"
       ui:
         label: 'Author'
         reloadIfChanged: TRUE
@@ -26,6 +31,8 @@
           placeholder: 'Enter author here'
     entrySummary:
       type: string
+      search:
+        fulltextExtractor: "${Indexing.extractHtmlTags(node.properties.entrySummary)}"
       ui:
         inlineEditable: true
         aloha:
