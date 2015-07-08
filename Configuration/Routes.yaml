@@ -9,3 +9,23 @@
   routeParts:
     'node':
       handler: 'TYPO3\Neos\Routing\FrontendNodeRoutePartHandler'
+
+-
+  name: 'Blog paginate'
+  uriPattern: '{node}/browse/{--blog-pagination.currentPage}.html'
+  defaults:
+    '@package': 'TYPO3.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'html'
+    '--blog-pagination':
+      '@package': ''
+      '@subpackage': ''
+      '@controller': ''
+      '@action': 'index'
+      'currentPage': '1'
+  routeParts:
+    node:
+      handler: TYPO3\Neos\Routing\FrontendNodeRoutePartHandler
+  appendExceedingArguments: TRUE
+

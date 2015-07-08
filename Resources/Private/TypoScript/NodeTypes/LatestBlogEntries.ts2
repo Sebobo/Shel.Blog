@@ -5,11 +5,4 @@ prototype(Shel.Blog:LatestBlogEntries) < prototype(Shel.Blog:BlogFeedContent) {
 	partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
 	attributes.class = 'blog-latest'
 	sectionName = 'latestBlogEntries'
-
-	sortingDirection = ${node.properties.sortingDirection}
-
-	# Limit the number of blog posts and reverse if sorting is decending
-	@override {
-		feedEntries = ${this.allEntries ? (this.sortingDirection == 'descending' ? Array.reverse(this.allEntries.get()) : this.allEntries.get()) : []}
-	}
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+			xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+			xmlns:ts="http://typo3.org/ns/TYPO3/TypoScript/ViewHelpers">
 	<f:section name="latestBlogEntries">
 		<div{attributes -> f:format.raw()}>
-			<f:if condition="{entries}">
+			<f:if condition="{feedEntries}">
 				<f:then>
 					<ul>
-						{entries -> f:format.raw()}
+						<f:for each="{feedEntries}" as="entry">
+							<ts:render path="entryRenderer" context="{node: entry}" />
+						</f:for>
 					</ul>
 				</f:then>
 				<f:else>

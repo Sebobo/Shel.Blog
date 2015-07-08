@@ -3,7 +3,7 @@
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
 prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
-	node = ${node}
+	configuration = ${Configuration.setting('Shel.Blog')}
 
 	# Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
 	title = ${node.properties.title}
@@ -11,40 +11,47 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 	authorName = ${node.properties.authorName}
 	limit = ${node.properties.limit}
 	sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
-	allEntries = ${this.sourceNode ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]') : []}
+	sortingDirection = ${node.properties.sortingDirection}
+	requestArguments = ${request.pluginArguments}
 
-	# override makes the enclosed properties also available to the entry renderer
-	@override {
-		requestFormat =  ${request.format}
-		feedEntries = ${this.allEntries.get()}
-		feedEntries.@process.slice = ${Array.slice(value, 0, this.limit)}
-	}
+	# Fetch feed entries
+	feedEntries = ${this.sourceNode ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]').get() : []}
+	feedEntries.@process.sort = ${this.sortingDirection == 'descending' ? Array.reverse(value) : value}
+	feedEntries.@process.slice = ${this.limit ? Array.slice(value, 0, this.limit) : value}
 
 	# Setup source node to retrieve blog posts from
 	lastUpdatedNode = ${feedEntries[0]}
 
 	# Select the template depending on the requested format
-	templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + requestFormat}
+	templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
 	attributes.class = 'blog-feed'
 	sectionName = 'feed'
+
+	# Can be used to add attributes to the list containing the entries in the feed
+	listAttributes = TYPO3.TypoScript:Attributes
+
+	entryRenderer = Shel.Blog:BlogEntry {
+		templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + request.format}
+		attributes.class = 'blog-feed-entry'
+		sectionName = 'blogFeedEntry'
+	}
+
+	@override {
+		entryRenderer = ${this.entryRenderer}
+		feedEntries = ${this.feedEntries}
+	}
 
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
+			format = ${request.format}
+			paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
 			node = ${node}
 		}
 		// Flush the blog feed when a blog entry is changed
 		entryTags.1 = 'NodeType_Shel.Blog:BlogEntry'
 	}
-
-	entries = TYPO3.TypoScript:Collection {
-		collection = ${feedEntries}
-
-		itemName = 'node'
-		itemRenderer = Shel.Blog:BlogEntry {
-			templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + requestFormat}
-			attributes.class = 'blog-feed-entry'
-			sectionName = 'blogFeedEntry'
-		}
-	}
 }
+
+prototype(TYPO3.Neos:Page).@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
+root.@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}

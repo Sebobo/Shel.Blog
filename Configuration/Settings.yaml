@@ -13,3 +13,6 @@ Shel:
       flattrId: ''
     disqus:
       shortname: ''
+    pagination:
+      itemsPerPage: 5
+      maximumNumberOfLinks: 10
