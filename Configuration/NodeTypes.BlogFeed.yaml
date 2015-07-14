@@ -2,7 +2,8 @@
 # Document NodeType "BlogFeed"
 #
 'Shel.Blog:BlogFeed':
-  superTypes: ['TYPO3.Neos:Document']
+  superTypes:
+    'TYPO3.Neos:Document': TRUE
   ui:
     label: 'Blog feed'
     icon: 'icon-list-alt'

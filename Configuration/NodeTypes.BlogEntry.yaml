@@ -2,7 +2,8 @@
 # Document NodeType "BlogEntry"
 #
 'Shel.Blog:BlogEntry':
-  superTypes: ['TYPO3.Neos:Document']
+  superTypes:
+    'TYPO3.Neos:Document': TRUE
   childNodes:
     'main':
       type: 'TYPO3.Neos:ContentCollection'
