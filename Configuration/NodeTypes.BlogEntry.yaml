@@ -4,6 +4,9 @@
 'Shel.Blog:BlogEntry':
   superTypes:
     'TYPO3.Neos:Document': TRUE
+  constraints:
+    nodeTypes:
+      '*': FALSE
   childNodes:
     'main':
       type: 'TYPO3.Neos:ContentCollection'

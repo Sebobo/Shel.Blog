@@ -4,6 +4,10 @@
 'Shel.Blog:BlogFeed':
   superTypes:
     'TYPO3.Neos:Document': TRUE
+  constraints:
+    nodeTypes:
+      'Shel.Blog:BlogEntry': TRUE
+      '*': FALSE
   ui:
     label: 'Blog feed'
     icon: 'icon-list-alt'
