@@ -36,7 +36,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 		sectionName = 'blogFeedEntry'
 	}
 
-	@override {
+	@context {
 		entryRenderer = ${this.entryRenderer}
 		feedEntries = ${this.feedEntries}
 	}
