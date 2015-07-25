@@ -7,7 +7,7 @@
 
 			<header>
 				<f:if condition="{node.properties.entryImage}">
-					<f:render partial="entryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
+					<f:render partial="EntryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings}" />
 				</f:if>
 
 				<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
