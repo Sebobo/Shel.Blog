@@ -1,0 +1,31 @@
+prototype(TYPO3.Neos:Page) {
+	head {
+		feedLinks = TYPO3.TypoScript:Collection {
+			collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
+			itemName = 'feed'
+			iterationName = 'iteration'
+			itemRenderer = TYPO3.TypoScript:Tag {
+				tagName = 'link'
+				attributes {
+					rel = 'alternate'
+					type = 'application/atom+xml'
+					title = ${feed.properties.title}
+					href = NodeUri {
+						node = ${feed}
+						absolute = TRUE
+						format = 'atom'
+					}
+				}
+			}
+
+			@cache {
+				mode = 'cached'
+				entryIdentifier {
+					identifier = 'rss-links'
+					workspace = ${node.context.workspace.name}
+				}
+				entryTags.1 = 'NodeType_Shel.Blog:BlogFeed'
+			}
+		}
+	}
+}
