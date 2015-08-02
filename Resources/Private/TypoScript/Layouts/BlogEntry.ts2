@@ -8,6 +8,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	sectionName = 'blogEntry'
 
 	title = ${node.properties.title}
+	alternativeText = ${node.properties.alternativeText}
 	entrySummary = ${node.properties.entrySummary}
 
 	settings = ${Configuration.setting('Shel.Blog')}

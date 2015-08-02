@@ -49,6 +49,13 @@
         reloadIfChanged: TRUE
         inspector:
           group: 'document'
+    alternativeText:
+      type: string
+      ui:
+        label: 'Alternative text'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
     publicationDate:
       type: DateTime
       ui:
