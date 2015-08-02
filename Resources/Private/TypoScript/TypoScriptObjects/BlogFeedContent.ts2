@@ -47,6 +47,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 			format = ${request.format}
 			paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
 			node = ${node}
+			editPreviewMode = ${node.context.currentRenderingMode.name}
 		}
 		// Flush the blog feed when a blog entry is changed
 		entryTags.1 = 'NodeType_Shel.Blog:BlogEntry'
