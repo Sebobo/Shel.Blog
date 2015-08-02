@@ -18,6 +18,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
 	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
 	content = ContentCollection {
+		attributes.class = 'blog-entry__content'
 		nodePath = 'main'
 	}
 
