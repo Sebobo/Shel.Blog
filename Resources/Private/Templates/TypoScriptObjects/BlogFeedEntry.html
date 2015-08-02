@@ -7,7 +7,7 @@
 			<article>
 				<header>
 					<h3>
-						<neos:link.node node="{node}" section="disqus_thread" data="{disqus-identifier: node.identifier}">
+						<neos:link.node node="{node}" section="{f:if(condition: settings.disqus.enabled, then: 'disqus_thread')}" data="{disqus-identifier: node.identifier}">
 							<neos:contentElement.editable property="title" tag="span" />
 						</neos:link.node>
 					</h3>

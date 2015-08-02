@@ -12,6 +12,7 @@ Shel:
       twitterId: ''
       flattrId: ''
     disqus:
+      enabled: false
       shortname: ''
     pagination:
       itemsPerPage: 5

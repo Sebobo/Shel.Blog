@@ -16,7 +16,9 @@
 					<p>No blog entries found</p>
 				</f:else>
 			</f:if>
-			<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
+			<f:if condition="{settings.disqus.enabled}">
+				<f:render partial="DisqusCommentCount" arguments="{node: node, settings: settings}"  />
+			</f:if>
 		</div>
 	</f:section>
 </html>
