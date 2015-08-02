@@ -10,16 +10,13 @@
 					<f:render partial="EntryImage" arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}" />
 				</f:if>
 
-				<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
-
 				<neos:contentElement.wrap node="{node}">
 					<h1>
 						{neos:contentElement.editable(property: 'title')}
 					</h1>
 
-					<summary>
-						{neos:contentElement.editable(property: 'entrySummary')}
-					</summary>
+					<neos:contentElement.editable property="authorName" tag="small" class="blog-entry__author" />
+					<time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 				</neos:contentElement.wrap>
 			</header>
 
