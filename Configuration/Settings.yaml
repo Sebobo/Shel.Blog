@@ -2,13 +2,13 @@ TYPO3:
   Neos:
     typoScript:
       autoInclude:
-        'Shel.Blog': TRUE
+        'Shel.Blog': true
 
 Shel:
   Blog:
     dateFormat: 'M d, Y'
     socialButtons:
-      enabled: FALSE
+      enabled: false
       twitterId: ''
       flattrId: ''
     disqus:
