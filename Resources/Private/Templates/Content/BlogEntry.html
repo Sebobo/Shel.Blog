@@ -24,13 +24,13 @@
 
 			<footer>
 				<f:if condition="{settings.socialButtons.enabled}">
-					<f:render partial="SocialButtons" arguments="{identifier:node.identifier, settings: settings.socialButtons}" />
+					<f:render partial="SocialButtons" arguments="{node: node, settings: settings.socialButtons, entryUrl: entryUrl}" />
 				</f:if>
+
+				<f:render partial="Disqus" arguments="{node: node, settings: settings}" />
 
 				<f:render partial="EntryPager" arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node}" />
 			</footer>
-
-			<f:render partial="Disqus" arguments="{node: node, settings: settings}" />
 
 		</article>
 	</f:section>
