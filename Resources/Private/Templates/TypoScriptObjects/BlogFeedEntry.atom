@@ -10,7 +10,7 @@
 		<updated>{f:format.date(date: node.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
 		<summary>{node.properties.entrySummary}</summary>
 		<content type="html">
-			{entryContent -> f:format.htmlspecialchars()}
+			{content -> f:format.htmlspecialchars()}
 		</content>
 	</entry>
 </f:section>
