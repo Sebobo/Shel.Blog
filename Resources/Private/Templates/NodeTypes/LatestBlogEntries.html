@@ -7,9 +7,7 @@
         <f:if condition="{feedEntries}">
             <f:then>
                 <ul>
-                    <f:for each="{feedEntries}" as="entry">
-                        <ts:render path="entryRenderer" context="{node: entry}"/>
-                    </f:for>
+                    <ts:render path="feedContent"/>
                 </ul>
             </f:then>
             <f:else>

@@ -30,15 +30,16 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
     # Can be used to add attributes to the list containing the entries in the feed
     listAttributes = TYPO3.TypoScript:Attributes
 
-    entryRenderer = Shel.Blog:BlogEntry {
-        templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + request.format}
-        attributes.class = 'blog-feed-entry'
-        sectionName = 'blogFeedEntry'
-    }
+    @context.feedEntries = ${this.feedEntries}
 
-    @context {
-        entryRenderer = ${this.entryRenderer}
-        feedEntries = ${this.feedEntries}
+    feedContent = TYPO3.TypoScript:Collection {
+        collection = ${feedEntries}
+        itemName = 'node'
+        itemRenderer = Shel.Blog:BlogEntry {
+            templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + request.format}
+            attributes.class = 'blog-feed-entry'
+            sectionName = 'blogFeedEntry'
+        }
     }
 
     @cache {
