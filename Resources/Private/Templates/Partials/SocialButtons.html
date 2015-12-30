@@ -1,15 +1,15 @@
 <section class="blog-entry-social">
-	<f:if condition="settings.twitterId">
-		<a class="blog-entry-social__twitter" target="_blank" title="Tweet this"
-			 href="https://twitter.com/intent/tweet?url={entryUrl -> f:format.urlencode()}&text={node.properties.title -> f:format.urlencode()}&via={settings.twitterId -> f:format.urlencode()}">
-			<i class="fa fa-twitter"></i> Tweet
-		</a>
-	</f:if>
+    <f:if condition="settings.twitterId">
+        <a class="blog-entry-social__twitter" target="_blank" title="Tweet this"
+           href="https://twitter.com/intent/tweet?url={entryUrl -> f:format.urlencode()}&text={node.properties.title -> f:format.urlencode()}&via={settings.twitterId -> f:format.urlencode()}">
+            <i class="fa fa-twitter"></i> Tweet
+        </a>
+    </f:if>
 
-	<f:if condition="settings.flattrId">
-		<a class="blog-entry-social__flattr" target="_blank" title="Flattr this"
-			 href="https://flattr.com/submit/auto?user_id={settings.flattrId}&url={entryUrl -> f:format.urlencode()}">
-			Flattr
-		</a>
-	</f:if>
+    <f:if condition="settings.flattrId">
+        <a class="blog-entry-social__flattr" target="_blank" title="Flattr this"
+           href="https://flattr.com/submit/auto?user_id={settings.flattrId}&url={entryUrl -> f:format.urlencode()}">
+            Flattr
+        </a>
+    </f:if>
 </section>

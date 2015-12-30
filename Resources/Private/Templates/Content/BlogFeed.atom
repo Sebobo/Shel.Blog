@@ -2,16 +2,16 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <?xml version="1.0" encoding="utf-8"?>
 <f:section name="feed">
-	<feed xmlns="http://www.w3.org/2005/Atom">
-		<author>
-			<name>{authorName}</name>
-		</author>
-		<title>{title}</title>
-		<subtitle>{description}</subtitle>
-		<id>urn:uuid:{node.identifier}</id>
-		<updated>{f:format.date(date: lastUpdatedNode.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
-		<link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
-		<link rel="self" type="application/atom+xml" href="{neos:uri.node(absolute: true, node: node)}"/>
-		<f:for each="{feedEntries}" as="entry"><ts:render path="entryRenderer" context="{node: entry}" /></f:for>
-	</feed>
+    <feed xmlns="http://www.w3.org/2005/Atom">
+        <author>
+            <name>{authorName}</name>
+        </author>
+        <title>{title}</title>
+        <subtitle>{description}</subtitle>
+        <id>urn:uuid:{node.identifier}</id>
+        <updated>{f:format.date(date: lastUpdatedNode.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
+        <link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
+        <link rel="self" type="application/atom+xml" href="{neos:uri.node(absolute: true, node: node)}"/>
+        <f:for each="{feedEntries}" as="entry"><ts:render path="entryRenderer" context="{node: entry}" /></f:for>
+    </feed>
 </f:section>

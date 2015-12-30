@@ -5,16 +5,16 @@
 #
 prototype(Shel.Blog:BlogFeed) >
 prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
-	httpResponseHead {
-		headers.Content-Type = 'application/xml'
-	}
+    httpResponseHead {
+        headers.Content-Type = 'application/xml'
+    }
 
-	doctype = '<?xml version="1.0" encoding="utf-8"?>'
-	doctype.@position = 'start 100'
+    doctype = '<?xml version="1.0" encoding="utf-8"?>'
+    doctype.@position = 'start 100'
 
-	feed = Shel.Blog:BlogFeedContent {
-		@position = 'after doctype'
-	}
+    feed = Shel.Blog:BlogFeedContent {
+        @position = 'after doctype'
+    }
 }
 
 ##
@@ -28,8 +28,8 @@ prototype(Shel.Blog:BlogFeedHtml) < prototype(Shel.Blog:BlogFeedContent)
 # Add a condition to render the primary content differently if we show a blog feed
 #
 prototype(PrimaryContent).BlogFeed {
-	condition = ${q(node).is('[instanceof Shel.Blog:BlogFeed]')}
-	type = 'Shel.Blog:BlogFeedHtml'
+    condition = ${q(node).is('[instanceof Shel.Blog:BlogFeed]')}
+    type = 'Shel.Blog:BlogFeedHtml'
 }
 
 ##

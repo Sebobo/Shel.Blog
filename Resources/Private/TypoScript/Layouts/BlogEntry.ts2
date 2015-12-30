@@ -2,49 +2,49 @@
 # "BlogEntry" layout
 #
 prototype(Shel.Blog:BlogEntry) < prototype(Content) {
-	templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
-	partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
-	attributes.class = 'blog-entry'
-	sectionName = 'blogEntry'
+    templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
+    partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
+    attributes.class = 'blog-entry'
+    sectionName = 'blogEntry'
 
-	title = ${node.properties.title}
-	alternativeText = ${node.properties.alternativeText}
-	entrySummary = ${node.properties.entrySummary}
+    title = ${node.properties.title}
+    alternativeText = ${node.properties.alternativeText}
+    entrySummary = ${node.properties.entrySummary}
 
-	settings = ${Configuration.setting('Shel.Blog')}
-	dateFormat = ${this.settings.dateFormat}
+    settings = ${Configuration.setting('Shel.Blog')}
+    dateFormat = ${this.settings.dateFormat}
 
-	entryUrl = NodeUri {
-		node = ${node}
-		absolute = true
-	}
+    entryUrl = NodeUri {
+        node = ${node}
+        absolute = true
+    }
 
-	# Fall back to modified date if there is no publication date set
-	publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
+    # Fall back to modified date if there is no publication date set
+    publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
-	content = ContentCollection {
-		attributes.class = 'blog-entry__content'
-		nodePath = 'main'
-	}
+    content = ContentCollection {
+        attributes.class = 'blog-entry__content'
+        nodePath = 'main'
+    }
 
-	# Image settings
-	imageSettings = TYPO3.TypoScript:RawArray {
-		class = 'blog-entry-image'
-		width = 150
-		height = 150
-		cropping = false
-		upScaling = false
-	}
+    # Image settings
+    imageSettings = TYPO3.TypoScript:RawArray {
+        class = 'blog-entry-image'
+        width = 150
+        height = 150
+        cropping = false
+        upScaling = false
+    }
 
-	// Links to previous and next blog entries
-	previousEntry = ${q(node).prev('[instanceof Shel.Blog:BlogEntry]').get(0)}
-	nextEntry = ${q(node).next('[instanceof Shel.Blog:BlogEntry]').get(0)}
+    // Links to previous and next blog entries
+    previousEntry = ${q(node).prev('[instanceof Shel.Blog:BlogEntry]').get(0)}
+    nextEntry = ${q(node).next('[instanceof Shel.Blog:BlogEntry]').get(0)}
 }
 
 ##
 # Add a condition to render the primary content differently if we show a blog entry
 #
 prototype(PrimaryContent).BlogEntry {
-	condition = ${q(node).is('[instanceof Shel.Blog:BlogEntry]')}
-	type = 'Shel.Blog:BlogEntry'
+    condition = ${q(node).is('[instanceof Shel.Blog:BlogEntry]')}
+    type = 'Shel.Blog:BlogEntry'
 }
