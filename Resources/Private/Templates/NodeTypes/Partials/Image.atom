@@ -1,0 +1,25 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace media=TYPO3\Media\ViewHelpers}
+<figure{f:if(condition: imageClassName, then: ' class="{imageClassName}"')}>
+    <f:if condition="{image}">
+        <f:if condition="{link}">
+            <f:then>
+                <a href="{link}">
+                    <media:image asset="{image}" alt="{alternativeText}" title="{title}" width="{width}"
+                                 maximumWidth="{maximumWidth}" height="{height}" maximumHeight="{maximumHeight}"
+                                 allowUpScaling="{allowUpScaling}"/>
+                </a>
+            </f:then>
+            <f:else>
+                <media:image asset="{image}" alt="{alternativeText}" title="{title}" width="{width}"
+                             maximumWidth="{maximumWidth}" height="{height}" maximumHeight="{maximumHeight}"
+                             allowUpScaling="{allowUpScaling}"/>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{hasCaption}">
+        <figcaption>
+            {neos:contentElement.editable(property: 'caption', node: node)}
+        </figcaption>
+    </f:if>
+</figure>

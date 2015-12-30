@@ -15,6 +15,15 @@ prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
     feed = Shel.Blog:BlogFeedContent {
         @position = 'after doctype'
     }
+
+    // Provide a custom partial when the atom format is called because Fluid will try to find a Image.atom partial
+    prototype(TYPO3.Neos.NodeTypes:Image) {
+        partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
+    }
+
+    prototype(TYPO3.Neos.NodeTypes:TextWithImage) {
+        partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
+    }
 }
 
 ##
