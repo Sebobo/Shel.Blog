@@ -11,14 +11,21 @@
             <neos:contentElement.editable property="description" tag="h2"/>
         </header>
 
-        <ul{listAttributes -> f:format.raw()}>
-            <typo3cr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
-                                     configuration="{configuration.pagination}">
-                <f:for each="{paginatedEntries}" as="entry">
-                    <ts:render path="feedContent.itemRenderer" context="{node: entry}"/>
-                </f:for>
-            </typo3cr:widget.paginate>
-        </ul>
+        <f:if condition="{feedEntries}">
+            <f:then>
+                <ul{listAttributes -> f:format.raw()}>
+                    <typo3cr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
+                                             configuration="{configuration.pagination}">
+                        <f:for each="{paginatedEntries}" as="entry">
+                            <ts:render path="feedContent.itemRenderer" context="{node: entry}"/>
+                        </f:for>
+                    </typo3cr:widget.paginate>
+                </ul>
+            </f:then>
+            <f:else>
+                <p>No blog entries found</p>
+            </f:else>
+        </f:if>
     </section>
 </f:section>
 </html>
