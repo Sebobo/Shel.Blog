@@ -1,0 +1,7 @@
+##
+# Only allow blog entries as children of blog feeds
+#
+'TYPO3.Neos:Document':
+  constraints:
+    nodeTypes:
+      'Shel.Blog:BlogEntry': false
