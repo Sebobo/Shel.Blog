@@ -3,40 +3,34 @@
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
 prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
+    templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
+    attributes.class = 'blog-feed'
+    sectionName = 'feed'
     configuration = ${Configuration.setting('Shel.Blog')}
 
     # Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
-    title = ${node.properties.title}
-    description = ${node.properties.description}
-    authorName = ${node.properties.authorName}
-    limit = ${node.properties.limit}
-    sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : site}
-    sortingDirection = ${node.properties.sortingDirection}
+    sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : node}
+    @context.sourceNode = ${this.sourceNode}
     requestArguments = ${request.pluginArguments}
 
     # Fetch feed entries
     feedEntries = ${this.sourceNode ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]').get() : []}
-    feedEntries.@process.sort = ${this.sortingDirection == 'descending' ? Array.reverse(value) : value}
-    feedEntries.@process.slice = ${this.limit ? Array.slice(value, 0, this.limit) : value}
-
-    # Setup source node to retrieve blog posts from
-    lastUpdatedNode = ${feedEntries[0]}
-
-    # Select the template depending on the requested format
-    templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
-    attributes.class = 'blog-feed'
-    sectionName = 'feed'
-
-    # Can be used to add attributes to the list containing the entries in the feed
-    listAttributes = TYPO3.TypoScript:Attributes
-
+    feedEntries.@process {
+        sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC').get() : value}
+        slice = ${this.limit ? Array.slice(value, 0, this.limit) : value}
+    }
     @context.feedEntries = ${this.feedEntries}
-
     feedContent = TYPO3.TypoScript:Collection {
         collection = ${feedEntries}
         itemName = 'node'
         itemRenderer = Shel.Blog:BlogFeedEntry
     }
+
+    # Setup source node to retrieve blog posts from
+    lastUpdatedNode = ${this.sortingDirection == 'descending' ? Array.first(feedEntries) : Array.last(feedEntries)}
+
+    # Can be used to add attributes to the list containing the entries in the feed
+    listAttributes = TYPO3.TypoScript:Attributes
 
     @cache {
         mode = 'cached'

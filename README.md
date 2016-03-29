@@ -4,13 +4,14 @@ This is the blog package I'm developing for a few projects including my [blog](h
 
 ## Build with Typoscript & Yaml
 
-All functions of this blog package are based on Typoscript and Yaml configurations. No php necessary :)
+Almost all functions of this blog package are based on Typoscript and Yaml configurations. 
+Just some php spice for sorting :)
 
 ## Installation
 
 Install via composer
 
-`composer install shel/blog --save`
+`composer require shel/blog`
 
 You can overwrite and modify the different content elements to your needs.
 
