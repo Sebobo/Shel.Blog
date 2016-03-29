@@ -2,14 +2,20 @@
 <nav class="blog-entry-pager">
     <ul>
         <f:if condition="{previousEntry}">
-            <li>
-                <neos:link.node node="{previousEntry}">{previousEntry.properties.title}</neos:link.node>
+            <li class="blog-entry-pager__prev">
+                <neos:link.node node="{previousEntry}" title="{previousEntry.properties.title}">
+                    <span>{previousEntry.properties.title}</span>
+                </neos:link.node>
             </li>
         </f:if>
-        <li>{currentEntry.properties.title}</li>
+        <li class="blog-entry-pager__current">
+            <span>{currentEntry.properties.title}</span>
+        </li>
         <f:if condition="{nextEntry}">
-            <li>
-                <neos:link.node node="{nextEntry}">{nextEntry.properties.title}</neos:link.node>
+            <li class="blog-entry-pager__next">
+                <neos:link.node node="{nextEntry}" title="{nextEntry.properties.title}">
+                    <span>{nextEntry.properties.title}</span>
+                </neos:link.node>
             </li>
         </f:if>
     </ul>
