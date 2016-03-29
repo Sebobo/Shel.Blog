@@ -47,7 +47,11 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
             editPreviewMode = ${node.context.currentRenderingMode.name}
         }
         // Flush the blog feed when a blog entry is changed
-        entryTags.1 = 'NodeType_Shel.Blog:BlogEntry'
+        entryTags {
+            1 = ${'Node_' + node.identifier}
+            2 = ${'Node_' + sourceNode.identifier}
+            3 = ${'DescendantOf_' + sourceNode.identifier}
+        }
     }
 }
 
