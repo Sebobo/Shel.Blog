@@ -3,48 +3,47 @@
 #
 'Shel.Blog:LatestBlogEntries':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'TYPO3.Neos:Content': true
   ui:
-    label: 'Latest blog entries'
+    label: i18n
     icon: 'icon-sitemap'
-    inlineEditable: TRUE
+    inlineEditable: true
     inspector:
       groups:
-        document:
-          label: 'Menu options'
+        plugin:
+          label: i18n
   properties:
     limit:
       type: integer
       defaultValue: 5
       ui:
-        label: 'Entries to show'
-        reloadIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: 'plugin'
       validation:
         'TYPO3.Neos/Validation/NotEmptyValidator': []
     sortingDirection:
       type: string
-      defaultValue: 'ascending'
       ui:
-        label: 'Sorting'
-        reloadIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: 'plugin'
           editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
-              ascending:
+              default:
                 label: 'Ascending'
               descending:
                 label: 'Descending'
     sourceNode:
       type: reference
       ui:
-        label: 'Page containing blog entries'
-        reloadPageIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: 'plugin'
           editorOptions:
             placeholder: 'Type to search for feeds'
             nodeTypes: ['Shel.Blog:BlogFeed']

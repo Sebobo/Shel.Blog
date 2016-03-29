@@ -3,49 +3,42 @@
 #
 'Shel.Blog:BlogFeed':
   superTypes:
-    'TYPO3.Neos:Document': TRUE
+    'TYPO3.Neos:Document': true
   constraints:
     nodeTypes:
-      'Shel.Blog:BlogEntry': TRUE
-      '*': FALSE
+      'Shel.Blog:BlogEntry': true
+      '*': false
   ui:
-    label: 'Blog feed'
+    label: i18n
     icon: 'icon-list-alt'
     inspector:
       groups:
-        'document':
-          label: 'Details'
+        'plugin':
+          label: i18n
   properties:
     limit:
       type: integer
       defaultValue: 5
       ui:
-        label: 'Entries to show'
-        reloadIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: 'plugin'
       validation:
         'TYPO3.Neos/Validation/NotEmptyValidator': []
     authorName:
       type: string
       ui:
-        label: 'Author'
-        reloadIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
-    sourceNode:
-      type: reference
-      ui:
-        label: 'Page containing the blog entries for the feed'
-        reloadIfChanged: TRUE
-        inspector:
-          group: 'document'
+          group: 'plugin'
     description:
       type: string
       ui:
-        label: 'Description for the feed'
-        reloadIfChanged: TRUE
+        label: i18n
+        reloadIfChanged: true
         inspector:
-          group: 'document'
+          group: 'plugin'
         aloha:
           placeholder: 'Enter feed description here'

@@ -4,6 +4,11 @@ TYPO3:
       autoInclude:
         'Shel.Blog': true
 
+    userInterface:
+      translation:
+        autoInclude:
+          'Shel.Blog': ['NodeTypes/*']
+
 Shel:
   Blog:
     dateFormat: 'M d, Y'
