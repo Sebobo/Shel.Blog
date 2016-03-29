@@ -1,6 +1,6 @@
 {
     "name": "shel/blog",
-    "type": "typo3-flow-package",
+    "type": "typo3-flow-plugin",
     "license": "MIT",
     "description": "A simple blog for TYPO3 Neos based on typoscript and yaml configurations. Also supports atom feeds.",
     "require": {
