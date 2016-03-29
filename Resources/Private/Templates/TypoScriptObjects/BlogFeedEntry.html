@@ -17,14 +17,25 @@
                 <neos:contentElement.editable property="authorName" tag="address"/>
             </header>
 
-            <section>
-                <f:if condition="{node.properties.entryImage}">
-                    <f:render partial="EntryImage"
-                              arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
-                </f:if>
+            <f:if condition="{node.properties.entryImage}">
+                <f:render partial="EntryImage"
+                          arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
+            </f:if>
 
-                <neos:contentElement.editable property="entrySummary" tag="summary"/>
-            </section>
+            <f:if condition="{node.context.workspace.name} == 'live'">
+                <f:then>
+                    <f:format.crop maxCharacters="200" append="…">
+                        <f:format.stripTags value="{summary}"/>
+                    </f:format.crop>
+                </f:then>
+                <f:else>
+                    <neos:contentElement.editable property="entrySummary"/>
+                </f:else>
+            </f:if>
+
+            <neos:link.node node="{node}">
+                <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
+            </neos:link.node>
         </article>
     </li>
 </f:section>

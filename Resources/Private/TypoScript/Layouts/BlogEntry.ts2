@@ -6,21 +6,22 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
     attributes.class = 'blog-entry'
     sectionName = 'blogEntry'
-
-    title = ${node.properties.title}
-    alternativeText = ${node.properties.alternativeText}
-    entrySummary = ${node.properties.entrySummary}
-
     settings = ${Configuration.setting('Shel.Blog')}
+
     dateFormat = ${this.settings.dateFormat}
+    publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
+
+    firstTextNode = ${q(node).children('main').find('[instanceof TYPO3.Neos.NodeTypes:Text]').get(0)}
+    summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? this.firstTextNode.properties.text : '')}
+    summary.@process {
+        stripTags = ${String.stripTags(value)}
+        crop = ${String.crop(value, 200, '…')}
+    }
 
     entryUrl = NodeUri {
         node = ${node}
         absolute = true
     }
-
-    # Fall back to modified date if there is no publication date set
-    publicationDate = ${node.properties.publicationDate ? node.properties.publicationDate : node.properties.lastModified}
 
     content = ContentCollection {
         attributes.class = 'blog-entry__content'

@@ -1,4 +1,7 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
 <f:section name="blogFeedEntry">
     <entry>
         <title>{node.properties.title}</title>
@@ -8,9 +11,10 @@
         <link rel="alternate" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
         <id>urn:uuid:{node.identifier}</id>
         <updated>{f:format.date(date: node.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
-        <summary>{node.properties.entrySummary}</summary>
+        <summary>{summary}</summary>
         <content type="html">
             {content -> f:format.htmlspecialchars()}
         </content>
     </entry>
 </f:section>
+</xml>
