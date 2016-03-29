@@ -45,3 +45,6 @@
         reloadPageIfChanged: TRUE
         inspector:
           group: 'document'
+          editorOptions:
+            placeholder: 'Type to search for feeds'
+            nodeTypes: ['Shel.Blog:BlogFeed']
