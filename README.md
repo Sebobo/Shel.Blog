@@ -1,4 +1,8 @@
-# A simple configurable blog/news plugin for Neos CMS
+# A simple configurable blog/news plugin for Neos CMS                                
+
+[![Latest Stable Version](https://poser.pugx.org/shel/blog/v/stable)](https://packagist.org/packages/shel/blog)
+[![Total Downloads](https://poser.pugx.org/shel/blog/downloads)](https://packagist.org/packages/shel/blog)
+[![License](https://poser.pugx.org/shel/blog/license)](https://packagist.org/packages/shel/blog)
 
 I developed this blog package for several projects including my own [blog](http://www.mind-the-seb.de).
 
