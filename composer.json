@@ -4,8 +4,8 @@
     "license": "MIT",
     "description": "A simple blog for TYPO3 Neos based on typoscript and yaml configurations. Also supports atom feeds.",
     "require": {
-      "typo3/neos": ">=1.2",
-      "typo3/neos-nodetypes": ">=1.2"
+      "typo3/neos": "~2.0",
+      "typo3/neos-nodetypes": "~2.0"
     },
     "authors": [
       {
