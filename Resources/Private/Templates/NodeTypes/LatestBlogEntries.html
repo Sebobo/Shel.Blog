@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
       xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-      xmlns:ts="http://typo3.org/ns/TYPO3/TypoScript/ViewHelpers">
+      xmlns:ts="http://typo3.org/ns/TYPO3/TypoScript/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
 <f:section name="latestBlogEntries">
     <div{attributes -> f:format.raw()}>
         <f:if condition="{feedEntries}">
@@ -11,7 +12,14 @@
                 </ul>
             </f:then>
             <f:else>
-                <p>No blog entries found</p>
+                <f:if condition="{neos:rendering.inEditMode()}">
+                    <f:then>
+                        <p>No blog entries found. Add some to your blogfeed or select a feed in the inspector.</p>
+                    </f:then>
+                    <f:else>
+                        <p>No blog entries found.</p>
+                    </f:else>
+                </f:if>
             </f:else>
         </f:if>
         <f:if condition="{settings.disqus.enabled}">
