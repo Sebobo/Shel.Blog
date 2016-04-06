@@ -5,6 +5,11 @@
 <f:section name="blogFeedEntry">
     <li{attributes -> f:format.raw()}>
         <article>
+            <f:if condition="{node.properties.entryImage}">
+                <f:render partial="EntryImage"
+                          arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
+            </f:if>
+
             <header>
                 <h3>
                     <neos:link.node node="{node}">
@@ -17,25 +22,22 @@
                 <neos:contentElement.editable property="authorName" tag="address"/>
             </header>
 
-            <f:if condition="{node.properties.entryImage}">
-                <f:render partial="EntryImage"
-                          arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
-            </f:if>
+            <p>
+                <f:if condition="{node.context.workspace.name} == 'live'">
+                    <f:then>
+                            <f:format.crop maxCharacters="200" append="…">
+                                <f:format.stripTags value="{summary}"/>
+                            </f:format.crop>
+                    </f:then>
+                    <f:else>
+                        <neos:contentElement.editable property="entrySummary"/>
+                    </f:else>
+                </f:if>
 
-            <f:if condition="{node.context.workspace.name} == 'live'">
-                <f:then>
-                    <f:format.crop maxCharacters="200" append="…">
-                        <f:format.stripTags value="{summary}"/>
-                    </f:format.crop>
-                </f:then>
-                <f:else>
-                    <neos:contentElement.editable property="entrySummary"/>
-                </f:else>
-            </f:if>
-
-            <neos:link.node node="{node}">
-                <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
-            </neos:link.node>
+                <neos:link.node node="{node}">
+                    <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
+                </neos:link.node>
+            </p>
         </article>
     </li>
 </f:section>
