@@ -8,6 +8,9 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
     sectionName = 'feed'
     configuration = ${Configuration.setting('Shel.Blog')}
 
+    title = ${node.properties.title}
+    description = ${node.properties.description}
+
     # Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
     sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : node}
     @context.sourceNode = ${this.sourceNode}
