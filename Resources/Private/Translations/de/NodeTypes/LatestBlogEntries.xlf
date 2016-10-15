@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Hema.HemaDe" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="ui.label" xml:space="preserve">
+                <source>Latest blog entries</source>
+                <target>Neuste Blogbeiträge</target>
+            </trans-unit>
+            <trans-unit id="groups.plugin" xml:space="preserve">
+                <source>Latest entries options</source>
+                <target>Optionen für Beitragsliste</target>
+            </trans-unit>
+            <trans-unit id="properties.limit" xml:space="preserve">
+                <source>Entries to show</source>
+                <target>Anzahl Beiträge</target>
+            </trans-unit>
+            <trans-unit id="properties.sortingDirection" xml:space="preserve">
+                <source>Sorting</source>
+                <target>Sortierung</target>
+            </trans-unit>
+            <trans-unit id="properties.sourceNode" xml:space="preserve">
+                <source>Source blogfeed</source>
+                <target>Quelle für Blogbeiträge</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
