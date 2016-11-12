@@ -10,6 +10,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 
     title = ${node.properties.title}
     description = ${node.properties.description}
+    sortingDirection = ${node.properties.sortingDirection}
 
     # Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
     sourceNode = ${node.properties.sourceNode ? node.properties.sourceNode : node}

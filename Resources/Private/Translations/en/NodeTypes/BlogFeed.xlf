@@ -17,6 +17,15 @@
             <trans-unit id="properties.description" xml:space="preserve">
                 <source>Description for the feed</source>
             </trans-unit>
+            <trans-unit id="properties.sortingDirection" xml:space="preserve">
+                <source>Sorting</source>
+            </trans-unit>
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.values." xml:space="preserve">
+                <source>Oldest first</source>
+            </trans-unit>
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.values.descending" xml:space="preserve">
+                <source>Newest first</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

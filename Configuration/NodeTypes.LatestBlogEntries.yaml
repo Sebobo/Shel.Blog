@@ -33,10 +33,10 @@
           editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
-              default:
-                label: 'Ascending'
+              '':
+                label: i18n
               descending:
-                label: 'Descending'
+                label: i18n
     sourceNode:
       type: reference
       ui:
