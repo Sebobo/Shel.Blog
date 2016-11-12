@@ -10,34 +10,36 @@
                           arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
             </f:if>
 
-            <header>
-                <h3>
-                    <neos:link.node node="{node}">
-                        <neos:contentElement.editable property="title" tag="span"/>
-                    </neos:link.node>
-                </h3>
+            <div class="article-content">
+                <header>
+                    <h3>
+                        <neos:link.node node="{node}">
+                            <neos:contentElement.editable property="title" tag="span"/>
+                        </neos:link.node>
+                    </h3>
 
-                <time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
+                    <time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
 
-                <neos:contentElement.editable property="authorName" tag="address"/>
-            </header>
+                    <neos:contentElement.editable property="authorName" tag="address"/>
+                </header>
 
-            <p>
-                <f:if condition="{node.context.workspace.name} == 'live'">
-                    <f:then>
+                <p>
+                    <f:if condition="{node.context.workspace.name} == 'live'">
+                        <f:then>
                             <f:format.crop maxCharacters="200" append="…">
                                 <f:format.stripTags value="{summary}"/>
                             </f:format.crop>
-                    </f:then>
-                    <f:else>
-                        <neos:contentElement.editable property="entrySummary"/>
-                    </f:else>
-                </f:if>
+                        </f:then>
+                        <f:else>
+                            <neos:contentElement.editable property="entrySummary"/>
+                        </f:else>
+                    </f:if>
 
-                <neos:link.node node="{node}">
-                    <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
-                </neos:link.node>
-            </p>
+                    <neos:link.node node="{node}">
+                        <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
+                    </neos:link.node>
+                </p>
+            </div>
         </article>
     </li>
 </f:section>
