@@ -47,6 +47,13 @@
         reloadIfChanged: true
         inspector:
           group: 'plugin'
+    sourceNode:
+      type: reference
+      ui:
+        label: i18n
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'plugin'
     description:
       type: string
       ui:

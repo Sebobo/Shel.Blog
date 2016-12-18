@@ -8,6 +8,9 @@
             <trans-unit id="groups.plugin" xml:space="preserve">
                 <source>Blogfeed options</source>
             </trans-unit>
+            <trans-unit id="properties.sourceNode" xml:space="preserve">
+                <source>Page containing the blog entries for the feed</source>
+            </trans-unit>
             <trans-unit id="properties.limit" xml:space="preserve">
                 <source>Entries to show</source>
             </trans-unit>

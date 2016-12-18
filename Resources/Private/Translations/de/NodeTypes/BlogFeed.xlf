@@ -10,6 +10,10 @@
                 <source>Blogfeed options</source>
                 <target>Blogoptionen</target>
             </trans-unit>
+            <trans-unit id="properties.sourceNode" xml:space="preserve">
+                <source>Page containing the blog entries for the feed</source>
+                <target>Seite mit Blogeinträgen</target>
+            </trans-unit>
             <trans-unit id="properties.limit" xml:space="preserve">
                 <source>Entries to show</source>
                 <target>Anzahl Beiträge</target>
