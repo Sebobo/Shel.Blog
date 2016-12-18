@@ -10,7 +10,7 @@
         </author>
         <link rel="alternate" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
         <id>urn:uuid:{node.identifier}</id>
-        <updated>{f:format.date(date: node.properties.publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
+        <updated>{f:format.date(date: publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
         <summary>{summary}</summary>
         <content type="html">
             {content -> f:format.htmlspecialchars()}

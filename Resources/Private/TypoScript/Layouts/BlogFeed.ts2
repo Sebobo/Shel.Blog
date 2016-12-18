@@ -14,6 +14,7 @@ prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
 
     feed = Shel.Blog:BlogFeedContent {
         @position = 'after doctype'
+        limit = 0
     }
 
     // Provide a custom partial when the atom format is called because Fluid will try to find a Image.atom partial

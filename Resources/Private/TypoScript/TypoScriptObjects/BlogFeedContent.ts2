@@ -2,15 +2,16 @@
 # This is the content part of our blogfeed.
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
-prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
+prototype(Shel.Blog:BlogFeedContent) < prototype(TYPO3.Neos:Content) {
     templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
     attributes.class = 'blog-feed'
     sectionName = 'feed'
     configuration = ${Configuration.setting('Shel.Blog')}
 
-    title = ${node.properties.title}
-    description = ${node.properties.description}
-    sortingDirection = ${node.properties.sortingDirection}
+    title = ${q(node).property('title')}
+    description = ${q(node).property('description')}
+    sortingDirection = ${q(node).property('sortingDirection')}
+    limit = ${q(node).property('limit')}
 
     # Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
     sourceNode = ${q(node).property('sourceNode') != null ? q(node).property('sourceNode') : node}
@@ -21,7 +22,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
     feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]').get() : []}
     feedEntries.@process {
         sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC').get() : value}
-        slice = ${this.limit ? Array.slice(value, 0, this.limit) : value}
+        slice = ${this.limit > 0 ? Array.slice(value, 0, this.limit) : value}
     }
     @context.feedEntries = ${this.feedEntries}
     feedContent = TYPO3.TypoScript:Collection {
@@ -32,6 +33,8 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Content) {
 
     # Setup source node to retrieve blog posts from
     lastUpdatedNode = ${this.sortingDirection == 'descending' ? Array.first(feedEntries) : Array.last(feedEntries)}
+    lastUpdated = ${q(this.lastUpdatedNode).property('publicationDate')}
+    lastUpdated.@process.fallback = ${value != '' && value != null ? value : q(this.lastUpdatedNode).property('_lastPublicationDateTime')}
 
     # Can be used to add attributes to the list containing the entries in the feed
     listAttributes = TYPO3.TypoScript:Attributes

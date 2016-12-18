@@ -16,7 +16,7 @@
                 </h1>
 
                 <neos:contentElement.editable property="authorName" tag="small" class="blog-entry__author"/>
-                <time>{f:format.date(date: node.properties.publicationDate, format: dateFormat)}</time>
+                <time>{f:format.date(date: publicationDate, format: dateFormat)}</time>
             </neos:contentElement.wrap>
         </header>
 
