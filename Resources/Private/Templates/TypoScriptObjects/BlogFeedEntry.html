@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+      xmlns:f="https://neos.io/ns/Neos/Fluid/ViewHelpers"
+      xmlns:fluidadaptor="https://neos.io/ns/Neos/Fluid/ViewHelpers"
+      xmlns:neos="https://neos.io/ns/Neos/Neos/ViewHelpers">
 <f:section name="blogFeedEntry">
     <li{attributes -> f:format.raw()}>
         <article>
@@ -26,9 +27,7 @@
                 <p>
                     <f:if condition="{node.context.workspace.name} == 'live'">
                         <f:then>
-                            <f:format.crop maxCharacters="200" append="…">
-                                <f:format.stripTags value="{summary}"/>
-                            </f:format.crop>
+                            <f:format.crop maxCharacters="200" append="…"><f:format.stripTags value="{summary}"/></f:format.crop>
                         </f:then>
                         <f:else>
                             <neos:contentElement.editable property="entrySummary"/>
@@ -36,7 +35,7 @@
                     </f:if>
 
                     <neos:link.node node="{node}">
-                        <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</f:translate>
+                        <fluidadaptor:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">more</fluidadaptor:translate>
                     </neos:link.node>
                 </p>
             </div>
