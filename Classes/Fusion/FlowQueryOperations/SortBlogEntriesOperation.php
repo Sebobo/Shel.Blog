@@ -1,6 +1,6 @@
 <?php
 
-namespace Shel\Blog\TypoScript\FlowQueryOperations;
+namespace Shel\Blog\Fusion\FlowQueryOperations;
 
 /*                                                                        *
  * This script belongs to the Flow package "Shel.Blog".                   *
@@ -41,7 +41,7 @@ class SortBlogEntriesOperation extends AbstractOperation
     /**
      * {@inheritdoc}
      *
-     * We can only handle TYPO3CR Nodes.
+     * We can only handle NeosCR Nodes.
      *
      * @param mixed $context
      *
