@@ -1,7 +1,7 @@
 ##
 # Extend page type with an additional header link to the blog feeds
 #
-prototype(TYPO3.Neos:Page) {
+prototype(Neos.Neos:Page) {
     head {
         feedLinks = Neos.Fusion:Collection {
             collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
@@ -13,7 +13,7 @@ prototype(TYPO3.Neos:Page) {
                     rel = 'alternate'
                     type = 'application/atom+xml'
                     title = ${feed.properties.title}
-                    href = TYPO3.Neos:NodeUri {
+                    href = Neos.Neos:NodeUri {
                         node = ${feed}
                         absolute = true
                         format = 'atom'
