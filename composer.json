@@ -1,11 +1,11 @@
 {
     "name": "shel/blog",
-    "type": "typo3-flow-plugin",
+    "type": "neos-plugin",
     "license": "MIT",
-    "description": "A simple blog for TYPO3 Neos based on typoscript and yaml configurations. Also supports atom feeds.",
+    "description": "A simple blog for Neos CMS based on fusion and yaml configurations. Also supports atom feeds.",
     "require": {
-      "typo3/neos": "~2.0",
-      "typo3/neos-nodetypes": "~2.0"
+      "neos/neos": "~3.0",
+      "neos/nodetypes": "~3.0"
     },
     "authors": [
       {
