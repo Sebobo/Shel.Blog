@@ -14,11 +14,11 @@ Shel:
       maximumNumberOfLinks: 10
 Neos:
   Neos:
-    typoScript:
-      autoInclude:
-        Shel.Blog: true
     userInterface:
       translation:
         autoInclude:
           Shel.Blog:
             - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Shel.Blog: true
