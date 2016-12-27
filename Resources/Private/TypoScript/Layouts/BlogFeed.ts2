@@ -4,7 +4,7 @@
 # properties we don't want and would be contained in the output.
 #
 prototype(Shel.Blog:BlogFeed) >
-prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
+prototype(Shel.Blog:BlogFeed) < prototype(Neos.Fusion:Http.Message) {
     httpResponseHead {
         headers.Content-Type = 'application/xml'
     }

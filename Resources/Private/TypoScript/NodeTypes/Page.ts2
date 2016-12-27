@@ -3,11 +3,11 @@
 #
 prototype(TYPO3.Neos:Page) {
     head {
-        feedLinks = TYPO3.TypoScript:Collection {
+        feedLinks = Neos.Fusion:Collection {
             collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
             itemName = 'feed'
             iterationName = 'iteration'
-            itemRenderer = TYPO3.TypoScript:Tag {
+            itemRenderer = Neos.Fusion:Tag {
                 tagName = 'link'
                 attributes {
                     rel = 'alternate'
