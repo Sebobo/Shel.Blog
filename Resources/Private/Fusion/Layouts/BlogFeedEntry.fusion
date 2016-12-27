@@ -2,7 +2,7 @@
 # "BlogFeedEntry" layout for listings
 #
 prototype(Shel.Blog:BlogFeedEntry) < prototype(Shel.Blog:BlogEntry) {
-    templatePath = ${'resource://Shel.Blog/Private/Templates/TypoScriptObjects/BlogFeedEntry.' + request.format}
+    templatePath = ${'resource://Shel.Blog/Private/Templates/FusionObjects/BlogFeedEntry.' + request.format}
     attributes.class = 'blog-feed-entry'
     sectionName = 'blogFeedEntry'
 }
