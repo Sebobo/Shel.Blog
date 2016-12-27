@@ -44,7 +44,7 @@
           position: 200
           group: plugin
     entryImage:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: i18n
         reloadIfChanged: true
