@@ -4,7 +4,7 @@
 
 'Shel.Blog:BlogEntry':
   superTypes:
-    'TYPO3.Neos:Document': '1'
+    'TYPO3.Neos:Document': true
   constraints:
     nodeTypes:
       '*': false
