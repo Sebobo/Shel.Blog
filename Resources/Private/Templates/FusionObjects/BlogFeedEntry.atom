@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:f="https://neos.io/ns/Neos/Fluid/ViewHelpers"
-      xmlns:neos="https://neos.io/ns/Neos/Neos/ViewHelpers">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:neos="Neos\Neos\ViewHelpers">
 <f:section name="blogFeedEntry">
     <entry>
         <title>{node.properties.title}</title>
