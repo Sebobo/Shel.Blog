@@ -49,14 +49,7 @@ All active feeds will automatically be linked in the html header as meta tags.
 
 #### Routing
 
-For the route to the atom feeds to work you need to add the following to your `Routes.yaml` in Configuration:
-
-	-
-		name: 'Blog'
-		uriPattern: '<BlogSubroutes>'
-		subRoutes:
-			'BlogSubroutes':
-				package: 'Shel.Blog'
+The routes for the sitemap and pagination are auto-included in the `Settings.yaml`.
 
 ## Features
 
