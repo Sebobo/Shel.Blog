@@ -4,7 +4,7 @@
 
 'Shel.Blog:LatestBlogEntries':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: i18n
     icon: icon-sitemap
@@ -23,7 +23,7 @@
         inspector:
           group: plugin
       validation:
-        TYPO3.Neos/Validation/NotEmptyValidator: {  }
+        Neos.Neos/Validation/NotEmptyValidator: {  }
     sortingDirection:
       type: string
       ui:
@@ -31,7 +31,7 @@
         reloadIfChanged: true
         inspector:
           group: plugin
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               '':

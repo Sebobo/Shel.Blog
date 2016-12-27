@@ -4,7 +4,7 @@
 
 'Shel.Blog:BlogFeed':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
   constraints:
     nodeTypes:
       'Shel.Blog:BlogEntry': true
@@ -26,7 +26,7 @@
         inspector:
           group: plugin
       validation:
-        TYPO3.Neos/Validation/NotEmptyValidator: {  }
+        Neos.Neos/Validation/NotEmptyValidator: {  }
     sortingDirection:
       type: string
       ui:
@@ -34,7 +34,7 @@
         reloadIfChanged: true
         inspector:
           group: plugin
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               '':
