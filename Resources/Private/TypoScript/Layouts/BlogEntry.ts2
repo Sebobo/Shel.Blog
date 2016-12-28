@@ -13,7 +13,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
 
     firstTextNode = ${q(node).children('main').find('[instanceof TYPO3.Neos.NodeTypes:Text]').get(0)}
-    summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? this.firstTextNode.property('text') : '')}
+    summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
     summary.@process {
         stripTags = ${String.stripTags(value)}
         crop = ${String.crop(value, 200, '…')}
