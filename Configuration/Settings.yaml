@@ -1,14 +1,3 @@
-TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        'Shel.Blog': true
-
-    userInterface:
-      translation:
-        autoInclude:
-          'Shel.Blog': ['NodeTypes/*']
-
 Shel:
   Blog:
     dateFormat: 'M d, Y'
@@ -22,3 +11,19 @@ Shel:
     pagination:
       itemsPerPage: 5
       maximumNumberOfLinks: 10
+
+Neos:
+  Flow:
+    mvc:
+      routes:
+        Shel.Blog:
+          position: 'before Neos.Neos'
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Shel.Blog:
+            - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Shel.Blog: true

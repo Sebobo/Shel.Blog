@@ -1,6 +1,6 @@
 <?php
 
-namespace Shel\Blog\TypoScript\FlowQueryOperations;
+namespace Shel\Blog\Fusion\FlowQueryOperations;
 
 /*                                                                        *
  * This script belongs to the Flow package "Shel.Blog".                   *
@@ -8,12 +8,12 @@ namespace Shel\Blog\TypoScript\FlowQueryOperations;
  * @author Sebastian Helzle <sebastian@helzle.it>                         *
  *                                                                        */
 
-use TYPO3\Eel\FlowQuery\FlowQueryException;
-use TYPO3\Eel\FlowQuery\Operations\AbstractOperation;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
-use TYPO3\Eel\FlowQuery\FlowQuery;
-use TYPO3\TYPO3CR\Domain\Model\Node;
+use Neos\Eel\FlowQuery\FlowQueryException;
+use Neos\Eel\FlowQuery\Operations\AbstractOperation;
+use Neos\Flow\Annotations as Flow;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Neos\Eel\FlowQuery\FlowQuery;
+use Neos\ContentRepository\Domain\Model\Node;
 
 /**
  * EEL sort() operation to sort Nodes.
@@ -41,7 +41,7 @@ class SortBlogEntriesOperation extends AbstractOperation
     /**
      * {@inheritdoc}
      *
-     * We can only handle TYPO3CR Nodes.
+     * We can only handle NeosCR Nodes.
      *
      * @param mixed $context
      *

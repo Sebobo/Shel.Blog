@@ -12,7 +12,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     publicationDate = ${q(node).property('publicationDate')}
     publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
 
-    firstTextNode = ${q(node).children('main').find('[instanceof TYPO3.Neos.NodeTypes:Text]').get(0)}
+    firstTextNode = ${q(node).children('main').find('[instanceof Neos.NodeTypes:Text]').get(0)}
     summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
     summary.@process {
         stripTags = ${String.stripTags(value)}
@@ -30,7 +30,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     }
 
     # Image settings
-    imageSettings = TYPO3.TypoScript:RawArray {
+    imageSettings = Neos.Fusion:RawArray {
         class = 'blog-entry-image'
         width = 150
         height = 150

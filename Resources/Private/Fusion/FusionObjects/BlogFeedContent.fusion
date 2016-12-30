@@ -2,7 +2,7 @@
 # This is the content part of our blogfeed.
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
-prototype(Shel.Blog:BlogFeedContent) < prototype(TYPO3.Neos:Content) {
+prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
     templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
     attributes.class = 'blog-feed'
     sectionName = 'feed'
@@ -25,7 +25,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(TYPO3.Neos:Content) {
         slice = ${this.limit > 0 ? Array.slice(value, 0, this.limit) : value}
     }
     @context.feedEntries = ${this.feedEntries}
-    feedContent = TYPO3.TypoScript:Collection {
+    feedContent = Neos.Fusion:Collection {
         collection = ${feedEntries}
         itemName = 'node'
         itemRenderer = Shel.Blog:BlogFeedEntry
@@ -37,7 +37,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(TYPO3.Neos:Content) {
     lastUpdated.@process.fallback = ${value != '' && value != null ? value : q(this.lastUpdatedNode).property('_lastPublicationDateTime')}
 
     # Can be used to add attributes to the list containing the entries in the feed
-    listAttributes = TYPO3.TypoScript:Attributes
+    listAttributes = Neos.Fusion:Attributes
 
     @cache {
         mode = 'cached'
@@ -56,5 +56,5 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(TYPO3.Neos:Content) {
     }
 }
 
-prototype(TYPO3.Neos:Page).@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
+prototype(Neos.Neos:Page).@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
 root.@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}

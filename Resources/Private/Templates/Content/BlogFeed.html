@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-      xmlns:ts="http://typo3.org/ns/TYPO3/TypoScript/ViewHelpers"
-      xmlns:typo3cr="http://typo3.org/ns/TYPO3/TYPO3CR/ViewHelpers"
-      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+      xmlns:neos="Neos\Neos\ViewHelpers"
+      xmlns:fusion="Neos\Fusion\ViewHelpers"
+      xmlns:neoscr="Neos\ContentRepository\ViewHelpers">
 <f:section name="feed">
     <section{attributes -> f:format.raw()}>
         <header>
@@ -13,14 +12,14 @@
 
         <f:if condition="{feedEntries}">
             <f:then>
-                <ul{listAttributes -> f:format.raw()}>
-                    <typo3cr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
-                                             configuration="{configuration.pagination}">
+                <neoscr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
+                                         configuration="{configuration.pagination}">
+                    <ul{listAttributes -> f:format.raw()}>
                         <f:for each="{paginatedEntries}" as="entry">
-                            <ts:render path="feedContent.itemRenderer" context="{node: entry}"/>
+                            <fusion:render path="feedContent.itemRenderer" context="{node: entry}"/>
                         </f:for>
-                    </typo3cr:widget.paginate>
-                </ul>
+                    </ul>
+                </neoscr:widget.paginate>
             </f:then>
             <f:else>
                 <p>No blog entries found</p>

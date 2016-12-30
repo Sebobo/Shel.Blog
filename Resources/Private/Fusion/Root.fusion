@@ -1,0 +1,3 @@
+include: FusionObjects/*.fusion
+include: Layouts/*.fusion
+include: NodeTypes/*.fusion

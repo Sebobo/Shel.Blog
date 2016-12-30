@@ -1,5 +1,5 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
 <?xml version="1.0" encoding="utf-8"?>
 <f:section name="feed">
     <feed xmlns="http://www.w3.org/2005/Atom">
@@ -12,6 +12,6 @@
         <updated>{f:format.date(date: lastUpdated, format: 'Y-m-d\TH:i:sP')}</updated>
         <link rel="alternate" type="text/html" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
         <link rel="self" type="application/atom+xml" href="{neos:uri.node(absolute: true, node: node)}"/>
-        <ts:render path="feedContent"/>
+        <fusion:render path="feedContent"/>
     </feed>
 </f:section>

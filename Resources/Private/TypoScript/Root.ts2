@@ -1,3 +1,0 @@
-include: TypoScriptObjects/*.ts2
-include: Layouts/*.ts2
-include: NodeTypes/*.ts2

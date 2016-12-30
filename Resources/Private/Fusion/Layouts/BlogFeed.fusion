@@ -4,7 +4,7 @@
 # properties we don't want and would be contained in the output.
 #
 prototype(Shel.Blog:BlogFeed) >
-prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
+prototype(Shel.Blog:BlogFeed) < prototype(Neos.Fusion:Http.Message) {
     httpResponseHead {
         headers.Content-Type = 'application/xml'
     }
@@ -18,11 +18,11 @@ prototype(Shel.Blog:BlogFeed) < prototype(TYPO3.TypoScript:Http.Message) {
     }
 
     // Provide a custom partial when the atom format is called because Fluid will try to find a Image.atom partial
-    prototype(TYPO3.Neos.NodeTypes:Image) {
+    prototype(Neos.NodeTypes:Image) {
         partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
     }
 
-    prototype(TYPO3.Neos.NodeTypes:TextWithImage) {
+    prototype(Neos.NodeTypes:TextWithImage) {
         partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
     }
 }
