@@ -4,8 +4,7 @@
     "license": "MIT",
     "description": "A simple blog for Neos CMS based on fusion and yaml configurations. Also supports atom feeds.",
     "require": {
-        "neos/neos": "~3.0",
-        "neos/nodetypes": "~3.0"
+        "neos/neos": "~3.0"
     },
     "authors": [
         {
@@ -16,6 +15,7 @@
         }
     ],
     "suggest": {
+        "neos/nodetypes": "The package is optimized to work with the Neos nodetypes package.",
         "neos/twitter-bootstrap": "The provided templates use bootstrap classes. These can be changed or you can just use the bootstrap package."
     },
     "autoload": {
