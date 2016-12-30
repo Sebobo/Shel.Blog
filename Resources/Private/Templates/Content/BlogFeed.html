@@ -12,14 +12,14 @@
 
         <f:if condition="{feedEntries}">
             <f:then>
-                <ul{listAttributes -> f:format.raw()}>
-                    <neoscr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
-                                             configuration="{configuration.pagination}">
+                <neoscr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
+                                         configuration="{configuration.pagination}">
+                    <ul{listAttributes -> f:format.raw()}>
                         <f:for each="{paginatedEntries}" as="entry">
                             <fusion:render path="feedContent.itemRenderer" context="{node: entry}"/>
                         </f:for>
-                    </neoscr:widget.paginate>
-                </ul>
+                    </ul>
+                </neoscr:widget.paginate>
             </f:then>
             <f:else>
                 <p>No blog entries found</p>
