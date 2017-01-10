@@ -11,6 +11,19 @@
       handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandler'
 
 -
+  name:  'AMP blog entries'
+  uriPattern: 'amplify/{node}.html'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'html'
+    '--blog-amplify': true
+  routeParts:
+    'node':
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandler'
+
+-
   name: 'Blog paginate'
   uriPattern: '{node}/browse/{--blog-pagination.currentPage}.html'
   defaults:
@@ -28,4 +41,3 @@
     node:
       handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
   appendExceedingArguments: TRUE
-

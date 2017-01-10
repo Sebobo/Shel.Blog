@@ -28,7 +28,21 @@ prototype(Neos.Neos:Page) {
                     workspace = ${node.context.workspace.name}
                 }
                 entryTags.1 = 'NodeType_Shel.Blog:BlogFeed'
+            }                               
+        }
+
+        ampLink = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes {
+                rel = 'amphtml'
+                href = Neos.Neos:NodeUri {
+                    node = ${documentNode}
+                    absolute = true
+                    additionalParams = ${{'--blog-amplify': true}}
+                }
             }
+            @if.isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
+            @if.notAmp = ${blogAmpVersion != true}
         }
 
         blogMicroData = Shel.Blog:MicroData {

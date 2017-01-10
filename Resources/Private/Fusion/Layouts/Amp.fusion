@@ -1,0 +1,75 @@
+prototype(Shel.Blog:AmpVersion) < prototype(Neos.Fusion:Value) {
+    value = ${request.pluginArguments['blog-amplify']}
+}
+
+prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
+    doctype = '<!doctype html>'
+
+    # Additional scripts are not allowed with amp
+    lastVisitedNodeScript >
+
+    htmlTag.attributes.amp = true
+
+    head {
+        characterSetMetaTag.attributes.charset = 'utf-8'
+
+        viewportTag = Neos.Fusion:Tag {
+            tagName = 'meta'
+            attributes {
+                name = 'viewport'
+                content = 'width=device-width,minimum-scale=1,initial-scale=1'
+            }
+        }
+
+        stylesheets {
+            ampBoilerplate = Neos.Fusion:Template {
+                templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/AmpBoilerplate.html'
+            }
+
+            ampBlogStyles = Neos.Fusion:Tag {
+                tagName = 'style'
+                attributes {
+                    'amp-custom' = true
+                }
+                content = Neos.Fusion:Array {
+                    baseStyles = Neos.Fusion:Template {
+                        templatePath = 'resource://Shel.Blog/Private/Styles/Amp.css'
+                    }                    
+                }
+            }
+        }
+
+        javascripts {
+            amp = Neos.Fusion:Tag {
+                tagName = 'script'
+                attributes {
+                    async = true
+                    src = 'https://cdn.ampproject.org/v0.js'
+                }
+            }
+        }
+    }
+
+    body = Neos.Fusion:Tag {                              
+        attributes.class = 'content'
+
+        content = Neos.Fusion:Array {
+            primaryContent = Neos.Neos:PrimaryContent {
+                @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/', '<amp-img layout=responsive $1>')}
+            }
+        }
+    }
+}
+
+blogEntryAmp = Shel.Blog:AmpPage
+
+root.blogEntryAmp {
+    @position = 'start'
+    @context.blogAmpVersion = Shel.Blog:AmpVersion
+    condition = ${blogAmpVersion == true}
+    renderPath = '/blogEntryAmp'
+}
+
+prototype(Neos.Fusion:GlobalCacheIdentifiers) {
+    ampVersion = ${request.pluginArguments['blog-amplify']}
+}
