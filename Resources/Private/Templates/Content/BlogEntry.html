@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:neos="Neos\Neos\ViewHelpers">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:neos="Neos\Neos\ViewHelpers"
+      xmlns:fusion="Neos\Fusion\ViewHelpers">
 <f:section name="blogEntry">
     <article{attributes -> f:format.raw()}>
         <header>
@@ -26,7 +28,7 @@
                           arguments="{node: node, settings: settings.socialButtons, entryUrl: entryUrl}"/>
             </f:if>
 
-            <f:render partial="Disqus" arguments="{node: node, settings: settings}"/>
+            <fusion:render path="disqus"/>
 
             <f:render partial="EntryPager"
                       arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node}"/>

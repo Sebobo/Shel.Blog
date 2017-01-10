@@ -7,6 +7,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     attributes.class = 'blog-entry'
     sectionName = 'blogEntry'
     settings = ${Configuration.setting('Shel.Blog')}
+    @context.settings = ${this.settings}
 
     dateFormat = ${this.settings.dateFormat}
     publicationDate = ${q(node).property('publicationDate')}
@@ -36,6 +37,14 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         height = 150
         cropping = false
         upScaling = false
+    }
+
+    disqus = Neos.Fusion:Template {
+        templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/Disqus.html'
+        settings = ${settings}
+        node = ${node}
+        ampVersion = Shel.Blog:AmpVersion
+        @if.notAmp = ${this.ampVersion != true}
     }
 
     // Links to previous and next blog entries
