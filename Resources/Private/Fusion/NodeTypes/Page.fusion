@@ -1,5 +1,5 @@
 ##
-# Extend page type with an additional header link to the blog feeds
+# Extend page type with an additional header data
 #
 prototype(Neos.Neos:Page) {
     head {
@@ -29,6 +29,10 @@ prototype(Neos.Neos:Page) {
                 }
                 entryTags.1 = 'NodeType_Shel.Blog:BlogFeed'
             }
+        }
+
+        blogMicroData = Shel.Blog:MicroData {
+            @if.isBlogPost = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
         }
     }
 }

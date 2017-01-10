@@ -1,0 +1,59 @@
+prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
+    tagName = 'script'
+    attributes.type = 'application/ld+json'
+
+    @context {
+        publisherLogoWidth = 600
+        publisherLogoHeight = 60
+        imageWidth = 2000
+        imageHeight = 800
+    }
+
+    content = Neos.Fusion:RawArray {
+        '@context' = 'http://schema.org'
+        '@type' = 'NewsArticle'
+        headline = ${q(documentNode).property('title')}
+        datePublished = ${Date.format(q(documentNode).property('publicationDate'), 'c')}
+        dateModified = ${Date.format(q(documentNode).property('_lastModificationDateTime'), 'c')}
+        description = ${q(documentNode).property('entrySummary')}
+
+        mainEntityOfPage = Neos.Neos:NodeUri {
+            node = ${documentNode}
+            absolute = true
+        }
+
+        author = Neos.Fusion:RawArray {
+            '@type' = 'Person'
+            name = ${q(documentNode).property('authorName')}
+        }
+
+        publisher = Neos.Fusion:RawArray {
+            '@type' = 'Organization'
+            name = ${site.context.currentSite.name}
+
+            logo = Neos.Fusion:RawArray {
+                '@type' = 'ImageObject'
+                width = ${publisherLogoWidth}
+                height = ${publisherLogoHeight}
+                url = Neos.Neos:ImageUri {
+                    asset = ${q(documentNode).property('entryImage')}
+                    width = ${publisherLogoWidth}
+                    height = ${publisherLogoHeight}
+                }
+            }
+        }
+
+        image = Neos.Fusion:RawArray {
+            '@type' = 'ImageObject'
+            width = ${imageWidth}
+            height = ${imageHeight}
+            url = Neos.Neos:ImageUri {
+                asset = ${q(documentNode).property('entryImage')}
+                width = ${imageWidth}
+                height = ${imageHeight}
+            }
+        }
+
+        @process.toJson = ${Json.stringify(value)}
+    }
+}
