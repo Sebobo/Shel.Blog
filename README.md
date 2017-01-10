@@ -72,6 +72,7 @@ The routes for the sitemap and pagination are auto-included in the `Settings.yam
 * Social buttons for twitter and flattr can be configured
 * Disqus integration
 * Easily customizeable
+* AMP support for individual blog entries
 
 ## You found a problem or have ideas for improvements?
 
