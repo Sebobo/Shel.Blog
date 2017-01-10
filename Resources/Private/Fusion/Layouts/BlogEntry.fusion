@@ -20,6 +20,11 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         crop = ${String.crop(value, 200, '…')}
     }
 
+    pagerArguments = Neos.Fusion:RawArray {
+        '--blog-amplify' = true
+        @if.amp = ${blogAmpVersion == true}
+    }
+
     entryUrl = NodeUri {
         node = ${node}
         absolute = true
@@ -43,8 +48,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/Disqus.html'
         settings = ${settings}
         node = ${node}
-        ampVersion = Shel.Blog:AmpVersion
-        @if.notAmp = ${this.ampVersion != true}
+        @if.notAmp = ${blogAmpVersion != true}
     }
 
     // Links to previous and next blog entries
