@@ -47,6 +47,19 @@ The atom/xml version will use it's own rendering and most of the time you don't 
 It will contain the full version of your posts including html. So images and everything.
 All active feeds will automatically be linked in the html header as meta tags.
 
+### AMP rendering
+
+Each blog post automatically includes a link in the `head` to it's AMP version.
+The package includes a default css for the AMP version and renders the primary content area.
+
+Verify the output of your blog with the developer mode for AMP by loading the AMP version and adding `#development=1`.
+Open the developer tools and AMP will show you it's verification result.
+
+You can turn this off with this fusion script:
+
+    root.blogEntryAmp >
+    prototype(Neos.Neos:Page).head.ampLink >
+
 #### Routing
 
 The routes for the sitemap and pagination are auto-included in the `Settings.yaml`.
