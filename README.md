@@ -49,11 +49,41 @@ All active feeds will automatically be linked in the html header as meta tags.
 
 ### AMP rendering
 
+As AMP itself is still work in progress, this feature is also work in progress.
+This package tries to provide a good defaults you can start with and customize it for your needs.
+As everything is written in Fusion, you can override and change anything you want.
+
+After you put some blog posts online with the help of this package, Google should be able to find the AMP 
+versions of each blog post after a few hours or days and provide the AMP version in it's search results.
+
 Each blog post automatically includes a link in the `head` to it's AMP version.
 The package includes a default css for the AMP version and renders the primary content area.
 
+If you have additional custom content elements in a blog post like videos and other stuff
+you might need to provide processors to make them compatible with AMP. 
+See the `replaceImgTags` image processor as example.
+
+Pull request with improvements to this feature are very welcome!
+
+#### Customizing
+
+The site is rendered as an array in `Shel.Blog:AmpPage` the object.
+It contains a content object in it's body section which is an array you can override and extend with additional content.
+By default provides basic layout components such as header, breadcrumb, blog content and pagination.
+
+In the stylesheets section a basic css file included with this package is added inline. See the `ampBlogStyles` object.
+Replace it or add another stylesheet to modify the output. Remember the styles need to be inline for AMP.
+
+Don't add additional javascripts as this is not supported currently with AMP.
+
+Check out https://www.ampproject.org/docs/get_started/create to learn more on how to get started with AMP.
+
+#### Debugging
+
 Verify the output of your blog with the developer mode for AMP by loading the AMP version and adding `#development=1`.
 Open the developer tools and AMP will show you it's verification result.
+
+#### Turning of AMP rendering mode
 
 You can turn this off with this fusion script:
 

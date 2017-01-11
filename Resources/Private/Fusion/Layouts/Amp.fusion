@@ -53,11 +53,20 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
     body = Neos.Fusion:Tag {                              
         attributes.class = 'content'
 
-        content = Neos.Fusion:Array {
+        content = Neos.Fusion:Array {       
+
+            header = Neos.Fusion:Tag {
+                tagName = 'header'
+                attributes.class = 'site-header'
+                content = ${site.context.currentSite.name}            
+            }
+
+            breadcrumb = Neos.Neos:BreadcrumbMenu
+
             primaryContent = Neos.Neos:PrimaryContent {
                 @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/', '<amp-img layout=responsive $1>')}
             }
-        }
+         }
     }
 }
 
