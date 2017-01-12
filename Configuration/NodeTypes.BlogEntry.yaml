@@ -7,7 +7,7 @@
     'Neos.Neos:Document': true
   constraints:
     nodeTypes:
-      '*': false
+      'Neos.Neos:Document': false
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
