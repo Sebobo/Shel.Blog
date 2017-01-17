@@ -6,9 +6,9 @@
 
 I developed this blog package for several projects including my own [blog](http://www.mind-the-seb.de).
 
-## Build with TypoScript & Yaml
+## Build with Fusion & Yaml
 
-Almost all functions of this blog package are based on Typoscript and Yaml configurations. 
+Almost all functions of this blog package are based on Fusion and Yaml configurations. 
 Just some php spice for sorting :)
 So it's very easy to extend and adapt to your needs.
 
