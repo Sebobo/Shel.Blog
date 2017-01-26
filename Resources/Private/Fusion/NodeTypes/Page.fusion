@@ -44,6 +44,38 @@ prototype(Neos.Neos:Page) {
             }
         }
 
+        nextBlogPageLink = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes {
+                rel = 'next'
+                href = Neos.Neos:NodeUri {
+                    node = ${documentNode}
+                    absolute = true
+                    additionalParams = Neos.Fusion:RawArray {
+                        '--blog-pagination' = ${{'currentPage': currentBlogPage + 1}}
+                        // FIXME: '--blog-pagination'.@if.notLastPage = ${currentBlogPage < maxBlogPages}
+                    }
+                }
+            }
+            @if.isBlogFeed = ${isBlogFeed}
+        }
+
+        previousBlogPageLink = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes {
+                rel = 'prev'
+                href = Neos.Neos:NodeUri {
+                    node = ${documentNode}
+                    absolute = true
+                    additionalParams = Neos.Fusion:RawArray {
+                        '--blog-pagination' = ${{'currentPage': currentBlogPage - 1}}
+                        '--blog-pagination'.@if.notFirstPage = ${currentBlogPage > 1}
+                    }
+                }
+            }
+            @if.isBlogFeed = ${isBlogFeed}
+        }
+
         ampLink = Neos.Fusion:Tag {
             tagName = 'link'
             attributes {
