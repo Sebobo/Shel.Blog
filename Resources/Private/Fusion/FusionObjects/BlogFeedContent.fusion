@@ -43,7 +43,6 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
         mode = 'cached'
         entryIdentifier {
             format = ${request.format}
-            paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
             node = ${node}
             editPreviewMode = ${node.context.currentRenderingMode.name}
         }
@@ -55,6 +54,3 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
         }
     }
 }
-
-prototype(Neos.Neos:Page).@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}
-root.@cache.entryIdentifier.paginationArgument = ${request.pluginArguments['blog-pagination'].currentPage}

@@ -1,3 +1,8 @@
 include: FusionObjects/*.fusion
 include: Layouts/*.fusion
 include: NodeTypes/*.fusion
+
+prototype(Neos.Fusion:GlobalCacheIdentifiers) {
+    ampVersion = ${request.pluginArguments['blog-amplify']}
+    blogPage = ${request.pluginArguments['blog-pagination'].currentPage}
+}

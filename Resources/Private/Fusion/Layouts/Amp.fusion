@@ -78,7 +78,3 @@ root.blogEntryAmp {
     condition = ${blogAmpVersion == true}
     renderPath = '/blogEntryAmp'
 }
-
-prototype(Neos.Fusion:GlobalCacheIdentifiers) {
-    ampVersion = ${request.pluginArguments['blog-amplify']}
-}
