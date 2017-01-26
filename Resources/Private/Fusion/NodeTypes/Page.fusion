@@ -2,6 +2,12 @@
 # Extend page type with an additional header data
 #
 prototype(Neos.Neos:Page) {
+    @context {
+        isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
+        isBlogFeed = ${q(documentNode).is('[instanceof Shel.Blog:BlogFeed]') && request.format == 'html'}
+        currentBlogPage = ${String.toInteger(request.pluginArguments['blog-pagination'].currentPage)}
+    }
+
     head {
         feedLinks = Neos.Fusion:Collection {
             collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
@@ -31,6 +37,13 @@ prototype(Neos.Neos:Page) {
             }                               
         }
 
+        canonicalLink.attributes.href {
+            additionalParams = Neos.Fusion:RawArray {
+                '--blog-pagination' = ${{'currentPage': currentBlogPage}}
+                '--blog-pagination'.@if.notFirstPage = ${currentBlogPage > 1}
+            }
+        }
+
         ampLink = Neos.Fusion:Tag {
             tagName = 'link'
             attributes {
@@ -41,12 +54,12 @@ prototype(Neos.Neos:Page) {
                     additionalParams = ${{'--blog-amplify': true}}
                 }
             }
-            @if.isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
+            @if.isBlogEntry = ${isBlogEntry}
             @if.notAmp = ${blogAmpVersion != true}
         }
 
         blogMicroData = Shel.Blog:MicroData {
-            @if.isBlogPost = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
+            @if.isBlogEntry = ${isBlogEntry}
         }
     }
 }
