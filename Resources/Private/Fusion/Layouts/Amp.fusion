@@ -39,19 +39,22 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
             }
         }
 
-        javascripts {
-            amp = Neos.Fusion:Tag {
-                tagName = 'script'
-                attributes {
-                    async = true
-                    src = 'https://cdn.ampproject.org/v0.js'
-                }
+        javascripts >
+
+        ampScript = Neos.Fusion:Tag {
+            tagName = 'script'
+            attributes {
+                async = true
+                src = 'https://cdn.ampproject.org/v0.js'
             }
+            @position = 'after stylesheets'
         }
     }
 
     body = Neos.Fusion:Tag {                              
         attributes.class = 'content'
+
+        javascripts >
 
         content = Neos.Fusion:Array {       
 
