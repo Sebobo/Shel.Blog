@@ -15,7 +15,7 @@ prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
         headline = ${q(documentNode).property('title')}
         datePublished = ${Date.format(q(documentNode).property('publicationDate'), 'c')}
         dateModified = ${Date.format(q(documentNode).property('_lastModificationDateTime'), 'c')}
-        description = ${q(documentNode).property('entrySummary')}
+        description = ${String.stripTags(q(documentNode).property('entrySummary'))}
 
         mainEntityOfPage = Neos.Neos:NodeUri {
             node = ${documentNode}
