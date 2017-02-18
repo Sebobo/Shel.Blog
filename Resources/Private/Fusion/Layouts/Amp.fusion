@@ -67,7 +67,7 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
             breadcrumb = Neos.Neos:BreadcrumbMenu
 
             primaryContent = Neos.Neos:PrimaryContent {
-                @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/', '<amp-img layout=responsive $1>')}
+                @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/s', '<amp-img layout=responsive $1>')}
             }
          }
     }
