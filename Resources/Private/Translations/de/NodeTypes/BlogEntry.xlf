@@ -14,6 +14,10 @@
                 <source>Author</source>
                 <target>Autor</target>
             </trans-unit>
+            <trans-unit id="properties.authorName.aloha.placeholder" xml:space="preserve">
+                <source>Enter author here</source>
+                <target>Autor hier angeben</target>
+            </trans-unit>
             <trans-unit id="properties.entryImage" xml:space="preserve">
                 <source>Preview image</source>
                 <target>Vorschaubild</target>
@@ -25,6 +29,10 @@
             <trans-unit id="properties.publicationDate" xml:space="preserve">
                 <source>Publication date</source>
                 <target>Veröffentlichungsdatum</target>
+            </trans-unit>
+            <trans-unit id="properties.entrySummary.aloha.placeholder" xml:space="preserve">
+                <source>Enter summary here</source>
+                <target>Zusammenfassung hier angeben</target>
             </trans-unit>
         </body>
     </file>

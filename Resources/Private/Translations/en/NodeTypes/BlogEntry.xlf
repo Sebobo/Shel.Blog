@@ -11,6 +11,9 @@
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
             </trans-unit>
+            <trans-unit id="properties.authorName.aloha.placeholder" xml:space="preserve">
+                <source>Enter author here</source>
+            </trans-unit>
             <trans-unit id="properties.entryImage" xml:space="preserve">
                 <source>Preview image</source>
             </trans-unit>
@@ -19,6 +22,9 @@
             </trans-unit>
             <trans-unit id="properties.publicationDate" xml:space="preserve">
                 <source>Publication date</source>
+            </trans-unit>
+            <trans-unit id="properties.entrySummary.aloha.placeholder" xml:space="preserve">
+                <source>Enter summary here</source>
             </trans-unit>
         </body>
     </file>

@@ -35,7 +35,7 @@
           position: 100
           group: plugin
         aloha:
-          placeholder: 'Enter author here'
+          placeholder: i18n
     publicationDate:
       type: DateTime
       ui:
@@ -67,5 +67,5 @@
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Enter summary here'
+          placeholder: i18n
           autoparagraph: true
