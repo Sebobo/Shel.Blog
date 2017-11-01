@@ -20,7 +20,9 @@
 
                     <time>{f:format.date(date: publicationDate, format: dateFormat)}</time>
 
-                    <neos:contentElement.editable property="authorName" tag="address"/>
+                    <f:if condition="{showAuthor}">
+                        <neos:contentElement.editable property="authorName" tag="address"/>
+                    </f:if>
                 </header>
 
                 <p>

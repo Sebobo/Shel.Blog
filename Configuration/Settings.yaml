@@ -1,6 +1,7 @@
 Shel:
   Blog:
     dateFormat: 'M d, Y'
+    showAuthor: true
     socialButtons:
       enabled: false
       twitterId: ''

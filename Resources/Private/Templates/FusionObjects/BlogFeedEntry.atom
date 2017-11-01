@@ -3,9 +3,11 @@
 <f:section name="blogFeedEntry">
     <entry>
         <title>{node.properties.title}</title>
-        <author>
-            <name>{node.properties.authorName}</name>
-        </author>
+        <f:if condition="{node.properties.authorName}">
+            <author>
+                <name>{node.properties.authorName}</name>
+            </author>
+        </f:if>
         <link rel="alternate" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
         <id>urn:uuid:{node.identifier}</id>
         <updated>{f:format.date(date: publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>

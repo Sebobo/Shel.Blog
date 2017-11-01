@@ -28,6 +28,7 @@
       search:
         fulltextExtractor: '${Indexing.extractHtmlTags(node.properties.authorName)}'
       ui:
+        inlineEditable: true
         label: i18n
         reloadIfChanged: true
         inspector:

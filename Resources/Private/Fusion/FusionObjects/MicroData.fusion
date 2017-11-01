@@ -25,6 +25,7 @@ prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
         author = Neos.Fusion:RawArray {
             '@type' = 'Person'
             name = ${q(documentNode).property('authorName')}
+            @if.hasAuthor = ${!String.isBlank(q(documentNode).property('authorName'))}
         }
 
         publisher = Neos.Fusion:RawArray {
