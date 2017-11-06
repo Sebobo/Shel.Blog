@@ -13,9 +13,18 @@
             <div class="article-content">
                 <header>
                     <h3>
-                        <neos:link.node node="{node}">
-                            <neos:contentElement.editable property="title" tag="span"/>
-                        </neos:link.node>
+                        <f:if condition="{node.context.workspace.name} == 'live'">
+                            <f:then>
+                                <neos:link.node node="{node}">
+                                    <neos:contentElement.editable property="title" tag="span"/>
+                                </neos:link.node>
+                            </f:then>
+                            <f:else>
+                                <a>
+                                    <neos:contentElement.editable property="title" tag="span"/>
+                                </a>
+                            </f:else>
+                        </f:if>
                     </h3>
 
                     <time>{f:format.date(date: publicationDate, format: dateFormat)}</time>
