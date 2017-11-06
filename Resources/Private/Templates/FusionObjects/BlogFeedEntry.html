@@ -15,7 +15,7 @@
                     <h3>
                         <f:if condition="{node.context.workspace.name} == 'live'">
                             <f:then>
-                                <neos:link.node node="{node}">
+                                <neos:link.node node="{node}" title="{node.label}">
                                     <neos:contentElement.editable property="title" tag="span"/>
                                 </neos:link.node>
                             </f:then>
