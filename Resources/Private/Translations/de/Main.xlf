@@ -6,6 +6,10 @@
                 <source>more</source>
                 <target>mehr</target>
             </trans-unit>
+            <trans-unit id="dateFormat" xml:space="preserve">
+                <source>M d, Y</source>
+                <target>d M Y</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

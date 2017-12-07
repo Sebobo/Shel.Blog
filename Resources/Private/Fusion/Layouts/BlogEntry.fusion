@@ -9,7 +9,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
     settings = ${Configuration.setting('Shel.Blog')}
     @context.settings = ${this.settings}
 
-    dateFormat = ${this.settings.dateFormat}
+    dateFormat = ${I18n.translate('dateFormat', this.settings.dateFormat, [], 'Main', 'Shel.Blog')}
     publicationDate = ${q(node).property('publicationDate')}
     publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
 
