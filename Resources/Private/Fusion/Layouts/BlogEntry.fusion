@@ -52,6 +52,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         cropping = false
         upScaling = false
     }
+    atomImageMaxWidth = ${this.settings.atomImageMaxWidth}
 
     disqus = Neos.Fusion:Template {
         templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/Disqus.html'

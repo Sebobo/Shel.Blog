@@ -3,6 +3,7 @@ Shel:
     cldrFormat: null
     localeFormatLength: 'long'
     showAuthor: true
+    atomImageMaxWidth: 400
     socialButtons:
       enabled: false
       twitterId: ''
