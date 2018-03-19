@@ -12,6 +12,7 @@ TYPO3:
 Shel:
   Blog:
     dateFormat: 'M d, Y'
+    atomImageMaxWidth: 400
     socialButtons:
       enabled: false
       twitterId: ''

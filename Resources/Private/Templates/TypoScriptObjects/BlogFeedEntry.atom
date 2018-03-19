@@ -19,7 +19,7 @@
         <f:if condition="{entryImage}">
             <link rel="enclosure" type="{entryImage.mediaType}"
                   title="{f:if(condition: alternativeText, then: alternativeText, else: title) -> f:format.urlencode()}"
-                  href="{media:uri.image(image: entryImage, maximumWidth: 300)}"
+                  href="{media:uri.image(image: entryImage, maximumWidth: atomImageMaxWidth)}"
                   length="{entryImage.resource.fileSize}" />
         </f:if>
     </entry>
