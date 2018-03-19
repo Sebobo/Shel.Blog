@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml xmlns="http://www.w3.org/1999/xhtml" lang="en"
       xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:media="http://typo3.org/ns/TYPO3/Media/ViewHelpers"
       xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
 <f:section name="blogFeedEntry">
     <entry>
@@ -15,6 +16,12 @@
         <content type="html">
             {content -> f:format.htmlspecialchars()}
         </content>
+        <f:if condition="{entryImage}">
+            <link rel="enclosure" type="{entryImage.mediaType}"
+                  title="{f:if(condition: alternativeText, then: alternativeText, else: title) -> f:format.urlencode()}"
+                  href="{media:uri.image(image: entryImage, maximumWidth: 300)}"
+                  length="{entryImage.resource.fileSize}" />
+        </f:if>
     </entry>
 </f:section>
 </xml>

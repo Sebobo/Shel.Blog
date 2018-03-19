@@ -38,6 +38,9 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         upScaling = false
     }
 
+    alternativeText = ${q(node).property('alternativeText')}
+    entryImage = ${q(node).property('entryImage')}
+
     // Links to previous and next blog entries
     previousEntry = ${q(node).prev('[instanceof Shel.Blog:BlogEntry]').get(0)}
     nextEntry = ${q(node).next('[instanceof Shel.Blog:BlogEntry]').get(0)}
