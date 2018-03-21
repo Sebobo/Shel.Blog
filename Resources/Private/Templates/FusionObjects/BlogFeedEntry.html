@@ -27,7 +27,7 @@
                         </f:if>
                     </h3>
 
-                    <time>{f:format.date(date: publicationDate, format: dateFormat)}</time>
+                    <time>{f:format.date(date: publicationDate, cldrFormat: cldrFormat, localeFormatLength: localeFormatLength, localeFormatType: 'date', forceLocale: true)}</time>
 
                     <f:if condition="{showAuthor}">
                         <neos:contentElement.editable property="authorName" tag="address"/>

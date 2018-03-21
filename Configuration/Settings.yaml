@@ -1,6 +1,7 @@
 Shel:
   Blog:
-    dateFormat: 'M d, Y'
+    cldrFormat: null
+    localeFormatLength: 'long'
     showAuthor: true
     socialButtons:
       enabled: false
