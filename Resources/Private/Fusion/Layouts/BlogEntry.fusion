@@ -23,9 +23,15 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         crop = ${String.crop(value, 200, '…')}
     }
 
-    pagerArguments = Neos.Fusion:RawArray {
-        '--blog-amplify' = true
-        @if.amp = ${blogAmpVersion == true}
+    pagerArguments = Neos.Fusion:Case {
+        default.condition = ${true}
+        default.renderer = ${[]}
+        default.@position = 'end'
+
+        amp.condition = ${blogAmpVersion == true}
+        amp.renderer = Neos.Fusion:RawArray {
+            '--blog-amplify' = true
+        }
     }
 
     entryUrl = NodeUri {
