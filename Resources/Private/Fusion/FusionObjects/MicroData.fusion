@@ -41,6 +41,7 @@ prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
                     width = ${publisherLogoWidth}
                     height = ${publisherLogoHeight}
                 }
+                @if.hasImage = ${q(documentNode).property('entryImage')}
             }
         }
 
@@ -53,6 +54,7 @@ prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
                 width = ${imageWidth}
                 height = ${imageHeight}
             }
+            @if.hasImage = ${q(documentNode).property('entryImage')}
         }
 
         @process.toJson = ${Json.stringify(value)}
