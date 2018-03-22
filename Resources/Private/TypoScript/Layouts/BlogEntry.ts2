@@ -37,7 +37,6 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         cropping = false
         upScaling = false
     }
-    atomImageMaxWidth = ${this.settings.atomImageMaxWidth}
 
     alternativeText = ${q(node).property('alternativeText')}
     entryImage = ${q(node).property('entryImage')}

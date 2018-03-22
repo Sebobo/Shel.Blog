@@ -9,6 +9,10 @@ TYPO3:
         autoInclude:
           'Shel.Blog': ['NodeTypes/*']
 
+  TypoScript:
+    defaultContext:
+      'Shel.Blog.Asset': 'Shel\Blog\TypoScript\Helper\AssetHelper'
+
 Shel:
   Blog:
     dateFormat: 'M d, Y'
