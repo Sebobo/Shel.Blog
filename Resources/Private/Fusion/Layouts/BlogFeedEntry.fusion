@@ -5,4 +5,6 @@ prototype(Shel.Blog:BlogFeedEntry) < prototype(Shel.Blog:BlogEntry) {
     templatePath = ${'resource://Shel.Blog/Private/Templates/FusionObjects/BlogFeedEntry.' + request.format}
     attributes.class = 'blog-feed-entry'
     sectionName = 'blogFeedEntry'
+
+    atomImage = ${this.entryImage != null ? Shel.Blog.Asset.createThumbnail(this.entryImage, null, this.settings.atomImageMaxWidth) : null}
 }

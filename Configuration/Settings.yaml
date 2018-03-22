@@ -30,3 +30,6 @@ Neos:
     fusion:
       autoInclude:
         Shel.Blog: true
+  Fusion:
+    defaultContext:
+      'Shel.Blog.Asset': 'Shel\Blog\Fusion\Helper\AssetHelper'
