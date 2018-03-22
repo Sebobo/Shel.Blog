@@ -18,7 +18,7 @@
             {content -> f:format.htmlspecialchars()}
         </content>
         <f:if condition="{entryImage}">
-            <link rel="enclosure" type="{entryImage.mediaType}"
+            <link rel="enclosure" type="{atomImage.resource.mediaType}"
                   title="{f:if(condition: alternativeText, then: alternativeText, else: title) -> f:format.urlencode()}"
                   href="{f:uri.resource(resource: atomImage.resource)}"
                   length="{atomImage.resource.fileSize}" />
