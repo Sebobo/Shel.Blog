@@ -36,6 +36,7 @@
       '@subpackage': ''
       '@controller': ''
       '@action': 'index'
+      '@format': 'html'
       'currentPage': '1'
   routeParts:
     node:
