@@ -1,13 +1,15 @@
 ##
 # "BlogEntry" layout
 #
-prototype(Shel.Blog:BlogEntry) < prototype(Content) {
+prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
     partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
     attributes.class = 'blog-entry'
     sectionName = 'blogEntry'
     settings = ${Configuration.setting('Shel.Blog')}
     @context.settings = ${this.settings}
+
+    documentNode = ${documentNode}
 
     cldrFormat = ${this.settings.cldrFormat}
     localeFormatLength = ${this.settings.localeFormatLength}
@@ -34,12 +36,12 @@ prototype(Shel.Blog:BlogEntry) < prototype(Content) {
         }
     }
 
-    entryUrl = NodeUri {
-        node = ${node}
+    entryUrl = Neos.Neos:NodeUri {
+        node = ${documentNode}
         absolute = true
     }
 
-    content = ContentCollection {
+    content = Neos.Neos:ContentCollection {
         attributes.class = 'blog-entry__content'
         nodePath = 'main'
     }

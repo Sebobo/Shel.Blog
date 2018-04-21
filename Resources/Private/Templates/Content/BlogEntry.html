@@ -27,7 +27,7 @@
         <footer>
             <f:if condition="{settings.socialButtons.enabled}">
                 <f:render partial="SocialButtons"
-                          arguments="{node: node, settings: settings.socialButtons, entryUrl: entryUrl}"/>
+                          arguments="{node: documentNode, settings: settings.socialButtons, entryUrl: entryUrl}"/>
             </f:if>
 
             <fusion:render path="disqus"/>
