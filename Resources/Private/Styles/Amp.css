@@ -410,6 +410,10 @@ article time {
     color: #333333;
 }
 
+.blog-entry__author {
+    margin-right: .5rem;
+}
+
 .post h1 {
     font-weight: 700;
     font-style: normal;
