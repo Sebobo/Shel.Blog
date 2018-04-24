@@ -1,0 +1,17 @@
+prototype(Shel.Blog:Disqus) < prototype(Neos.Fusion:Component) {
+    settings = ${Configuration.setting('Shel.Blog.disqus')}
+
+    identifier = ''
+    title = ''
+    entryUrl = ''
+
+    renderer = Neos.Fusion:Template {
+        templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/Disqus.html'
+        settings = ${props.settings}
+        identifier = ${props.identifier}
+        title = ${props.title}
+        entryUrl = ${props.entryUrl}
+    }
+
+    @if.enabled = ${this.settings.enabled == true}
+}

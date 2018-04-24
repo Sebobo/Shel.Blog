@@ -25,11 +25,7 @@
         {content -> f:format.raw()}
 
         <footer>
-            <f:if condition="{settings.socialButtons.enabled}">
-                <f:render partial="SocialButtons"
-                          arguments="{node: documentNode, settings: settings.socialButtons, entryUrl: entryUrl}"/>
-            </f:if>
-
+            <fusion:render path="socialButtons"/>
             <fusion:render path="disqus"/>
 
             <f:render partial="EntryPager"

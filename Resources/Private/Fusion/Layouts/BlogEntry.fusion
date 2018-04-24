@@ -25,6 +25,12 @@ prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
         crop = ${String.crop(value, 200, '…')}
     }
 
+    entryUrl = Neos.Neos:NodeUri {
+        node = ${documentNode}
+        absolute = true
+    }
+    @context.entryUrl = ${this.entryUrl}
+
     pagerArguments = Neos.Fusion:Case {
         default.condition = ${true}
         default.renderer = ${[]}
@@ -36,17 +42,11 @@ prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
         }
     }
 
-    entryUrl = Neos.Neos:NodeUri {
-        node = ${documentNode}
-        absolute = true
-    }
-
     content = Neos.Neos:ContentCollection {
         attributes.class = 'blog-entry__content'
         nodePath = 'main'
     }
 
-    # Image settings
     imageSettings = Neos.Fusion:RawArray {
         class = 'blog-entry-image'
         width = 150
@@ -55,17 +55,21 @@ prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
         upScaling = false
     }
 
-    disqus = Neos.Fusion:Template {
-        templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/Disqus.html'
-        settings = ${settings}
-        node = ${node}
+    socialButtons = Shel.Blog:SocialButtons {
+        title = ${q(documentNode).property('title')}
+        entryUrl = ${entryUrl}
+    }
+
+    disqus = Shel.Blog:Disqus {
+        identifier = ${documentNode.identifier}
+        title = ${q(documentNode).property('title')}
+        entryUrl = ${entryUrl}
         @if.notAmp = ${blogAmpVersion != true}
     }
 
     alternativeText = ${q(node).property('alternativeText')}
     entryImage = ${q(node).property('entryImage')}
 
-    // Links to previous and next blog entries
     previousEntry = ${q(node).prev('[instanceof Shel.Blog:BlogEntry]').get(0)}
     nextEntry = ${q(node).next('[instanceof Shel.Blog:BlogEntry]').get(0)}
 }
