@@ -6,8 +6,20 @@
     <li{attributes -> f:format.raw()}>
         <article>
             <f:if condition="{node.properties.entryImage}">
-                <f:render partial="EntryImage"
-                          arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
+                <f:if condition="{node.context.workspace.name} == 'live'">
+                    <f:then>
+                            <neos:link.node node="{node}" title="{node.label}">
+                                <f:render partial="EntryImage"
+                                          arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
+                            </neos:link.node>
+                    </f:then>
+                    <f:else>
+                        <a title="{node.label}">
+                            <f:render partial="EntryImage"
+                                      arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
+                        </a>
+                    </f:else>
+                </f:if>
             </f:if>
 
             <div class="article-content">
