@@ -20,6 +20,7 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
     authorName = ${q(node).property('authorName')}
 
     title = ${q(node).property('title')}
+    entrySummary = ${q(node).property('entrySummary')}
 
     firstTextNode = ${q(node).children('main').find('[instanceof Neos.NodeTypes:Text]').get(0)}
     summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
