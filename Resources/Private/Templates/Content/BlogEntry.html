@@ -5,7 +5,7 @@
 <f:section name="blogEntry">
     <article{attributes -> f:format.raw()}>
         <header>
-            <f:if condition="{node.properties.entryImage}">
+            <f:if condition="{entryImage}">
                 <f:render partial="EntryImage"
                           arguments="{image: node.properties.entryImage, imageSettings: imageSettings, title: title, alternativeText: alternativeText}"/>
             </f:if>

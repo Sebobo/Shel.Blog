@@ -1,7 +1,7 @@
 ##
 # "BlogEntry" layout
 #
-prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
+prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Shel.Blog/Private/Templates/Content/BlogEntry.html'
     partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
     attributes.class = 'blog-entry'
@@ -17,6 +17,9 @@ prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
     publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
 
     showAuthor = ${this.settings.showAuthor}
+    authorName = ${q(node).property('authorName')}
+
+    title = ${q(node).property('title')}
 
     firstTextNode = ${q(node).children('main').find('[instanceof Neos.NodeTypes:Text]').get(0)}
     summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
@@ -77,7 +80,7 @@ prototype(Shel.Blog:BlogEntry) < prototype(Neos.Neos:Content) {
 ##
 # Add a condition to render the primary content differently if we show a blog entry
 #
-prototype(PrimaryContent).BlogEntry {
+prototype(Neos.Neos:PrimaryContent).BlogEntry {
     condition = ${q(node).is('[instanceof Shel.Blog:BlogEntry]')}
-    type = 'Shel.Blog:BlogEntry'
+    type = 'Shel.Blog:BlogEntryContent'
 }

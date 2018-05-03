@@ -3,8 +3,8 @@
 # We clear the prototype of the BlogFeed so we don't have inherited
 # properties we don't want and would be contained in the output.
 #
-prototype(Shel.Blog:BlogFeed) >
-prototype(Shel.Blog:BlogFeed) < prototype(Neos.Fusion:Http.Message) {
+prototype(Shel.Blog:BlogFeedAtom) >
+prototype(Shel.Blog:BlogFeedAtom) < prototype(Neos.Fusion:Http.Message) {
     httpResponseHead {
         headers.Content-Type = 'application/xml'
     }
@@ -50,12 +50,13 @@ prototype(Shel.Blog:BlogFeedHtml) < prototype(Shel.Blog:BlogFeedContent)
 ##
 # Add a condition to render the primary content differently if we show a blog feed
 #
-prototype(PrimaryContent).BlogFeed {
+prototype(Neos.Neos:PrimaryContent).BlogFeed {
     condition = ${q(node).is('[instanceof Shel.Blog:BlogFeed]')}
     type = 'Shel.Blog:BlogFeedHtml'
+    @position = 'before default'
 }
 
 ##
 # Calling a page with the format .atom will automatically call the xml based layout
 #
-atom = Shel.Blog:BlogFeed
+atom = Shel.Blog:BlogFeedAtom
