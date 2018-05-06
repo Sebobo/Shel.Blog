@@ -80,8 +80,15 @@ Check out https://www.ampproject.org/docs/get_started/create to learn more on ho
 
 #### Debugging
 
-Verify the output of your blog with the developer mode for AMP by loading the AMP version and adding `#development=1`.
-Open the developer tools and AMP will show you it's verification result.
+Verify the output of your blog with the developer mode for AMP by loading the AMP version and 
+adding `#development=1` to the url.
+Open the developer tools of your browser and AMP will show you it's verification result.    
+
+Other plugins and packages you might have installed might break the AMP compatibility!
+Please validate the rendered code by using the browser validator or any other method 
+described [here](https://www.ampproject.org/docs/fundamentals/validate).
+
+Before you create an issue for the AMP mode please run the validation and add the result to the issue.
 
 #### Turning of AMP rendering mode
 
