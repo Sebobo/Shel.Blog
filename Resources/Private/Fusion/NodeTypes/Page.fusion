@@ -5,7 +5,7 @@ prototype(Neos.Neos:Page) {
     @context {
         isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
         isBlogFeed = ${q(documentNode).is('[instanceof Shel.Blog:BlogFeed]') && request.format == 'html'}
-        currentBlogPage = ${String.toInteger(request.pluginArguments['blog-pagination'].currentPage)}
+        currentBlogPage = ${String.toInteger(request.pluginArguments['blog-pagination'].currentPage || 1)}
     }
 
     head {
@@ -34,7 +34,7 @@ prototype(Neos.Neos:Page) {
                     workspace = ${node.context.workspace.name}
                 }
                 entryTags.1 = 'NodeType_Shel.Blog:BlogFeed'
-            }                               
+            }
         }
 
         canonicalLink.attributes.href {
@@ -46,6 +46,8 @@ prototype(Neos.Neos:Page) {
 
         nextBlogPageLink = Neos.Fusion:Tag {
             tagName = 'link'
+            itemsPerPage = ${Configuration.setting('Shel.Blog').pagination.itemsPerPage}
+            @context.maxNumberOfPages = ${Math.ceil(q(documentNode).children().count() / this.itemsPerPage)}
             attributes {
                 rel = 'next'
                 href = Neos.Neos:NodeUri {
@@ -53,11 +55,11 @@ prototype(Neos.Neos:Page) {
                     absolute = true
                     additionalParams = Neos.Fusion:RawArray {
                         '--blog-pagination' = ${{'currentPage': currentBlogPage + 1}}
-                        // FIXME: '--blog-pagination'.@if.notLastPage = ${currentBlogPage < maxBlogPages}
                     }
                 }
             }
             @if.isBlogFeed = ${isBlogFeed}
+            @if.notLastPage = ${currentBlogPage < maxNumberOfPages}
         }
 
         previousBlogPageLink = Neos.Fusion:Tag {
@@ -69,11 +71,11 @@ prototype(Neos.Neos:Page) {
                     absolute = true
                     additionalParams = Neos.Fusion:RawArray {
                         '--blog-pagination' = ${{'currentPage': currentBlogPage - 1}}
-                        '--blog-pagination'.@if.notFirstPage = ${currentBlogPage > 1}
                     }
                 }
             }
             @if.isBlogFeed = ${isBlogFeed}
+            @if.notFirstPage = ${currentBlogPage > 1}
         }
 
         ampLink = Neos.Fusion:Tag {
