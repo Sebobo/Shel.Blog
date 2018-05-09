@@ -4,7 +4,8 @@
     "license": "MIT",
     "description": "A simple blog for Neos CMS based on fusion and yaml configurations. Also supports atom feeds.",
     "require": {
-        "neos/neos": "~3.0 || ~4.0"
+        "neos/neos": "~3.0 || ~4.0",
+        "neos/fusion-afx": "^1.0"
     },
     "authors": [
         {
