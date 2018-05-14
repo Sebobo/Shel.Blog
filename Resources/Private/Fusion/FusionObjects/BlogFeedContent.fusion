@@ -31,6 +31,11 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
         itemRenderer = Shel.Blog:BlogFeedEntry
     }
 
+    # Create condition if paginated feed should be rendered
+    itemsPerPage = ${this.configuration.pagination.itemsPerPage}
+    maxNumberOfPages = ${Math.ceil(q(this.feedEntries).count() / this.itemsPerPage)}
+    renderFeed = ${q(this.feedEntries).count() > 0 && currentBlogPage > 0 && currentBlogPage <= this.maxNumberOfPages}
+
     # Setup source node to retrieve blog posts from
     lastUpdatedNode = ${this.sortingDirection == 'descending' ? Array.first(feedEntries) : Array.last(feedEntries)}
     lastUpdated = ${q(this.lastUpdatedNode).property('publicationDate')}

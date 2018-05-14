@@ -5,8 +5,8 @@
             <trans-unit id="blogEntry.action.more" xml:space="preserve">
                 <source>more</source>
             </trans-unit>
-            <trans-unit id="dateFormat" xml:space="preserve">
-                <source>M d, Y</source>
+            <trans-unit id="noEntriesFound" xml:space="preserve">
+                <source>No articles found</source>
             </trans-unit>
         </body>
     </file>

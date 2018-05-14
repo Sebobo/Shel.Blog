@@ -10,7 +10,7 @@
             <neos:contentElement.editable property="description" tag="h2"/>
         </header>
 
-        <f:if condition="{feedEntries}">
+        <f:if condition="{renderFeed}">
             <f:then>
                 <neoscr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
                                          configuration="{configuration.pagination}">
@@ -22,7 +22,11 @@
                 </neoscr:widget.paginate>
             </f:then>
             <f:else>
-                <p>No blog entries found</p>
+                <p>
+                    <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">
+                        No articles found
+                    </f:translate>
+                </p>
             </f:else>
         </f:if>
     </section>
