@@ -8,6 +8,9 @@
             <trans-unit id="noEntriesFound" xml:space="preserve">
                 <source>No articles found</source>
             </trans-unit>
+            <trans-unit id="paginationSuffix" xml:space="preserve">
+                <source>Page</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

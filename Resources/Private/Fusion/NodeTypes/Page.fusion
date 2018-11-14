@@ -9,6 +9,11 @@ prototype(Neos.Neos:Page) {
     }
 
     head {
+        titleTag.content.@process.addBlogPageNumber = Neos.Fusion:Value {
+            @if.isPaginating = ${currentBlogPage > 1}
+            value = ${value + ' - ' + I18n.translate('Shel.Blog:Main:paginationSuffix') + ' ' + currentBlogPage}
+        }
+
         feedLinks = Neos.Fusion:Collection {
             collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
             itemName = 'feed'

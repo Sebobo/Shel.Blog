@@ -10,6 +10,10 @@
                 <source>No articles found</source>
                 <target>Keine Beiträge gefunden</target>
             </trans-unit>
+            <trans-unit id="paginationSuffix" xml:space="preserve">
+                <source>Page</source>
+                <target>Seite</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
