@@ -22,6 +22,9 @@ Neos:
       routes:
         Shel.Blog:
           position: 'before Neos.Neos'
+          variables:
+            # Set this to an empty string if you prefer URLs without the ".html" suffix
+            'defaultUriSuffix': '.html'
   Neos:
     userInterface:
       translation:

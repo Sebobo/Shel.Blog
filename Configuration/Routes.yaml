@@ -12,7 +12,7 @@
 
 -
   name:  'AMP blog entries'
-  uriPattern: 'amplify/{node}.html'
+  uriPattern: 'amplify/{node}<defaultUriSuffix>'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
@@ -25,7 +25,7 @@
 
 -
   name: 'Blog paginate'
-  uriPattern: '{node}/browse/{--blog-pagination.currentPage}.html'
+  uriPattern: '{node}/browse/{--blog-pagination.currentPage}<defaultUriSuffix>'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
