@@ -76,8 +76,8 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
 blogEntryAmp = Shel.Blog:AmpPage
 
 root.blogEntryAmp {
-    @position = 'start'
+    @position = 'before format'
     @context.blogAmpVersion = Shel.Blog:AmpVersion
-    condition = ${blogAmpVersion == true}
+    condition = ${!!blogAmpVersion}
     renderPath = '/blogEntryAmp'
 }
