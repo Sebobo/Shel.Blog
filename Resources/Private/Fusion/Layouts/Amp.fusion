@@ -3,16 +3,12 @@ prototype(Shel.Blog:AmpVersion) < prototype(Neos.Fusion:Value) {
 }
 
 prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
-    doctype = '<!doctype html>'
-
     # Additional scripts are not allowed with amp
     lastVisitedNodeScript >
 
     htmlTag.attributes.amp = true
 
     head {
-        characterSetMetaTag.attributes.charset = 'utf-8'
-
         viewportTag = Neos.Fusion:Tag {
             tagName = 'meta'
             attributes {
@@ -34,7 +30,7 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
                 content = Neos.Fusion:Array {
                     baseStyles = Neos.Fusion:Template {
                         templatePath = 'resource://Shel.Blog/Private/Styles/Amp.css'
-                    }                    
+                    }
                 }
             }
         }
@@ -51,17 +47,16 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
         }
     }
 
-    body = Neos.Fusion:Tag {                              
+    body = Neos.Fusion:Tag {
         attributes.class = 'content'
 
         javascripts >
 
-        content = Neos.Fusion:Array {       
-
+        content = Neos.Fusion:Array {
             header = Neos.Fusion:Tag {
                 tagName = 'header'
                 attributes.class = 'site-header'
-                content = ${site.context.currentSite.name}            
+                content = ${site.context.currentSite.name}
             }
 
             breadcrumb = Neos.Neos:BreadcrumbMenu
