@@ -19,7 +19,27 @@
   properties:
     limit:
       type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: plugin
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: {  }
+    itemsPerPage:
+      type: integer
       defaultValue: 5
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: plugin
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: {  }
+    maximumNumberOfLinks:
+      type: integer
+      defaultValue: 10
       ui:
         label: i18n
         reloadIfChanged: true

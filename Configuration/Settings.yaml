@@ -12,9 +12,6 @@ Shel:
     disqus:
       enabled: false
       shortname: ''
-    pagination:
-      itemsPerPage: 5
-      maximumNumberOfLinks: 10
 
 Neos:
   Flow:

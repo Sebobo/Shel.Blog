@@ -14,6 +14,12 @@
             <trans-unit id="properties.limit" xml:space="preserve">
                 <source>Entries to show</source>
             </trans-unit>
+            <trans-unit id="properties.itemsPerPage" xml:space="preserve">
+                <source>Entries per page</source>
+            </trans-unit>
+            <trans-unit id="properties.maximumNumberOfLinks" xml:space="preserve">
+                <source>Maximum number of links</source>
+            </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
             </trans-unit>

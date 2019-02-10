@@ -13,6 +13,11 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
     sortingDirection = ${q(node).property('sortingDirection')}
     limit = ${q(node).property('limit')}
 
+    paginationConfiguration = Neos.Fusion:RawArray {
+        itemsPerPage = ${q(node).property('itemsPerPage') || 5}
+        maximumNumberOfLinks = ${q(node).property('maximumNumberOfLinks') || 10}
+    }
+
     # Make some properties of the node directly accessible in the template to allow inline editing and reduce code.
     sourceNode = ${q(node).property('sourceNode') != null ? q(node).property('sourceNode') : node}
     @context.sourceNode = ${this.sourceNode}
@@ -32,8 +37,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
     }
 
     # Create condition if paginated feed should be rendered
-    itemsPerPage = ${this.configuration.pagination.itemsPerPage}
-    maxNumberOfPages = ${Math.ceil(q(this.feedEntries).count() / this.itemsPerPage)}
+    maxNumberOfPages = ${Math.ceil(q(this.feedEntries).count() / this.paginationConfiguration['itemsPerPage'])}
     renderFeed = ${q(this.feedEntries).count() > 0 && currentBlogPage > 0 && currentBlogPage <= this.maxNumberOfPages}
 
     # Setup source node to retrieve blog posts from

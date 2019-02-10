@@ -51,7 +51,7 @@ prototype(Neos.Neos:Page) {
 
         nextBlogPageLink = Neos.Fusion:Tag {
             tagName = 'link'
-            itemsPerPage = ${Configuration.setting('Shel.Blog').pagination.itemsPerPage}
+            itemsPerPage = ${q(documentNode).property('itemsPerPage') || 5}
             @context.maxNumberOfPages = ${Math.ceil(q(documentNode).children().count() / this.itemsPerPage)}
             attributes {
                 rel = 'next'

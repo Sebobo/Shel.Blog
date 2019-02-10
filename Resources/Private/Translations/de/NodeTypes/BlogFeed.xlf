@@ -18,6 +18,14 @@
                 <source>Entries to show</source>
                 <target>Anzahl Beiträge</target>
             </trans-unit>
+            <trans-unit id="properties.itemsPerPage" xml:space="preserve">
+                <source>Entries per page</source>
+                <target>Links pro Seite</target>
+            </trans-unit>
+            <trans-unit id="properties.maximumNumberOfLinks" xml:space="preserve">
+                <source>Maximum number of links</source>
+                <target>Maximale Anzahl Links</target>
+            </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
                 <target>Autor</target>
