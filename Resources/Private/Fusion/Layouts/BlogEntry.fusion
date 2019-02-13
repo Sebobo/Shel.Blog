@@ -91,6 +91,7 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
                 </Neos.Fusion:Loop>
             </span>
         `
+        @if.hasCategories = ${categories}
     }
 
     alternativeText = ${q(node).property('alternativeText')}
