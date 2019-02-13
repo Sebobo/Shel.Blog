@@ -1,18 +1,3 @@
-Shel:
-  Blog:
-    cldrFormat: null
-    localeFormatLength: 'long'
-    showAuthor: true
-    atomImageMaxWidth: 400
-    socialButtons:
-      enabled: false
-      twitterId: ''
-      flattrId: ''
-      facebookId: ''
-    disqus:
-      enabled: false
-      shortname: ''
-
 Neos:
   Flow:
     mvc:
