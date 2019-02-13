@@ -26,6 +26,9 @@
             <trans-unit id="properties.entrySummary.aloha.placeholder" xml:space="preserve">
                 <source>Enter summary here</source>
             </trans-unit>
+            <trans-unit id="properties.categories" xml:space="preserve">
+                <source>Categories</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

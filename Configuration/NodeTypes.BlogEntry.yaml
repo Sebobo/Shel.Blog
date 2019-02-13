@@ -69,3 +69,11 @@
         aloha:
           placeholder: i18n
           autoparagraph: true
+    categories:
+      type: references
+      ui:
+        label: i18n
+        inspector:
+          group: 'document'
+          editorOptions:
+            nodeTypes: ['Shel.Blog:Document.Category']

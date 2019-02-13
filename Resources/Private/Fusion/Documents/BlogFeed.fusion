@@ -1,0 +1,1 @@
+prototype(Shel.Blog:BlogFeed) < prototype(Neos.Neos:Page)

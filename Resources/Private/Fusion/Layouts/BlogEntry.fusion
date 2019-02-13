@@ -15,6 +15,8 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
     localeFormatLength = ${this.settings.localeFormatLength}
     publicationDate = ${q(node).property('publicationDate')}
     publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
+    categories = ${q(node).property('categories') || []}
+    @context.categories = ${this.categories}
 
     showAuthor = ${this.settings.showAuthor}
     authorName = ${q(node).property('authorName')}
@@ -30,8 +32,9 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
     }
 
     entryUrl = Neos.Neos:NodeUri {
-        node = ${documentNode}
+        node = ${node}
         absolute = true
+        format = 'html'
     }
     @context.entryUrl = ${this.entryUrl}
 
@@ -41,7 +44,7 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
         default.@position = 'end'
 
         amp.condition = ${blogAmpVersion == true}
-        amp.renderer = Neos.Fusion:RawArray {
+        amp.renderer = Neos.Fusion:DataStructure {
             '--blog-amplify' = true
         }
     }
@@ -51,7 +54,7 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
         nodePath = 'main'
     }
 
-    imageSettings = Neos.Fusion:RawArray {
+    imageSettings = Neos.Fusion:DataStructure {
         class = 'blog-entry-image'
         width = 150
         height = 150
@@ -60,15 +63,34 @@ prototype(Shel.Blog:BlogEntryContent) < prototype(Neos.Neos:Content) {
     }
 
     socialButtons = Shel.Blog:SocialButtons {
-        title = ${q(documentNode).property('title')}
+        title = ${q(node).property('title')}
         entryUrl = ${entryUrl}
     }
 
     disqus = Shel.Blog:Disqus {
-        identifier = ${documentNode.identifier}
-        title = ${q(documentNode).property('title')}
+        identifier = ${node.identifier}
+        title = ${q(node).property('title')}
         entryUrl = ${entryUrl}
         @if.notAmp = ${blogAmpVersion != true}
+    }
+
+    categoryList = Neos.Fusion:Component {
+        categories = ${categories}
+        label = ${I18n.translate('Shel.Blog:Main:categories.label')}
+
+        renderer = afx`
+            <span class="blog-entry__categories">
+                <span class="blog-entry__categories-label">{props.label}</span>
+                <Neos.Fusion:Loop items={props.categories} itemName="category" @children="itemRenderer">
+                    <span class="blog-entry__categories-item">
+                        <Neos.Fusion:Tag tagName="a" content={category.label} attributes.rel="tag"
+                            attributes.title={q(category).property('title')} @children="attributes.href">
+                            <Neos.Neos:NodeUri node={category}/>
+                        </Neos.Fusion:Tag>
+                    </span>
+                </Neos.Fusion:Loop>
+            </span>
+        `
     }
 
     alternativeText = ${q(node).property('alternativeText')}

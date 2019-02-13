@@ -56,9 +56,10 @@ class SortBlogEntriesOperation extends AbstractOperation
      * {@inheritdoc}
      *
      * @param FlowQuery $flowQuery the FlowQuery object
-     * @param array     $arguments the arguments for this operation
+     * @param array $arguments the arguments for this operation
      *
-     * @return mixed
+     * @return void
+     * @throws FlowQueryException
      */
     public function evaluate(FlowQuery $flowQuery, array $arguments)
     {

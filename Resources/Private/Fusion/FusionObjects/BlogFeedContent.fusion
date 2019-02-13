@@ -12,6 +12,8 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
     description = ${q(node).property('description')}
     sortingDirection = ${q(node).property('sortingDirection')}
     limit = ${q(node).property('limit')}
+    category = null
+    @context.category = ${this.category}
 
     paginationConfiguration = Neos.Fusion:RawArray {
         itemsPerPage = ${q(node).property('itemsPerPage') || 5}
@@ -26,6 +28,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:Content) {
     # Fetch feed entries
     feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]').get() : []}
     feedEntries.@process {
+        filterByCategory = ${category && value ? q(value).filterByReference(category, 'categories').get() : value}
         sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC').get() : value}
         slice = ${this.limit > 0 ? Array.slice(value, 0, this.limit) : value}
     }

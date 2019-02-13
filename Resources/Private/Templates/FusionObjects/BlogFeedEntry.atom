@@ -10,7 +10,7 @@
                 <name>{node.properties.authorName}</name>
             </author>
         </f:if>
-        <link rel="alternate" href="{neos:uri.node(absolute: true, node: node, format: 'html')}"/>
+        <link rel="alternate" href="{entryUrl}"/>
         <id>urn:uuid:{node.identifier}</id>
         <updated>{f:format.date(date: publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
         <summary>{summary}</summary>
@@ -22,6 +22,11 @@
                   title="{f:if(condition: alternativeText, then: alternativeText, else: title) -> f:format.urlencode()}"
                   href="{f:uri.resource(resource: atomImage.resource)}"
                   length="{atomImage.resource.fileSize}" />
+        </f:if>
+        <f:if condition="{categories}">
+            <f:for each="{categories}" as="category">
+                <category term="{category.label}" scheme="{neos:uri.node(node: category, absolute: true, format: 'html')}"/>
+            </f:for>
         </f:if>
     </entry>
 </f:section>

@@ -34,6 +34,10 @@
                 <source>Enter summary here</source>
                 <target>Zusammenfassung hier angeben</target>
             </trans-unit>
+            <trans-unit id="properties.categories" xml:space="preserve">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

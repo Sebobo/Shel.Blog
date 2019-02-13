@@ -9,6 +9,7 @@
     nodeTypes:
       'Neos.Neos:Document': false
       'Shel.Blog:BlogEntry': true
+      'Shel.Blog:Document.Category': true
   ui:
     label: i18n
     icon: icon-list-alt

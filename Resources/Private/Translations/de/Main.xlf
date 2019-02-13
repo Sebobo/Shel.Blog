@@ -14,6 +14,10 @@
                 <source>Page</source>
                 <target>Seite</target>
             </trans-unit>
+            <trans-unit id="categories.label" xml:space="preserve">
+                <source>Categories:</source>
+                <target>Kategorien:</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

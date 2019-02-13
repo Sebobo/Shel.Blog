@@ -1,0 +1,10 @@
+'Shel.Blog:Document.Category':
+  superTypes:
+    'Shel.Blog:BlogFeed': true
+  ui:
+    label: i18n
+    icon: icon-tag
+  constraints:
+    nodeTypes:
+      'Shel.Blog:BlogEntry': false
+      'Shel.Blog:Document.Category': false
