@@ -9,41 +9,28 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
     htmlTag.attributes.amp = true
 
     head {
-        viewportTag = Neos.Fusion:Tag {
-            tagName = 'meta'
-            attributes {
-                name = 'viewport'
-                content = 'width=device-width,minimum-scale=1,initial-scale=1'
-            }
-        }
+        viewportTag = afx`<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>`
 
-        stylesheets {
+        stylesheets = ''
+        javascripts >
+
+        ampStylesheets = Neos.Fusion:Join {
             ampBoilerplate = Neos.Fusion:Template {
                 templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/AmpBoilerplate.html'
             }
 
-            ampBlogStyles = Neos.Fusion:Tag {
-                tagName = 'style'
-                attributes {
-                    'amp-custom' = true
-                }
-                content = Neos.Fusion:Array {
-                    baseStyles = Neos.Fusion:Template {
-                        templatePath = 'resource://Shel.Blog/Private/Styles/Amp.css'
-                    }
-                }
-            }
+            ampBlogStyles = afx`
+                <style amp-custom="true">
+                    <Neos.Fusion:Template @key="baseStyles"
+                        templatePath="resource://Shel.Blog/Private/Styles/Amp.css"/>
+                </style>
+            `
+            @position = 'after titleTag'
         }
 
-        javascripts >
-
-        ampScript = Neos.Fusion:Tag {
-            tagName = 'script'
-            attributes {
-                async = true
-                src = 'https://cdn.ampproject.org/v0.js'
-            }
-            @position = 'after stylesheets'
+        ampScripts = Neos.Fusion:Join {
+            main = afx`<script async="" src="https://cdn.ampproject.org/v0.js"></script>`
+            @position = 'after ampStylesheets'
         }
     }
 
@@ -52,19 +39,45 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
 
         javascripts >
 
-        content = Neos.Fusion:Array {
-            header = Neos.Fusion:Tag {
-                tagName = 'header'
-                attributes.class = 'site-header'
-                content = ${site.context.currentSite.name}
-            }
+        content = Neos.Fusion:Component {
+            renderer = Neos.Fusion:Join {
+                header = afx`<header class="site-header">{site.context.currentSite.name}</header>`
 
-            breadcrumb = Neos.Neos:BreadcrumbMenu
+                breadcrumb = Neos.Fusion:Component {
+                    items = ${q(documentNode).parents('[instanceof Neos.Neos:Document][hiddenInIndex != true]').get()}
+                    items.@process.removeSitenode = ${Array.pop(value)}
+                    items.@process.reverse = ${Array.reverse(value)}
 
-            primaryContent = Neos.Neos:PrimaryContent {
-                @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/s', '<amp-img layout=responsive $1>')}
+                    renderer = afx`
+                        <nav class="breadcrumb">
+                            <ol class="breadcrumb__list">
+                                <li class="breadcrumb__link">
+                                    <Neos.Fusion:Tag tagName="a" content={site.label} @children="attributes.href"
+                                        attributes.title={q(site).property('titleOverride') || site.label}>
+                                        <Neos.Neos:NodeUri node={site}/>
+                                    </Neos.Fusion:Tag>
+                                </li>
+
+                                <Neos.Fusion:Loop items={props.items} @children="itemRenderer">
+                                    <li class="breadcrumb__link">
+                                        <Neos.Fusion:Tag tagName="a" content={item.label} @children="attributes.href"
+                                            attributes.title={q(item).property('titleOverride') || item.label}>
+                                            <Neos.Neos:NodeUri node={item}/>
+                                        </Neos.Fusion:Tag>
+                                    </li>
+                                </Neos.Fusion:Loop>
+
+                                <li class="breadcrumb__link active">{documentNode.label}</li>
+                            </ol>
+                        </nav>
+                    `
+                }
+
+                primaryContent = Neos.Neos:PrimaryContent {
+                    @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/s', '<amp-img layout=responsive $1>')}
+                }
             }
-         }
+        }
     }
 }
 

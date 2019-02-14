@@ -38,12 +38,14 @@ prototype(Neos.Neos:Page) {
                     identifier = 'rss-links'
                     workspace = ${node.context.workspace.name}
                 }
-                entryTags.1 = 'NodeType_Shel.Blog:BlogFeed'
+                entryTags {
+                    blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:BlogFeed')}
+                }
             }
         }
 
         canonicalLink.attributes.href {
-            additionalParams = Neos.Fusion:RawArray {
+            additionalParams = Neos.Fusion:DataStructure {
                 '--blog-pagination' = ${{'currentPage': currentBlogPage}}
                 '--blog-pagination'.@if.notFirstPage = ${currentBlogPage > 1}
             }
@@ -58,7 +60,7 @@ prototype(Neos.Neos:Page) {
                 href = Neos.Neos:NodeUri {
                     node = ${documentNode}
                     absolute = true
-                    additionalParams = Neos.Fusion:RawArray {
+                    additionalParams = Neos.Fusion:DataStructure {
                         '--blog-pagination' = ${{'currentPage': currentBlogPage + 1}}
                     }
                 }
@@ -74,7 +76,7 @@ prototype(Neos.Neos:Page) {
                 href = Neos.Neos:NodeUri {
                     node = ${documentNode}
                     absolute = true
-                    additionalParams = Neos.Fusion:RawArray {
+                    additionalParams = Neos.Fusion:DataStructure {
                         '--blog-pagination' = ${{'currentPage': currentBlogPage - 1}}
                     }
                 }

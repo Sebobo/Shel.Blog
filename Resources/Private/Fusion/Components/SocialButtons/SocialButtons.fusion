@@ -4,9 +4,6 @@ prototype(Shel.Blog:SocialButtons) < prototype(Neos.Fusion:Component) {
     twitterId = ${this.settings.twitterId}
     twitterId.@process.encode = ${String.rawUrlEncode(value)}
 
-    flattrId = ${this.settings.flattrId}
-    flattrId.@process.encode = ${String.rawUrlEncode(value)}
-
     facebookId = ${this.settings.facebookId}
     facebookId.@process.encode = ${String.rawUrlEncode(value)}
 
@@ -22,12 +19,6 @@ prototype(Shel.Blog:SocialButtons) < prototype(Neos.Fusion:Component) {
                 class="blog-entry-social__twitter" target="_blank" title="Tweet this"
                 href={"https://twitter.com/intent/tweet?url=" + props.entryUrl + "&text=" + props.title + "&via=" + props.twitterId}>
                 <i class="fa fa-twitter"></i> Tweet
-            </a>
-
-            <a @if.enabled={props.flattrId} @key="flattrLink"
-                class="blog-entry-social__flattr" target="_blank" title="Flattr this"
-                href={"https://flattr.com/submit/auto?user_id=" + props.flattrId + "&url=" + props.entryUrl}>
-                Flattr
             </a>
 
             <a @if.enabled={props.facebookId} @key="facebookLink"

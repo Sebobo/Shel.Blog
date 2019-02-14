@@ -312,15 +312,23 @@ body {
 
 .breadcrumb {
     color: dimgrey;
-    display: flex;
     font-size: .8rem;
     font-weight: bold;
     list-style-type: none;
     margin: 0 0 .1rem;
-    padding: .6rem .5rem;
+    padding: .6rem 1rem;
 }
 
-.breadcrumb a::after {
+.breadcrumb__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.breadcrumb__link::after {
     content: "\00BB";
     display: inline-block;
     margin: 0 .5rem;

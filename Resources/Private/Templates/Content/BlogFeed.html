@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:neos="Neos\Neos\ViewHelpers"
       xmlns:fusion="Neos\Fusion\ViewHelpers"
       xmlns:neoscr="Neos\ContentRepository\ViewHelpers">
 <f:section name="feed">
     <section{attributes -> f:format.raw()}>
-        <header>
-            <neos:contentElement.editable property="title" tag="h1"/>
-            <neos:contentElement.editable property="description" tag="h2"/>
-        </header>
+        {header -> f:format.raw()}
 
         <f:if condition="{renderFeed}">
             <f:then>
@@ -22,11 +18,7 @@
                 </neoscr:widget.paginate>
             </f:then>
             <f:else>
-                <p>
-                    <f:translate id="blogEntry.action.more" package="Shel.Blog" source="Main">
-                        No articles found
-                    </f:translate>
-                </p>
+                {noEntriesFound -> f:format.raw()}
             </f:else>
         </f:if>
     </section>

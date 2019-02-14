@@ -106,8 +106,7 @@ The routes for the sitemap and pagination are auto-included in the `Settings.yam
 * Atom feed support with the feed document type
 * Content element showing latest blog entries
 * Blog entry with it's own template and navigation elements
-* Social buttons for twitter and flattr can be configured
-* Disqus integration
+* Social buttons for twitter and facebook can be configured
 * Easily customizeable
 * AMP support for individual blog entries
 

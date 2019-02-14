@@ -7,8 +7,4 @@ Shel:
     socialButtons:
       enabled: false
       twitterId: ''
-      flattrId: ''
       facebookId: ''
-    disqus:
-      enabled: false
-      shortname: ''

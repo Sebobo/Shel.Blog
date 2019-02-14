@@ -4,8 +4,9 @@
     "license": "MIT",
     "description": "A simple blog for Neos CMS based on fusion and yaml configurations. Also supports atom feeds.",
     "require": {
-        "neos/neos": "~3.0 || ~4.0",
-        "neos/fusion-afx": "^1.0"
+        "neos/neos": "~4.2",
+        "neos/seo": "~2.1",
+        "neos/fusion-afx": "^1.1"
     },
     "authors": [
         {
@@ -15,10 +16,6 @@
             "role": "Developer"
         }
     ],
-    "suggest": {
-        "neos/seo": "The package is optimized to work with the Neos seo package.",
-        "neos/nodetypes": "The package is optimized to work with the Neos nodetypes package."
-    },
     "autoload": {
         "psr-4": {
             "Shel\\Blog\\": "Classes"
