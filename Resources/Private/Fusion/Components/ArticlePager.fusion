@@ -36,7 +36,4 @@ prototype(Shel.Blog:Component.ArticlePager) < prototype(Neos.Fusion:Component) {
             </ul>
         </nav>
     `
-    renderer.@process.debug = Shel.NeosBase:Debug {
-        output = ${props.linkArguments}
-    }
 }
