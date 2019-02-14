@@ -1,5 +1,17 @@
-prototype(Shel.Blog:SocialButtons) < prototype(Neos.Fusion:Component) {
+prototype(Shel.Blog:Component.SocialButtons) < prototype(Neos.Fusion:Component) {
     settings = ${Configuration.setting('Shel.Blog.socialButtons')}
+
+    article = null
+    @context.article = ${this.article}
+
+    title = ${this.article.label}
+    title.@process.encode = ${String.rawUrlEncode(value)}
+
+    articleUrl = Neos.Neos:NodeUri {
+        node = ${article}
+        format = 'html'
+    }
+    articleUrl.@process.encode = ${String.rawUrlEncode(value)}
 
     twitterId = ${this.settings.twitterId}
     twitterId.@process.encode = ${String.rawUrlEncode(value)}
@@ -7,23 +19,17 @@ prototype(Shel.Blog:SocialButtons) < prototype(Neos.Fusion:Component) {
     facebookId = ${this.settings.facebookId}
     facebookId.@process.encode = ${String.rawUrlEncode(value)}
 
-    title = ''
-    title.@process.encode = ${String.rawUrlEncode(value)}
-
-    entryUrl = ''
-    entryUrl.@process.encode = ${String.rawUrlEncode(value)}
-
     renderer = afx`
         <section class="blog-entry-social" @key="wrapper">
             <a @if.enabled={props.twitterId} @key="twitterLink"
                 class="blog-entry-social__twitter" target="_blank" title="Tweet this"
-                href={"https://twitter.com/intent/tweet?url=" + props.entryUrl + "&text=" + props.title + "&via=" + props.twitterId}>
+                href={"https://twitter.com/intent/tweet?url=" + props.articleUrl + "&text=" + props.title + "&via=" + props.twitterId}>
                 <i class="fa fa-twitter"></i> Tweet
             </a>
 
             <a @if.enabled={props.facebookId} @key="facebookLink"
                 class="blog-entry-social__facebook" target="_blank" title="Share with facebook"
-                href={"https://www.facebook.com/sharer/sharer.php?&u=" + props.entryUrl}>
+                href={"https://www.facebook.com/sharer/sharer.php?&u=" + props.articleUrl}>
                 <i class="fa fa-facebook"></i> Facebook
             </a>
         </section>

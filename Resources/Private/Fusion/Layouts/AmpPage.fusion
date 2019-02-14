@@ -1,8 +1,4 @@
-prototype(Shel.Blog:AmpVersion) < prototype(Neos.Fusion:Value) {
-    value = ${request.pluginArguments['blog-amplify']}
-}
-
-prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
+prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
     # Additional scripts are not allowed with amp
     lastVisitedNodeScript >
 
@@ -15,17 +11,8 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
         javascripts >
 
         ampStylesheets = Neos.Fusion:Join {
-            ampBoilerplate = Neos.Fusion:Template {
-                templatePath = 'resource://Shel.Blog/Private/Templates/FusionObjects/AmpBoilerplate.html'
-            }
-
-            ampBlogStyles = afx`
-                <style amp-custom="true">
-                    <Neos.Fusion:Template @key="baseStyles"
-                        templatePath="resource://Shel.Blog/Private/Styles/Amp.css"/>
-                </style>
-            `
-            @position = 'after titleTag'
+            ampBoilerplate = Shel.Blog:Component.AmpBoilerplate
+            ampBlogStyles = Shel.Blog:Component.AmpStyles
         }
 
         ampScripts = Neos.Fusion:Join {
@@ -74,6 +61,11 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
                 }
 
                 primaryContent = Neos.Neos:PrimaryContent {
+                    shelBlogArticle {
+                        condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
+                        type = 'Shel.Blog:Component.Article'
+                    }
+
                     @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/s', '<amp-img layout=responsive $1>')}
                 }
             }
@@ -81,11 +73,11 @@ prototype(Shel.Blog:AmpPage) < prototype(Neos.Neos:Page) {
     }
 }
 
-blogEntryAmp = Shel.Blog:AmpPage
+shelBlogArticleAmp = Shel.Blog:Layout.AmpPage
 
-root.blogEntryAmp {
+root.shelBlogArticleAmp {
     @position = 'before format'
-    @context.blogAmpVersion = Shel.Blog:AmpVersion
-    condition = ${!!blogAmpVersion}
-    renderPath = '/blogEntryAmp'
+    @context.blogAmpMode = Shel.Blog:Helper.AmpMode
+    condition = ${blogAmpMode}
+    renderPath = '/shelBlogArticleAmp'
 }

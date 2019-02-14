@@ -1,0 +1,42 @@
+prototype(Shel.Blog:Component.ArticlePager) < prototype(Neos.Fusion:Component) {
+    article = null
+
+    previousArticle = ${q(this.article).prev('[instanceof Shel.Blog:Document.Article]').get(0)}
+    nextArticle = ${q(this.article).next('[instanceof Shel.Blog:Document.Article]').get(0)}
+
+    linkArguments = Neos.Fusion:Case {
+        default.condition = ${true}
+        default.renderer = ${[]}
+        default.@position = 'end'
+
+        amp.condition = Shel.Blog:Helper.AmpMode
+        amp.renderer = Neos.Fusion:DataStructure {
+            '--blog-amplify' = true
+        }
+    }
+
+    renderer = afx`
+        <nav class="blog-entry-pager">
+            <ul>
+                <li class="blog-entry-pager__prev" @if.hasPrevious={props.previousArticle}>
+                    <Neos.Fusion:Tag tagName="a" attributes.title={props.previousArticle.label}
+                        content={props.previousArticle.label} @children="attributes.href">
+                        <Neos.Neos:NodeUri node={props.previousArticle} additionalParams={props.linkArguments}/>
+                    </Neos.Fusion:Tag>
+                </li>
+                <li class="blog-entry-pager__current">
+                    <span>{props.article.label}</span>
+                </li>
+                <li class="blog-entry-pager__prev" @if.hasPrevious={props.nextArticle}>
+                    <Neos.Fusion:Tag tagName="a" attributes.title={props.nextArticle.label}
+                        content={props.nextArticle.label} @children="attributes.href">
+                        <Neos.Neos:NodeUri node={props.nextArticle} additionalParams={props.linkArguments}/>
+                    </Neos.Fusion:Tag>
+                </li>
+            </ul>
+        </nav>
+    `
+    renderer.@process.debug = Shel.NeosBase:Debug {
+        output = ${props.linkArguments}
+    }
+}

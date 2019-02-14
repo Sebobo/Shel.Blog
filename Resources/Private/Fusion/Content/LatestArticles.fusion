@@ -1,13 +1,5 @@
-##
-# "LatestBlogEntries" element
-#
-prototype(Shel.Blog:LatestBlogEntries) < prototype(Shel.Blog:BlogFeedContent) {
+prototype(Shel.Blog:Content.LatestArticles) < prototype(Shel.Blog:Component.Feed) {
     renderer = Neos.Fusion:Component {
-        templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
-        partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
-        attributes.class = ''
-        sectionName = 'latestBlogEntries'
-
         renderer = afx`
             <div class="blog-latest">
                 <ul @if.hasEntries={props.renderFeed}>

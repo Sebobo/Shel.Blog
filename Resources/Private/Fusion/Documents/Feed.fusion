@@ -1,0 +1,7 @@
+prototype(Shel.Blog:Document.Feed) < prototype(Neos.Neos:Page) {
+    prototype(Neos.Neos:PrimaryContent).shelBlogFeed {
+        condition = ${q(node).is('[instanceof Shel.Blog:Document.Feed]')}
+        type = 'Shel.Blog:Component.Feed'
+        @position = 'before default'
+    }
+}

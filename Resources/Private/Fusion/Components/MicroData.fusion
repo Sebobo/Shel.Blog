@@ -1,4 +1,4 @@
-prototype(Shel.Blog:MicroData) < prototype(Neos.Fusion:Tag) {
+prototype(Shel.Blog:Component.MicroData) < prototype(Neos.Fusion:Tag) {
     tagName = 'script'
     attributes.type = 'application/ld+json'
 

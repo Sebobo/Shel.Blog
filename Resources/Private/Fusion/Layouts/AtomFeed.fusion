@@ -3,8 +3,8 @@
 # We clear the prototype of the BlogFeed so we don't have inherited
 # properties we don't want and would be contained in the output.
 #
-prototype(Shel.Blog:BlogFeedAtom) >
-prototype(Shel.Blog:BlogFeedAtom) < prototype(Neos.Fusion:Http.Message) {
+prototype(Shel.Blog:Layout.AtomFeed) >
+prototype(Shel.Blog:Layout.AtomFeed) < prototype(Neos.Fusion:Http.Message) {
     httpResponseHead {
         headers.Content-Type = 'application/xml'
     }
@@ -12,21 +12,21 @@ prototype(Shel.Blog:BlogFeedAtom) < prototype(Neos.Fusion:Http.Message) {
     doctype = '<?xml version="1.0" encoding="utf-8"?>'
     doctype.@position = 'start 100'
 
-    feed = Shel.Blog:BlogFeedContent {
+    feed = Shel.Blog:Component.Feed {
         @position = 'after doctype'
         limit = 0
     }
 
     // Provide a custom partial when the atom format is called because Fluid will try to find a Image.atom partial
     prototype(Neos.NodeTypes:Image) {
-        partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
+        partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
     }
 
     prototype(Neos.NodeTypes:TextWithImage) {
-        partialRootPath = 'resource://Shel.Blog/Private/Templates/NodeTypes/Partials'
+        partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
     }
 
-    prototype(Shel.Blog:BlogFeedEntry) {
+    prototype(Shel.Blog:Component.Teaser) {
         // We need the raw thumbnail for the feed to access the file size of the processed image and other details
         atomImage = ${this.entryImage != null ? Shel.Blog.Asset.createThumbnail(this.entryImage, null, this.settings.atomImageMaxWidth) : null}
 
@@ -41,22 +41,6 @@ prototype(Shel.Blog:BlogFeedAtom) < prototype(Neos.Fusion:Http.Message) {
 }
 
 ##
-# Html version of the blog feed
-# It's just for rendering the primary content part and not the whole page.
-# This way it will integrate easily into an existing layout.
-#
-prototype(Shel.Blog:BlogFeedHtml) < prototype(Shel.Blog:BlogFeedContent)
-
-##
-# Add a condition to render the primary content differently if we show a blog feed
-#
-prototype(Neos.Neos:PrimaryContent).BlogFeed {
-    condition = ${q(node).is('[instanceof Shel.Blog:BlogFeed]')}
-    type = 'Shel.Blog:BlogFeedHtml'
-    @position = 'before default'
-}
-
-##
 # Calling a page with the format .atom will automatically call the xml based layout
 #
-atom = Shel.Blog:BlogFeedAtom
+atom = Shel.Blog:Layout.AtomFeed

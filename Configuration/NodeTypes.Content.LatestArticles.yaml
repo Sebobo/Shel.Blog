@@ -1,8 +1,4 @@
-##
-# A custom "Menu" NodeType for blog entries
-#
-
-'Shel.Blog:LatestBlogEntries':
+'Shel.Blog:Content.LatestArticles':
   superTypes:
     'Neos.Neos:Content': true
   ui:
@@ -48,4 +44,4 @@
           editorOptions:
             placeholder: 'Type to search for feeds'
             nodeTypes:
-              - 'Shel.Blog:BlogFeed'
+              - 'Shel.Blog:Document.Feed'

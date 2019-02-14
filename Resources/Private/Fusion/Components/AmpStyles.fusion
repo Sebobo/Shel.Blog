@@ -1,0 +1,14 @@
+prototype(Shel.Blog:Component.AmpStyles) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+        <style amp-custom="true">
+            <Neos.Fusion:Template @key="baseStyles" templatePath="resource://Shel.Blog/Private/Styles/Amp.css"/>
+        </style>
+    `
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            identifier = 'shel-blog-amp-styles'
+        }
+    }
+}

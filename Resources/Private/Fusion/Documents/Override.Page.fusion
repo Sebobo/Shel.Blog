@@ -1,10 +1,7 @@
-##
-# Extend page type with an additional header data
-#
 prototype(Neos.Neos:Page) {
     @context {
-        isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:BlogEntry]')}
-        isBlogFeed = ${q(documentNode).is('[instanceof Shel.Blog:BlogFeed]') && request.format == 'html'}
+        isBlogEntry = ${q(documentNode).is('[instanceof Shel.Blog:Document.Article]')}
+        isBlogFeed = ${q(documentNode).is('[instanceof Shel.Blog:Document.Feed]') && request.format == 'html'}
         currentBlogPage = ${String.toInteger(request.pluginArguments['blog-pagination'].currentPage || 1)}
     }
 
@@ -15,7 +12,7 @@ prototype(Neos.Neos:Page) {
         }
 
         feedLinks = Neos.Fusion:Collection {
-            collection = ${q(site).find('[instanceof Shel.Blog:BlogFeed]')}
+            collection = ${q(site).find('[instanceof Shel.Blog:Document.Feed]')}
             itemName = 'feed'
             iterationName = 'iteration'
             itemRenderer = Neos.Fusion:Tag {
@@ -39,7 +36,7 @@ prototype(Neos.Neos:Page) {
                     workspace = ${node.context.workspace.name}
                 }
                 entryTags {
-                    blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:BlogFeed')}
+                    blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:Document.Feed')}
                 }
             }
         }
@@ -96,10 +93,10 @@ prototype(Neos.Neos:Page) {
                 }
             }
             @if.isBlogEntry = ${isBlogEntry}
-            @if.notAmp = ${blogAmpVersion != true}
+            @if.notAmp = ${blogAmpMode != true}
         }
 
-        blogMicroData = Shel.Blog:MicroData {
+        blogMicroData = Shel.Blog:Component.MicroData {
             @if.isBlogEntry = ${isBlogEntry}
         }
     }

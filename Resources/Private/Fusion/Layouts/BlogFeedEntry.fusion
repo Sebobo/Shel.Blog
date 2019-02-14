@@ -1,8 +1,0 @@
-##
-# "BlogFeedEntry" layout for listings
-#
-prototype(Shel.Blog:BlogFeedEntry) < prototype(Shel.Blog:BlogEntryContent) {
-    templatePath = ${'resource://Shel.Blog/Private/Templates/FusionObjects/BlogFeedEntry.' + request.format}
-    attributes.class = 'blog-feed-entry'
-    sectionName = 'blogFeedEntry'
-}

@@ -1,0 +1,19 @@
+prototype(Shel.Blog:Component.CategoryList) < prototype(Neos.Fusion:Component) {
+    categories = ${[]}
+    label = ${I18n.translate('Shel.Blog:Main:categories.label')}
+
+    renderer = afx`
+            <span class="blog-entry__categories">
+                <span class="blog-entry__categories-label">{props.label}</span>
+                <Neos.Fusion:Loop items={props.categories} itemName="category" @children="itemRenderer">
+                    <span class="blog-entry__categories-item">
+                        <Neos.Fusion:Tag tagName="a" content={category.label} attributes.rel="tag"
+                            attributes.title={q(category).property('title')} @children="attributes.href">
+                            <Neos.Neos:NodeUri node={category}/>
+                        </Neos.Fusion:Tag>
+                    </span>
+                </Neos.Fusion:Loop>
+            </span>
+        `
+    @if.hasCategories = ${this.categories}
+}

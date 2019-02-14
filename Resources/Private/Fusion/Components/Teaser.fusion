@@ -1,0 +1,5 @@
+prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Component.Article) {
+    templatePath = ${'resource://Shel.Blog/Private/Templates/Components/Teaser.' + request.format}
+    attributes.class = 'blog-feed-entry'
+    sectionName = 'teaser'
+}

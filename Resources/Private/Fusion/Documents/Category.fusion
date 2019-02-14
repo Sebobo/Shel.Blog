@@ -1,5 +1,5 @@
-prototype(Shel.Blog:Document.Category) < prototype(Neos.Neos:Page) {
-    prototype(Shel.Blog:BlogFeedContent) {
+prototype(Shel.Blog:Document.Category) < prototype(Shel.Blog:Document.Feed) {
+    prototype(Shel.Blog:Component.Feed) {
         sourceNode = ${q(documentNode).property('sourceNode') != null ? q(documentNode).property('sourceNode') : site}
         category = ${documentNode}
     }

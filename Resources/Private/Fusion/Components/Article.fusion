@@ -1,0 +1,66 @@
+prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Shel.Blog/Private/Templates/Components/Article.html'
+    partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
+    attributes.class = 'blog-entry'
+    sectionName = 'blogEntry'
+    settings = ${Configuration.setting('Shel.Blog')}
+    @context.settings = ${this.settings}
+
+    documentNode = ${documentNode}
+
+    cldrFormat = ${this.settings.cldrFormat}
+    localeFormatLength = ${this.settings.localeFormatLength}
+    publicationDate = ${q(node).property('publicationDate')}
+    publicationDate.@process.fallback = ${value != '' && value != null ? value : q(node).property('_lastPublicationDateTime')}
+    categories = ${q(node).property('categories') || []}
+    @context.categories = ${this.categories}
+
+    showAuthor = ${this.settings.showAuthor}
+    authorName = ${q(node).property('authorName')}
+
+    title = ${q(node).property('title')}
+    entrySummary = ${q(node).property('entrySummary')}
+
+    firstTextNode = ${q(node).children('main').find('[instanceof Neos.NodeTypes:Text]').get(0)}
+    summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
+    summary.@process {
+        stripTags = ${String.stripTags(value)}
+        crop = ${String.crop(value, 200, '…')}
+    }
+
+    entryUrl = Neos.Neos:NodeUri {
+        node = ${node}
+        absolute = true
+        format = 'html'
+    }
+    @context.entryUrl = ${this.entryUrl}
+
+    content = Neos.Neos:ContentCollection {
+        attributes.class = 'blog-entry__content'
+        nodePath = 'main'
+    }
+
+    imageSettings = Neos.Fusion:DataStructure {
+        class = 'blog-entry-image'
+        width = 150
+        height = 150
+        cropping = false
+        upScaling = false
+    }
+
+    categoryList = Shel.Blog:Component.CategoryList {
+        categories = ${categories}
+    }
+
+    alternativeText = ${q(node).property('alternativeText')}
+    entryImage = ${q(node).property('entryImage')}
+
+    footer = Neos.Fusion:Component {
+        renderer = afx`
+            <footer>
+                <Shel.Blog:Component.SocialButtons article={node}/>
+                <Shel.Blog:Component.ArticlePager article={node}/>
+            </footer>
+        `
+    }
+}

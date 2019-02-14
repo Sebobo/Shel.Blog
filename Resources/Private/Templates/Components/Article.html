@@ -25,13 +25,7 @@
 
         {content -> f:format.raw()}
 
-        <footer>
-            <fusion:render path="socialButtons"/>
-            <fusion:render path="disqus"/>
-
-            <f:render partial="EntryPager"
-                      arguments="{previousEntry: previousEntry, nextEntry: nextEntry, currentEntry: node, pagerArguments: pagerArguments}"/>
-        </footer>
+        {footer -> f:format.raw()}
     </article>
 </f:section>
 </html>

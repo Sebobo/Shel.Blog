@@ -393,7 +393,7 @@ article time {
 .blog-entry-pager {
     text-align: center;
     padding: 16px 0 0;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .blog-entry-pager ul {
@@ -410,12 +410,13 @@ article time {
 }
 
 .blog-entry-pager a {
-    color: #999999;
-    text-decoration: none;
+    color: #666666;
+    text-decoration: underline;
 }
 
 .blog-entry-pager a:hover {
     color: #333333;
+    text-decoration: none;
 }
 
 .blog-entry__author {
@@ -560,8 +561,8 @@ article time {
 }
 
 .blog-entry-social a {
-    text-decoration: none;
-    color: #bbbbbb;
+    text-decoration: underline;
+    color: #666666;
     padding-left: 12px;
 }
 
@@ -571,6 +572,11 @@ article time {
 
 .blog-entry-social a:hover {
     color: #333333;
+    text-decoration: none;
+}
+
+.blog-entry__categories-item {
+    margin-left: .5rem;
 }
 
 pre, code {

@@ -1,0 +1,6 @@
+prototype(Shel.Blog:Document.Article) < prototype(Neos.Neos:Page) {
+    prototype(Neos.Neos:PrimaryContent).shelBlogArticle {
+        condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
+        type = 'Shel.Blog:Component.Article'
+    }
+}

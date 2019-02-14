@@ -1,14 +1,10 @@
-##
-# Document NodeType "BlogFeed"
-#
-
-'Shel.Blog:BlogFeed':
+'Shel.Blog:Document.Feed':
   superTypes:
     'Neos.Neos:Document': true
   constraints:
     nodeTypes:
       'Neos.Neos:Document': false
-      'Shel.Blog:BlogEntry': true
+      'Shel.Blog:Document.Article': true
       'Shel.Blog:Document.Category': true
   ui:
     label: i18n
@@ -58,7 +54,7 @@
         reloadIfChanged: true
         inspector:
           group: plugin
-          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
               '':

@@ -1,4 +1,4 @@
-# A simple configurable blog/news plugin for Neos CMS                                
+# A simple configurable blog/news plugin for Neos CMS with AMP support                                
 
 [![Latest Stable Version](https://poser.pugx.org/shel/blog/v/stable)](https://packagist.org/packages/shel/blog)
 [![Total Downloads](https://poser.pugx.org/shel/blog/downloads)](https://packagist.org/packages/shel/blog)
@@ -6,23 +6,44 @@
 
 I developed this blog package for several projects including my own [blog](http://www.mind-the-seb.de).
 
-## Build with Fusion & Yaml
+## Build with Fusion & AFX & YAML
 
-Almost all functions of this blog package are based on Fusion and Yaml configurations. 
-Just some php spice for sorting :)
+Almost all features of this blog package are based on Fusion, AFX and YAML configurations. 
 So it's very easy to extend and adapt to your needs.
 
 ## Installation
 
-Install via composer
+Add the dependency to your site package like this
 
-`composer require shel/blog`
+    `composer require --no-update shel/blog`
+    
+And then run `composer update` in your projects root folder.
 
 You can overwrite and modify the different content elements to your needs:
 
-* `Shel.Blog:BlogEntry` - A single blog post
-* `Shel.Blog:BlogFeed` - The container for blog entries which also works as archive and atom feed
-* `Shel.Blog:LatestBlogEntries` - Renders a sorted list of blog posts for example on your homepage 
+* `Shel.Blog:Document.Article` - A single blog post
+* `Shel.Blog:Document.Feed` - The container for blog entries which also works as archive and atom feed
+* `Shel.Blog:Document.Category` - A category (or tag) which can be referenced by articles and also renders a feed 
+* `Shel.Blog:Content.LatestArticles` - Renders a sorted list of blog posts for example on your homepage
+
+### Upgrade from version 2.x or 3.x
+
+A lot of prototypes and documents were refactored and therefore this upgrade will break your site.
+The new structure tries to use the most recent best practices for Neos CMS and allows you to easily
+override many parts of the rendering. 
+
+But there is a node migration to update your nodes. Run it like this after installation:
+
+    ./flow node:migrate 20190214140619
+    
+Blog feeds and categories also received a new content area for introduction texts (SEO!). 
+Add them by running this: 
+       
+    ./flow node:repair  
+    
+But if you did an override on any prototype in your own package you should adapt the naming and structure.
+
+The integrated support for `flattr` and `disqus` was removed. If you still need it, please add it yourself.
 
 ## Setup a new feed
  
@@ -36,15 +57,15 @@ Afterwards you can configure a few things in the inspector.
 
 ### Html content
 
-The html version will use your default page template and replace the `mainContent` area with your blog posts.
-All fields are inline editable except the `publication date` which makes it easy to modify your posts pretty fast!
+The html version will use your default page template and replace the `mainContent` area with your blog articles.
+All fields are inline editable except the `publication date` which makes it easy to modify your articles pretty fast!
 
-Each blog post includes a paging widget which allows you to navigate to the next/previous blog posts.
+Each blog article includes a paging widget which allows you to navigate to the next/previous blog articles.
 
 ### Atom/Xml feed 
 
 The atom/xml version will use it's own rendering and most of the time you don't need to change anything there.
-It will contain the full version of your posts including html. So images and everything.
+It will contain the full version of your articles including html. So images and everything.
 All active feeds will automatically be linked in the html header as meta tags.
 
 ### AMP rendering
@@ -53,28 +74,32 @@ As AMP itself is still work in progress, this feature is also work in progress.
 This package tries to provide a good defaults you can start with and customize it for your needs.
 As everything is written in Fusion, you can override and change anything you want.
 
-After you put some blog posts online with the help of this package, Google should be able to find the AMP 
-versions of each blog post after a few hours or days and provide the AMP version in it's search results.
+After you put some blog articles online with the help of this package, Google should be able to find the AMP 
+versions of each blog article after a few hours or days and provide the AMP version in it's search results.
 
-Each blog post automatically includes a link in the `head` to it's AMP version.
+Each blog article automatically includes a link in the `head` to it's AMP version.
 The package includes a default css for the AMP version and renders the primary content area.
 
-If you have additional custom content elements in a blog post like videos and other stuff
+If you have additional custom content elements in a blog article like videos and other stuff
 you might need to provide processors to make them compatible with AMP. 
 See the `replaceImgTags` image processor as example.
+
+Please test the AMP version every time you add new features to your blog pages!
+Also be sure to check Google Search Console on your live site as it will inform you of errors.
 
 Pull request with improvements to this feature are very welcome!
 
 #### Customizing
 
-The site is rendered as an array in `Shel.Blog:AmpPage` the object.
+The site is rendered as an array in `Shel.Blog:Layout.AmpPage` the object.
 It contains a content object in it's body section which is an array you can override and extend with additional content.
 By default provides basic layout components such as header, breadcrumb, blog content and pagination.
 
-In the stylesheets section a basic css file included with this package is added inline. See the `ampBlogStyles` object.
+In the stylesheets section a basic css file included with this package is added inline. 
+See the `Shel.Blog:Component.AmpStyles` object.
 Replace it or add another stylesheet to modify the output. Remember the styles need to be inline for AMP.
 
-Don't add additional javascripts as this is not supported currently with AMP.
+Don't add additional your usual javascripts as this is not supported currently with AMP.
 
 Check out https://www.ampproject.org/docs/get_started/create to learn more on how to get started with AMP.
 
@@ -94,7 +119,7 @@ Before you create an issue for the AMP mode please run the validation and add th
 
 You can turn this off with this fusion script:
 
-    root.blogEntryAmp >
+    root.shelBlogArticleAmp >
     prototype(Neos.Neos:Page).head.ampLink >
 
 #### Routing
@@ -105,10 +130,11 @@ The routes for the sitemap and pagination are auto-included in the `Settings.yam
 
 * Atom feed support with the feed document type
 * Content element showing latest blog entries
-* Blog entry with it's own template and navigation elements
+* Blog articles with their own template and navigation elements
+* Categories to group articles
 * Social buttons for twitter and facebook can be configured
 * Easily customizeable
-* AMP support for individual blog entries
+* AMP support for individual blog articles
 
 ## You found a problem or have ideas for improvements?
 

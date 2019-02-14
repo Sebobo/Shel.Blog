@@ -1,0 +1,70 @@
+up:
+  comments: 'Migrates the nodeType to the new naming'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:BlogEntry'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:Document.Article'
+
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:BlogFeed'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:Document.Feed'
+
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:LatestBlogEntries'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:Content.LatestArticles'
+down:
+  comments: 'Migrates the nodeType back to the previous naming'
+  migration:
+    -
+      filters:
+        - type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:Document.Article'
+      transformations:
+        - type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:BlogEntry'
+
+    -
+      filters:
+        - type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:Document.Feed'
+      transformations:
+        - type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:BlogFeed'
+
+    -
+      filters:
+        - type: 'NodeType'
+          settings:
+            nodeType: 'Shel.Blog:Content.LatestArticles'
+      transformations:
+        - type: 'ChangeNodeType'
+          settings:
+            newType: 'Shel.Blog:LatestBlogEntries'

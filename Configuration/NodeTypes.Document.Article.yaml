@@ -2,7 +2,7 @@
 # Document NodeType "BlogEntry"
 #
 
-'Shel.Blog:BlogEntry':
+'Shel.Blog:Document.Article':
   superTypes:
     'Neos.Neos:Document': true
   constraints:

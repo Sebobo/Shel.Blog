@@ -2,7 +2,7 @@
 # This is the content part of our blogfeed.
 # It's used for the xml and the normal html output, just uses different templates for the two cases.
 #
-prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:ContentComponent) {
+prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     configuration = ${Configuration.setting('Shel.Blog')}
     title = ${q(node).property('title')}
     description = ${q(node).property('description')}
@@ -11,14 +11,14 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:ContentComponent) {
     limit = ${q(node).property('limit')}
     sourceNode = ${q(node).property('sourceNode') != null ? q(node).property('sourceNode') : node}
     category = null
-    paginationConfiguration = Neos.Fusion:RawArray {
+    paginationConfiguration = Neos.Fusion:DataStructure {
         itemsPerPage = ${q(node).property('itemsPerPage') || 5}
         maximumNumberOfLinks = ${q(node).property('maximumNumberOfLinks') || 10}
     }
     requestArguments = ${request.pluginArguments}
     currentBlogPage = ${String.toInteger(this.requestArguments['blog-pagination'].currentPage || 1)}
 
-    feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:BlogEntry]').get() : []}
+    feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:Document.Article]').get() : []}
     feedEntries.@process {
         filterByCategory = ${this.category && value ? q(value).filterByReference(this.category, 'categories').get() : value}
         sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC').get() : value}
@@ -38,7 +38,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:ContentComponent) {
     listAttributes = Neos.Fusion:Attributes
 
     renderer = Neos.Fusion:Template {
-        templatePath = ${'resource://Shel.Blog/Private/Templates/Content/BlogFeed.' + request.format}
+        templatePath = ${'resource://Shel.Blog/Private/Templates/Components/Feed.' + request.format}
         attributes = Neos.Fusion:Attributes {
             class = 'blog-feed'
         }
@@ -68,7 +68,7 @@ prototype(Shel.Blog:BlogFeedContent) < prototype(Neos.Neos:ContentComponent) {
         feedContent = Neos.Fusion:Collection {
             collection = ${props.feedEntries}
             itemName = 'node'
-            itemRenderer = Shel.Blog:BlogFeedEntry
+            itemRenderer = Shel.Blog:Component.Teaser
         }
     }
 
