@@ -1,62 +1,68 @@
-prototype(Shel.Blog:Component.MicroData) < prototype(Neos.Fusion:Tag) {
-    tagName = 'script'
-    attributes.type = 'application/ld+json'
+prototype(Shel.Blog:Component.MicroData) < prototype(Neos.Fusion:Component) {
+    node = null
+    @context.node = ${this.node}
 
-    @context {
-        publisherLogoWidth = 600
-        publisherLogoHeight = 60
-        imageWidth = 2000
-        imageHeight = 800
+    publisherLogoWidth = 600
+    @context.publisherLogoWidth = ${this.publisherLogoWidth}
+    publisherLogoHeight = 60
+    @context.publisherLogoHeight = ${this.publisherLogoHeight}
+    imageWidth = 2000
+    @context.imageWidth = ${this.imageWidth}
+    imageHeight = 800
+    @context.imageHeight = ${this.imageHeight}
+
+    headline = ${q(this.node).property('title')}
+    datePublished = ${Date.format(q(this.node).property('publicationDate'), 'c')}
+    dateModified = ${Date.format(q(this.node).property('_lastModificationDateTime'), 'c')}
+    description = ${String.stripTags(q(this.node).property('entrySummary'))}
+    mainEntityOfPage = Neos.Neos:NodeUri {
+        node = ${node}
+        absolute = true
     }
-
-    content = Neos.Fusion:RawArray {
-        '@context' = 'http://schema.org'
-        '@type' = 'NewsArticle'
-        headline = ${q(documentNode).property('title')}
-        datePublished = ${Date.format(q(documentNode).property('publicationDate'), 'c')}
-        dateModified = ${Date.format(q(documentNode).property('_lastModificationDateTime'), 'c')}
-        description = ${String.stripTags(q(documentNode).property('entrySummary'))}
-
-        mainEntityOfPage = Neos.Neos:NodeUri {
-            node = ${documentNode}
-            absolute = true
-        }
-
-        author = Neos.Fusion:RawArray {
-            '@type' = 'Person'
-            name = ${q(documentNode).property('authorName')}
-            @if.hasAuthor = ${!String.isBlank(q(documentNode).property('authorName'))}
-        }
-
-        publisher = Neos.Fusion:RawArray {
-            '@type' = 'Organization'
-            name = ${site.context.currentSite.name}
-
-            logo = Neos.Fusion:RawArray {
-                '@type' = 'ImageObject'
+    author = Neos.Seo:StructuredData.Object {
+        type = 'Person'
+        renderer.name = ${q(node).property('authorName')}
+        @if.hasAuthor = ${!String.isBlank(q(node).property('authorName'))}
+    }
+    publisher = Neos.Seo:StructuredData.Object {
+        type = 'Organization'
+        renderer.name = ${site.context.currentSite.name}
+        renderer.logo = Neos.Seo:StructuredData.Object {
+            type = 'ImageObject'
+            renderer.width = ${publisherLogoWidth}
+            renderer.height = ${publisherLogoHeight}
+            renderer.url = Neos.Neos:ImageUri {
+                asset = ${q(node).property('entryImage')}
                 width = ${publisherLogoWidth}
                 height = ${publisherLogoHeight}
-                url = Neos.Neos:ImageUri {
-                    asset = ${q(documentNode).property('entryImage')}
-                    width = ${publisherLogoWidth}
-                    height = ${publisherLogoHeight}
-                }
-                @if.hasImage = ${q(documentNode).property('entryImage')}
             }
+            @if.hasImage = ${q(node).property('entryImage')}
         }
-
-        image = Neos.Fusion:RawArray {
-            '@type' = 'ImageObject'
+    }
+    image = Neos.Seo:StructuredData.Object {
+        type = 'ImageObject'
+        renderer.width = ${imageWidth}
+        renderer.height = ${imageHeight}
+        renderer.url = Neos.Neos:ImageUri {
+            asset = ${q(node).property('entryImage')}
             width = ${imageWidth}
             height = ${imageHeight}
-            url = Neos.Neos:ImageUri {
-                asset = ${q(documentNode).property('entryImage')}
-                width = ${imageWidth}
-                height = ${imageHeight}
-            }
-            @if.hasImage = ${q(documentNode).property('entryImage')}
         }
-
-        @process.toJson = ${Json.stringify(value)}
+        @if.hasImage = ${q(node).property('entryImage')}
     }
+
+    renderer = afx`
+        <script type="application/ld+json">
+            <Neos.Seo:StructuredData.RootObject
+                type="NewsArticle"
+                renderer.headline={props.data.headline}
+                renderer.datePublished={props.data.datePublished}
+                renderer.dateModified={props.data.dateModified}
+                renderer.description={props.data.description}
+                renderer.mainEntityOfPage={props.data.mainEntityOfPage}
+                renderer.author={props.data.author}
+                renderer.publisher={props.data.publisher}
+                renderer.image={props.data.image}/>
+        </script>
+    `
 }

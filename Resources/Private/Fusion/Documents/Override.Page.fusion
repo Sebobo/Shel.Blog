@@ -97,6 +97,7 @@ prototype(Neos.Neos:Page) {
         }
 
         blogMicroData = Shel.Blog:Component.MicroData {
+            node = ${documentNode}
             @if.isBlogEntry = ${isBlogEntry}
         }
     }
