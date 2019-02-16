@@ -1,0 +1,27 @@
+'Neos.NodeTypes:Headline':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes:Text':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes:TextWithImage':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes:Image':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes.Navigation:Navigation':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes.ColumnLayouts:Column':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true
+
+'Neos.NodeTypes.AssetList:AssetList':
+  superTypes:
+    'Shel.Blog:Constraint.Article': true

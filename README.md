@@ -25,6 +25,7 @@ You can overwrite and modify the different content elements to your needs:
 * `Shel.Blog:Document.Feed` - The container for blog entries which also works as archive and atom feed
 * `Shel.Blog:Document.Category` - A category (or tag) which can be referenced by articles and also renders a feed 
 * `Shel.Blog:Content.LatestArticles` - Renders a sorted list of blog posts for example on your homepage
+* `Shel.Blog:Constraint.Article` - Mixin to allow content types to be added to articles
 
 ### Upgrade from version 2.x or 3.x
 
@@ -45,6 +46,10 @@ But if you did an override on any prototype in your own package you should adapt
 
 The integrated support for `flattr` and `disqus` was removed. If you still need it, please add it yourself.
 
+There is a new constraint mixin to determine which kind of elements are allowed in a blog article.
+This change might change the behavior in your site, so you should add `'Shel.Blog:Constraint.Article': true` as
+supertype to the content types you want to have available.
+
 ## Setup a new feed
  
 After installation you have a new page type called `Blog feed`.
@@ -54,6 +59,16 @@ Afterwards you can configure a few things in the inspector.
 * `Entries to show` How many items should be shown at most.
 * `Author` The author which will be included in the xml.
 * `Description for the feed` A short description which will be included in the xml.
+
+### Configure allowed content types
+
+By default the blog article allows most elements defined in `Neos.NodeTypes`.
+To add your own types, add `'Shel.Blog:Constraint.Article': true` as supertype to them.
+
+The reason for this is that there might come new elements via plugins that don't work well
+with the blog in standard or AMP mode.
+
+Therefore you should make sure that those elements work well there.
 
 ### Html content
 
