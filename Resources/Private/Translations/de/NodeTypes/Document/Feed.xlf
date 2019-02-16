@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file original="" product-name="Shel.Blog" source-language="en" datatype="plaintext">
+    <file original="" product-name="Shel.Blog" source-language="en" target-language="de" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Blogfeed</source>
+                <target>Blog-Feed</target>
             </trans-unit>
             <trans-unit id="groups.plugin" xml:space="preserve">
                 <source>Blogfeed options</source>
+                <target>Feed-Optionen</target>
             </trans-unit>
             <trans-unit id="properties.sourceNode" xml:space="preserve">
-                <source>Page containing the blog entries for the feed</source>
+                <source>Page containing the blog articles for the feed</source>
+                <target>Seite mit Artikeln</target>
             </trans-unit>
             <trans-unit id="properties.limit" xml:space="preserve">
-                <source>Entries to show</source>
+                <source>Articles to show</source>
+                <target>Anzahl Artikel</target>
             </trans-unit>
             <trans-unit id="properties.itemsPerPage" xml:space="preserve">
-                <source>Entries per page</source>
+                <source>Articles per page</source>
+                <target>Artikel pro Seite</target>
             </trans-unit>
             <trans-unit id="properties.maximumNumberOfLinks" xml:space="preserve">
                 <source>Maximum number of links</source>
+                <target>Maximale Anzahl Links</target>
             </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
-            </trans-unit>
-            <trans-unit id="properties.description" xml:space="preserve">
-                <source>Description for the feed</source>
+                <target>Autor</target>
             </trans-unit>
             <trans-unit id="properties.sortingDirection" xml:space="preserve">
                 <source>Sorting</source>
+                <target>Sortierung</target>
             </trans-unit>
             <trans-unit id="properties.sortingDirection.selectBoxEditor.values." xml:space="preserve">
                 <source>Oldest first</source>
+                <target>Älteste zuerst</target>
             </trans-unit>
             <trans-unit id="properties.sortingDirection.selectBoxEditor.values.descending" xml:space="preserve">
                 <source>Newest first</source>
+                <target>Neuste zuerst</target>
+            </trans-unit>
+            <trans-unit id="properties.description" xml:space="preserve">
+                <source>Description for the feed</source>
+                <target>Beschreibung des Feeds</target>
             </trans-unit>
         </body>
     </file>

@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file original="" product-name="Shel.Blog" source-language="en" target-language="de" datatype="plaintext">
+    <file original="" product-name="Shel.Blog" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
-                <source>Latest blog entries</source>
-                <target>Neuste Blogbeiträge</target>
+                <source>Latest articles</source>
             </trans-unit>
             <trans-unit id="groups.plugin" xml:space="preserve">
-                <source>Latest entries options</source>
-                <target>Optionen für Beitragsliste</target>
+                <source>List options</source>
             </trans-unit>
             <trans-unit id="properties.limit" xml:space="preserve">
-                <source>Entries to show</source>
-                <target>Anzahl Beiträge</target>
+                <source>Articles to show</source>
             </trans-unit>
             <trans-unit id="properties.sortingDirection" xml:space="preserve">
                 <source>Sorting</source>
-                <target>Sortierung</target>
             </trans-unit>
             <trans-unit id="properties.sortingDirection.selectBoxEditor.values." xml:space="preserve">
                 <source>Oldest first</source>
-                <target>Älteste zuerst</target>
             </trans-unit>
             <trans-unit id="properties.sortingDirection.selectBoxEditor.values.descending" xml:space="preserve">
                 <source>Newest first</source>
-                <target>Neuste zuerst</target>
             </trans-unit>
             <trans-unit id="properties.sourceNode" xml:space="preserve">
-                <source>Source blogfeed</source>
-                <target>Quelle für Blogbeiträge</target>
+                <source>Source feed</source>
             </trans-unit>
         </body>
     </file>

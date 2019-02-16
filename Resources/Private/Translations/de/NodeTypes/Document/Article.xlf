@@ -3,12 +3,12 @@
     <file original="" product-name="Shel.Blog" source-language="en" target-language="de" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
-                <source>Blog entry</source>
-                <target>Blogbeitrag</target>
+                <source>Article</source>
+                <target>Artikel</target>
             </trans-unit>
             <trans-unit id="groups.plugin" xml:space="preserve">
-                <source>Blog entry options</source>
-                <target>Blogbeitragsoptionen</target>
+                <source>Article details</source>
+                <target>Artikel Details</target>
             </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>

@@ -3,10 +3,10 @@
     <file original="" product-name="Shel.Blog" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="ui.label" xml:space="preserve">
-                <source>Blog entry</source>
+                <source>Article</source>
             </trans-unit>
             <trans-unit id="groups.plugin" xml:space="preserve">
-                <source>Blog entry options</source>
+                <source>Article details</source>
             </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
