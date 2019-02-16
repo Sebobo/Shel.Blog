@@ -1,7 +1,14 @@
 prototype(Shel.Blog:Component.AmpBoilerplate) < prototype(Neos.Fusion:Component) {
-    renderer = Neos.Fusion:Template {
-        templatePath = 'resource://Shel.Blog/Private/Templates/Helpers/AmpBoilerplate.html'
-    }
+    renderer = afx`
+        <style amp-boilerplate>
+            <Neos.Fusion:Template templatePath="resource://Shel.Blog/Private/Styles/AmpBoilerplate.css"/>
+        </style>
+        <noscript>
+            <style amp-boilerplate>
+                <Neos.Fusion:Template templatePath="resource://Shel.Blog/Private/Styles/AmpBoilerplate.NoScript.css"/>
+            </style>
+        </noscript>
+    `
 
     @cache {
         mode = 'cached'
