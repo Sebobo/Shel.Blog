@@ -1,4 +1,6 @@
 prototype(Shel.Blog:Content.LatestArticles) < prototype(Shel.Blog:Component.Feed) {
+    summary >
+
     renderer = Neos.Fusion:Component {
         renderer = afx`
             <div class="blog-latest">

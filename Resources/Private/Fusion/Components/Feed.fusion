@@ -18,6 +18,10 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     requestArguments = ${request.pluginArguments}
     currentBlogPage = ${String.toInteger(this.requestArguments['blog-pagination'].currentPage || 1)}
 
+    summary = Neos.Neos:ContentCollection {
+        nodePath = 'summary'
+    }
+
     feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:Document.Article]').get() : []}
     feedEntries.@process {
         filterByCategory = ${this.category && value ? q(value).filterByReference(this.category, 'categories').get() : value}
@@ -46,8 +50,8 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
 
         header = afx`
             <header>
-                <h1><Neos.Neos:Editable property="title"/></h1>
-                <Neos.Neos:ContentCollection nodePath="summary"/>
+                <h1 @key="headline"><Neos.Neos:Editable property="title"/></h1>
+                {props.summary}
             </header>
         `
 
@@ -82,7 +86,7 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
             node = ${node}
             editPreviewMode = ${node.context.currentRenderingMode.name}
         }
-        // Flush the blog feed when a blog entry is changed
+        // Flush the blog feed when a blog article has been changed
         entryTags {
             1 = ${Neos.Caching.nodeTag(node)}
             2 = ${Neos.Caching.nodeTag(sourceNode)}
