@@ -3,4 +3,20 @@ prototype(Shel.Blog:Document.Article) < prototype(Neos.Neos:Page) {
         condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
         type = 'Shel.Blog:Component.Article'
     }
+
+    prototype(Neos.Seo:OpenGraphMetaTags) {
+        @context.openGraphType = 'article'
+
+        openGraphTitleTag {
+            @context.openGraphTitle = ${q(node).property('openGraphTitle') || q(node).property('title')}
+        }
+
+        openGraphImageTag {
+            @context.openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+        }
+
+        openGraphImageAttributeTags {
+            openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+        }
+    }
 }

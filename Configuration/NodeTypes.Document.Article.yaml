@@ -78,3 +78,6 @@
           group: 'document'
           editorOptions:
             nodeTypes: ['Shel.Blog:Document.Category']
+    openGraphType:
+      defaultValue: 'article'
+      ui: {}
