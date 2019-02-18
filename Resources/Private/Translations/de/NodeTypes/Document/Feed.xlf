@@ -18,6 +18,10 @@
                 <source>Articles to show</source>
                 <target>Anzahl Artikel</target>
             </trans-unit>
+            <trans-unit id="properties.hideFeedLink" xml:space="preserve">
+                <source>Don't link feed</source>
+                <target>Feed nicht verlinken</target>
+            </trans-unit>
             <trans-unit id="properties.itemsPerPage" xml:space="preserve">
                 <source>Articles per page</source>
                 <target>Artikel pro Seite</target>

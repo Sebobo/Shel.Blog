@@ -66,9 +66,10 @@
         fulltextExtractor: '${Indexing.extractHtmlTags(node.properties.entrySummary)}'
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: i18n
-          autoparagraph: true
+        inline:
+          editorOptions:
+            placeholder: i18n
+            autoparagraph: false
     categories:
       type: references
       ui:

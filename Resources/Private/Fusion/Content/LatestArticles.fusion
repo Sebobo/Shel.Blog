@@ -3,13 +3,8 @@ prototype(Shel.Blog:Content.LatestArticles) < prototype(Shel.Blog:Component.Feed
 
     renderer = Neos.Fusion:Component {
         renderer = afx`
-            <div class="blog-latest">
-                <ul @if.hasEntries={props.renderFeed}>
-                    {props.feedContent}
-                </ul>
-                <div @if.noEntries={!props.renderFeed}>
-                    {props.noEntriesFound}
-                </div>
+            <div class="blog-latest-articles">
+                {props.renderFeed ? props.feedContent : props.noEntriesFound}
             </div>
         `
     }

@@ -8,3 +8,6 @@
     nodeTypes:
       'Shel.Blog:Document.Article': false
       'Shel.Blog:Document.Category': false
+  properties:
+    hideFeedLink:
+      defaultValue: true

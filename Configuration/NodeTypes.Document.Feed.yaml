@@ -75,3 +75,9 @@
         reloadIfChanged: true
         inspector:
           group: plugin
+    hideFeedLink:
+      type: boolean
+      ui:
+        label: i18n
+        inspector:
+          group: plugin

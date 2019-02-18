@@ -9,7 +9,22 @@ I developed this blog package for several projects including my own [blog](http:
 ## Build with Fusion & AFX & YAML
 
 Almost all features of this blog package are based on Fusion, AFX and YAML configurations. 
-So it's very easy to extend and adapt to your needs.
+So it's very easy to extend and adapt to your needs.   
+
+## Features
+
+* Each blogfeed has it's own Atom feed
+* Content element showing latest blog entries
+* Blog articles with their own template and navigation elements
+* Categories to group articles, optionally with their own feeds
+* Social buttons for twitter and facebook which can be extended
+* Easily customizeable
+* AMP support for individual blog articles
+
+### Coming up
+
+* Author pages which can be references in articles (optional)
+* Make AMP styles more customizeable and integrate https://www.ampstart.com/templates#news-blog by default
 
 ## Installation
 
@@ -81,7 +96,10 @@ Each blog article includes a paging widget which allows you to navigate to the n
 
 The atom/xml version will use it's own rendering and most of the time you don't need to change anything there.
 It will contain the full version of your articles including html. So images and everything.
-All active feeds will automatically be linked in the html header as meta tags.
+All active pages of type `Shel.Blog:Document.Feed` will automatically be linked in the html header as meta tags.
+
+Category pages can work the same but their feed link is hidden by default.
+You can enable this by unchecking `Hide feed link` in the categories inspector options. 
 
 ### AMP rendering
 
@@ -140,16 +158,6 @@ You can turn this off with this fusion script:
 #### Routing
 
 The routes for the sitemap and pagination are auto-included in the `Settings.yaml`.
-
-## Features
-
-* Atom feed support with the feed document type
-* Content element showing latest blog entries
-* Blog articles with their own template and navigation elements
-* Categories to group articles
-* Social buttons for twitter and facebook can be configured
-* Easily customizeable
-* AMP support for individual blog articles
 
 ## You found a problem or have ideas for improvements?
 

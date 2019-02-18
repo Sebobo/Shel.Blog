@@ -1,0 +1,27 @@
+prototype(Shel.Blog:Component.AtomTeaser) < prototype(Shel.Blog:Component.Teaser) {
+    thumbnailWidth = ${this.settings.atomImageMaxWidth}
+
+    renderedImage = afx`
+            <figure @if.hasImage={props.entryImage}>
+                <Neos.Fusion:Tag tagName="img" @children="attributes.src"
+                    attributes.alt={props.alternativeText} attributes.title={props.title}
+                    attributes.width={props.thumbnail.width} attributes.height={props.thumbnail.height}>
+                    <Neos.Fusion:ResourceUri resource={props.thumbnail.resource}/>
+                </Neos.Fusion:Tag>
+            </figure>
+        `
+
+    content = Neos.Neos:ContentCollection {
+        attributes.class = 'blog-article__content'
+        nodePath = 'main'
+    }
+
+    renderer = Neos.Fusion:Template {
+        templatePath = ${'resource://Shel.Blog/Private/Templates/Components/Teaser.atom'}
+        sectionName = 'teaser'
+        props = ${props}
+    }
+
+    // Flow creates most links with the requests current format, which wouldn't be correct for the entry content
+    renderer.@process.convertAtomUris = ${String.pregReplace(value, '/(<a.*?href=[^>]*)(\.atom)(.*?>)/mi', '$1.html$3')}
+}

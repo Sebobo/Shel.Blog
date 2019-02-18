@@ -4,27 +4,27 @@
       xmlns:neos="http://typo3.org/ns/Neos/Neos/ViewHelpers">
 <f:section name="teaser">
     <entry>
-        <title>{node.properties.title}</title>
-        <f:if condition="{node.properties.authorName}">
+        <title>{props.title}</title>
+        <f:if condition="{props.authorName}">
             <author>
-                <name>{node.properties.authorName}</name>
+                <name>{props.authorName}</name>
             </author>
         </f:if>
-        <link rel="alternate" href="{entryUrl}"/>
-        <id>urn:uuid:{node.identifier}</id>
-        <updated>{f:format.date(date: publicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
-        <summary>{summary}</summary>
+        <link rel="alternate" href="{props.articleUri}"/>
+        <id>urn:uuid:{props.identifier}</id>
+        <updated>{f:format.date(date: props.rawPublicationDate, format: 'Y-m-d\TH:i:sP')}</updated>
+        <summary>{props.summary}</summary>
         <content type="html">
-            {content -> f:format.htmlspecialchars()}
+            {props.content -> f:format.htmlspecialchars()}
         </content>
-        <f:if condition="{entryImage}">
-            <link rel="enclosure" type="{atomImage.resource.mediaType}"
-                  title="{f:if(condition: alternativeText, then: alternativeText, else: title) -> f:format.urlencode()}"
-                  href="{f:uri.resource(resource: atomImage.resource)}"
-                  length="{atomImage.resource.fileSize}" />
+        <f:if condition="{props.entryImage}">
+            <link rel="enclosure" type="{props.thumbnail.resource.mediaType}"
+                  title="{f:if(condition: props.alternativeText, then: props.alternativeText, else: props.title) -> f:format.urlencode()}"
+                  href="{f:uri.resource(resource: props.thumbnail.resource)}"
+                  length="{props.thumbnail.resource.fileSize}" />
         </f:if>
-        <f:if condition="{categories}">
-            <f:for each="{categories}" as="category">
+        <f:if condition="{props.categories}">
+            <f:for each="{props.categories}" as="category">
                 <category term="{category.label}" scheme="{neos:uri.node(node: category, absolute: true, format: 'html')}"/>
             </f:for>
         </f:if>

@@ -14,7 +14,7 @@
                 <source>Author</source>
                 <target>Autor</target>
             </trans-unit>
-            <trans-unit id="properties.authorName.aloha.placeholder" xml:space="preserve">
+            <trans-unit id="properties.authorName.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Enter author here</source>
                 <target>Autor hier angeben</target>
             </trans-unit>
@@ -30,7 +30,7 @@
                 <source>Publication date</source>
                 <target>Veröffentlichungsdatum</target>
             </trans-unit>
-            <trans-unit id="properties.entrySummary.aloha.placeholder" xml:space="preserve">
+            <trans-unit id="properties.entrySummary.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Enter summary here</source>
                 <target>Zusammenfassung hier angeben</target>
             </trans-unit>

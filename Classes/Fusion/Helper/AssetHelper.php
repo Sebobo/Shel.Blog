@@ -2,7 +2,7 @@
 namespace Shel\Blog\Fusion\Helper;
 
 /*                                                                        *
- * This script belongs to the Flow package "Shel.Blog".                   *
+ * This script belongs to the Neos CMS plugin "Shel.Blog".                *
  *                                                                        *
  * @author Sebastian Helzle <sebastian@helzle.it>                         *
  *                                                                        */

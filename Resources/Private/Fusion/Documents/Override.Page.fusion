@@ -11,35 +11,7 @@ prototype(Neos.Neos:Page) {
             value = ${value + ' - ' + I18n.translate('Shel.Blog:Main:paginationSuffix') + ' ' + currentBlogPage}
         }
 
-        feedLinks = Neos.Fusion:Collection {
-            collection = ${q(site).find('[instanceof Shel.Blog:Document.Feed]')}
-            itemName = 'feed'
-            iterationName = 'iteration'
-            itemRenderer = Neos.Fusion:Tag {
-                tagName = 'link'
-                attributes {
-                    rel = 'alternate'
-                    type = 'application/atom+xml'
-                    title = ${feed.properties.title}
-                    href = Neos.Neos:NodeUri {
-                        node = ${feed}
-                        absolute = true
-                        format = 'atom'
-                    }
-                }
-            }
-
-            @cache {
-                mode = 'cached'
-                entryIdentifier {
-                    identifier = 'rss-links'
-                    workspace = ${node.context.workspace.name}
-                }
-                entryTags {
-                    blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:Document.Feed')}
-                }
-            }
-        }
+        feedLinks = Shel.Blog:Component.FeedLinks
 
         canonicalLink.attributes.href {
             additionalParams = Neos.Fusion:DataStructure {

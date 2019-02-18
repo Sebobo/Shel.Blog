@@ -339,7 +339,7 @@ body {
     text-decoration: none;
 }
 
-.blog-entry-image {
+.blog-article__image {
     margin: 0 0 2em;
 }
 
@@ -390,13 +390,13 @@ article time {
     font-size: smaller;
 }
 
-.blog-entry-pager {
+.blog-article-pager {
     text-align: center;
     padding: 16px 0 0;
     font-size: 14px;
 }
 
-.blog-entry-pager ul {
+.blog-article-pager ul {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
@@ -404,22 +404,22 @@ article time {
     padding: 0;
 }
 
-.blog-entry-pager li {
+.blog-article-pager li {
     flex: 1 1 14rem;
     margin: .3rem 0;
 }
 
-.blog-entry-pager a {
+.blog-article-pager a {
     color: #666666;
     text-decoration: underline;
 }
 
-.blog-entry-pager a:hover {
+.blog-article-pager a:hover {
     color: #333333;
     text-decoration: none;
 }
 
-.blog-entry__author {
+.blog-article__author {
     margin-right: .5rem;
 }
 
@@ -433,17 +433,17 @@ article time {
     margin-bottom: 50px;
 }
 
-.blog-entry__content {
+.blog-article__content {
     width: 100%;
     font-family: Georgia, Cambria, "Times New Roman", Times, "Lora", serif;
     color: #333333;
 }
 
-.blog-entry__content h1, .blog-entry__content h2, .blog-entry__content h3 {
+.blog-article__content h1, .blog-article__content h2, .blog-article__content h3 {
     font-family: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
 }
 
-.blog-entry__content h3, .blog-entry__content h4, .blog-entry__content h5, .blog-entry__content h6 {
+.blog-article__content h3, .blog-article__content h4, .blog-article__content h5, .blog-article__content h6 {
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -454,11 +454,11 @@ article time {
     font-family: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
 }
 
-.blog-entry__content h3 {
+.blog-article__content h3 {
     font-size: 36px;
 }
 
-.blog-entry__content h2, .blog-entry__content h1 {
+.blog-article__content h2, .blog-article__content h1 {
     letter-spacing: -0.02em;
     font-weight: 700;
     font-style: normal;
@@ -468,7 +468,7 @@ article time {
     margin-bottom: 0;
 }
 
-.blog-entry__content p {
+.blog-article__content p {
     font-weight: 400;
     font-style: normal;
     font-size: 22px;
@@ -482,21 +482,21 @@ article time {
     hyphens: auto;
 }
 
-.blog-entry__content a {
+.blog-article__content a {
     color: #333333;
     text-decoration: underline;
 }
 
-.blog-entry__content amp-img, .blog-entry__content amp-youtube {
+.blog-article__content amp-img, .blog-article__content amp-youtube {
     margin-top: 30px;
 }
 
-.blog-entry__content figure {
+.blog-article__content figure {
     margin: 0;
     padding: 0 0 30px;
 }
 
-.blog-entry__content figcaption {
+.blog-article__content figcaption {
     font-weight: 400;
     font-style: italic;
     font-size: 16px;
@@ -507,7 +507,7 @@ article time {
     text-align: center;
 }
 
-.blog-entry__content hr {
+.blog-article__content hr {
     border: 0;
     padding: 0;
     display: block;
@@ -517,13 +517,13 @@ article time {
     border-top: 1px solid #dddddd;
 }
 
-.blog-entry__content blockquote {
+.blog-article__content blockquote {
     margin: 0 0 30px -26px;
     border-left: 3px solid #57ad68;
     padding-left: 20px;
 }
 
-.blog-entry__content blockquote p {
+.blog-article__content blockquote p {
     letter-spacing: 0.01rem;
     font-weight: 400;
     border-left: 3px solid #57ad68;
@@ -532,12 +532,12 @@ article time {
     padding-bottom: 3px;
 }
 
-.blog-entry__content ul, .blog-entry__content ol {
+.blog-article__content ul, .blog-article__content ol {
     padding: 0 0 30px;
     margin: 0;
 }
 
-.blog-entry__content li {
+.blog-article__content li {
     font-weight: 400;
     font-style: normal;
     font-size: 23px;
@@ -547,35 +547,35 @@ article time {
     padding: 2px 0 0;
 }
 
-.blog-entry__content li p {
+.blog-article__content li p {
     padding: 0 0 1.618rem;
 }
 
-.blog-entry__content ol li {
+.blog-article__content ol li {
     list-style-type: decimal;
 }
 
-.blog-entry-social {
+.blog-article-social {
     text-align: center  ;
     padding: 20px 0 0;
 }
 
-.blog-entry-social a {
+.blog-article-social a {
     text-decoration: underline;
     color: #666666;
     padding-left: 12px;
 }
 
-.blog-entry-social a .hidden {
+.blog-article-social a .hidden {
     display: none;
 }
 
-.blog-entry-social a:hover {
+.blog-article-social a:hover {
     color: #333333;
     text-decoration: none;
 }
 
-.blog-entry__categories-item {
+.blog-article__categories-item {
     margin-left: .5rem;
 }
 

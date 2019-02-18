@@ -1,5 +1,52 @@
 prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Component.Article) {
-    templatePath = ${'resource://Shel.Blog/Private/Templates/Components/Teaser.' + request.format}
-    attributes.class = 'blog-feed-entry'
-    sectionName = 'teaser'
+    thumbnailWidth = 300
+    thumbnailHeight = 200
+    thumbnailAllowCropping = true
+    thumbnailAllowUpScaling = true
+
+    renderer {
+        attributes.class = 'blog-teaser'
+
+        content {
+            header.attributes.class = 'blog-teaser__header'
+            header.content {
+                image = afx`
+                    <a href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title} class="blog-teaser__image">
+                        <figure @if.hasImage={props.entryImage}>
+                            <Neos.Fusion:Tag tagName="img" @children="attributes.src"
+                                attributes.alt={props.alternativeText} attributes.title={props.title}
+                                attributes.width={props.thumbnail.width} attributes.height={props.thumbnail.height}>
+                                <Neos.Fusion:ResourceUri resource={props.thumbnail.resource}/>
+                            </Neos.Fusion:Tag>
+                        </figure>
+                    </a>
+                `
+                headline = afx`
+                    <h3 class="blog-teaser__headline">
+                        <a href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title}>
+                            {props.title}
+                        </a>
+                    </h3>
+                `
+                author.attributes.class = 'blog-teaser__author'
+                publicationDate.attributes.class = 'blog-teaser__publication-date'
+                categoryList >
+            }
+
+            content = afx`
+                <p class="blog-teaser__content">
+                    <Neos.Neos:Editable property="entrySummary" block={false} @if.inBackend={props.node.context.inBackend}/>
+                    {props.node.context.inBackend ? '' : props.summary}
+                </p>
+            `
+
+            footer = afx`
+                <footer class="blog-teaser__footer">
+                    <a href={props.articleUri} class="blog-teaser__more" title={props.title}>
+                        {I18n.translate('Shel.Blog:Main:blogEntry.action.more')}
+                    </a>
+                </footer>
+            `
+        }
+    }
 }

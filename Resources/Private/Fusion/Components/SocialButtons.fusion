@@ -20,20 +20,19 @@ prototype(Shel.Blog:Component.SocialButtons) < prototype(Neos.Fusion:Component) 
     facebookId.@process.encode = ${String.rawUrlEncode(value)}
 
     renderer = afx`
-        <section class="blog-entry-social" @key="wrapper">
+        <section class="blog-article-social" @key="wrapper">
             <a @if.enabled={props.twitterId} @key="twitterLink"
-                class="blog-entry-social__twitter" target="_blank" title="Tweet this"
+                class="blog-article-social__twitter" target="_blank" title="Tweet this"
                 href={"https://twitter.com/intent/tweet?url=" + props.articleUrl + "&text=" + props.title + "&via=" + props.twitterId}>
                 <i class="fa fa-twitter"></i> Tweet
             </a>
 
             <a @if.enabled={props.facebookId} @key="facebookLink"
-                class="blog-entry-social__facebook" target="_blank" title="Share with facebook"
+                class="blog-article-social__facebook" target="_blank" title="Share with facebook"
                 href={"https://www.facebook.com/sharer/sharer.php?&u=" + props.articleUrl}>
                 <i class="fa fa-facebook"></i> Facebook
             </a>
         </section>
-
     `
 
     @if.enabled = ${this.settings.enabled == true}

@@ -17,23 +17,6 @@ prototype(Shel.Blog:Layout.AtomFeed) < prototype(Neos.Fusion:Http.Message) {
         limit = 0
     }
 
-    // Provide a custom partial when the atom format is called because Fluid will try to find a Image.atom partial
-    prototype(Neos.NodeTypes:Image) {
-        partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
-    }
-
-    prototype(Neos.NodeTypes:TextWithImage) {
-        partialRootPath = 'resource://Shel.Blog/Private/Templates/Partials'
-    }
-
-    prototype(Shel.Blog:Component.Teaser) {
-        // We need the raw thumbnail for the feed to access the file size of the processed image and other details
-        atomImage = ${this.entryImage != null ? Shel.Blog.Asset.createThumbnail(this.entryImage, null, this.settings.atomImageMaxWidth) : null}
-
-        // Flow creates most links with the requests current format, which wouldn't be correct for the entry content
-        content.@process.convertAtomUris = ${String.pregReplace(value, '/(<a.*?href=[^>]*)(\.atom)(.*?>)/mi', '$1.html$3')}
-    }
-
     // We only want absolute uris in the atom feed
     prototype(Neos.Neos:ConvertUris) {
         absolute = true

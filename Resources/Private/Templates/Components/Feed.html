@@ -10,11 +10,11 @@
             <f:then>
                 <neoscr:widget.paginate widgetId="blog-pagination" nodes="{feedEntries}" as="paginatedEntries"
                                          configuration="{paginationConfiguration}">
-                    <ul{listAttributes -> f:format.raw()}>
+                    <div{listAttributes -> f:format.raw()}>
                         <f:for each="{paginatedEntries}" as="entry">
                             <fusion:render path="feedContent.itemRenderer" context="{node: entry}"/>
                         </f:for>
-                    </ul>
+                    </div>
                 </neoscr:widget.paginate>
             </f:then>
             <f:else>

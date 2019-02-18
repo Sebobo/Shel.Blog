@@ -19,3 +19,4 @@ Neos:
   Fusion:
     defaultContext:
       'Shel.Blog.Asset': 'Shel\Blog\Fusion\Helper\AssetHelper'
+      'Shel.Blog.Format': 'Shel\Blog\Fusion\Helper\FormatHelper'

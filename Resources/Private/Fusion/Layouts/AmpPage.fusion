@@ -66,6 +66,7 @@ prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
                         type = 'Shel.Blog:Component.Article'
                     }
 
+                    # Replace all image tags to make them compatible with AMP
                     @process.replaceImgTags = ${String.pregReplace(value, '/<img (.*?)>/s', '<amp-img layout=responsive $1>')}
                 }
             }
