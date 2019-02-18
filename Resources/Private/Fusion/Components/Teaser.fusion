@@ -11,8 +11,8 @@ prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Component.Article) {
             header.attributes.class = 'blog-teaser__header'
             header.content {
                 image = afx`
-                    <a href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title} class="blog-teaser__image">
-                        <figure @if.hasImage={props.entryImage}>
+                    <a @if.hasImage={props.entryImage} href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title} class="blog-teaser__image">
+                        <figure>
                             <Neos.Fusion:Tag tagName="img" @children="attributes.src"
                                 attributes.alt={props.alternativeText} attributes.title={props.title}
                                 attributes.width={props.thumbnail.width} attributes.height={props.thumbnail.height}>

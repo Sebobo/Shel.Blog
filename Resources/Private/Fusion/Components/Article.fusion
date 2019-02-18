@@ -39,6 +39,7 @@ prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:ContentComponent) {
     thumbnailAllowCropping = false
     thumbnailAllowUpScaling = false
     thumbnail = ${Shel.Blog.Asset.createThumbnail(this.entryImage, this.thumbnailWidth, null, this.thumbnailHeight, null, this.thumbnailAllowCropping, this.thumbnailAllowUpScaling)}
+    thumbnail.@if.hasAsset = ${this.entryImage}
 
     renderer = afx`
         <article class="blog-article">
