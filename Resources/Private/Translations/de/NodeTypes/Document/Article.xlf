@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="properties.authorName" xml:space="preserve">
                 <source>Author</source>
-                <target>Autor</target>
+                <target>Autor/in</target>
             </trans-unit>
             <trans-unit id="properties.authorName.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Enter author here</source>
