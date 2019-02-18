@@ -5,18 +5,26 @@ prototype(Shel.Blog:Document.Article) < prototype(Neos.Neos:Page) {
     }
 
     prototype(Neos.Seo:OpenGraphMetaTags) {
-        @context.openGraphType = 'article'
+        openGraphType = 'article'
+        openGraphTitle = ${q(node).property('openGraphTitle') || q(node).property('title')}
+        openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+
+        @context {
+            openGraphType = ${this.openGraphType}
+            openGraphTitle = ${this.openGraphTitle}
+            openGraphImage = ${this.openGraphImage}
+        }
 
         openGraphTitleTag {
-            @context.openGraphTitle = ${q(node).property('openGraphTitle') || q(node).property('title')}
+            @context.openGraphTitle = ${openGraphTitle}
         }
 
         openGraphImageTag {
-            @context.openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+            @context.openGraphImage = ${openGraphImage}
         }
 
         openGraphImageAttributeTags {
-            openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+            openGraphImage = ${openGraphImage}
         }
     }
 }
