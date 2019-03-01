@@ -1,4 +1,4 @@
-prototype(Shel.Blog:Document.Feed) < prototype(Neos.Neos:Page) {
+prototype(Shel.Blog:Document.Feed) < prototype(Shel.Blog:Document.GenericBlogPage) {
     prototype(Neos.Neos:PrimaryContent).shelBlogFeed {
         condition = ${q(node).is('[instanceof Shel.Blog:Document.Feed]')}
         type = 'Shel.Blog:Component.Feed'

@@ -1,0 +1,1 @@
+prototype(Shel.Blog:Document.GenericBlogPage) < prototype(Neos.Neos:Page)

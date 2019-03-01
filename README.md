@@ -75,6 +75,32 @@ Afterwards you can configure a few things in the inspector.
 * `Author` The author which will be included in the xml.
 * `Description for the feed` A short description which will be included in the xml.
 
+### Setup page rendering
+
+By default the `Feed`, `Category` and `Article` document types will inherit their rendering from `Neos.Neos:Page`.
+So if you extended this prototype in your own site package, the rendering should work fine as this
+package will override the `Neos.Neos:PrimaryContent` prototype which most projects use to render the main content area.
+This way the blog will render it's own content where you usually have your main content.
+
+If not you might get an error like `No template path set. ...`.
+Then you have to tell the package which document prototype it should use as basis.
+
+For the `Neos.Demo` site package it would look like this:
+
+    prototype(Shel.Blog:Document.GenericBlogPage) < prototype(Neos.NodeTypes:Page)
+  
+This way, the feed, category and article document types will know how to render.
+Of course you can also give their prototypes each a different parent prototype instead of the `GenericBlogPage`.
+
+That would look like this:
+
+    prototype(Shel.Blog:Document.Feed) < prototype(My.Package:MyFeedPage) 
+    prototype(Shel.Blog:Document.Article) < prototype(My.Package:MyArticlePage) 
+    
+Changing the parent prototype of `Feed` will also change the one for `Category` as it inherits from `Feed`.
+    
+Remember that you need to render the `Neos.Neos:PrimaryContent` object somewhere to get output. 
+
 ### Configure allowed content types
 
 By default the blog article allows most elements defined in `Neos.NodeTypes`.
