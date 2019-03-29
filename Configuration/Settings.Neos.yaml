@@ -20,3 +20,5 @@ Neos:
     defaultContext:
       'Shel.Blog.Asset': 'Shel\Blog\Fusion\Helper\AssetHelper'
       'Shel.Blog.Format': 'Shel\Blog\Fusion\Helper\FormatHelper'
+      # Hotfix, as `FileHelper` is not registered in older Neos versions
+      File: 'Neos\Eel\Helper\FileHelper'
