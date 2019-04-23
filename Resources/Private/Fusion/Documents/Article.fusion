@@ -5,10 +5,14 @@ prototype(Shel.Blog:Document.Article) < prototype(Shel.Blog:Document.GenericBlog
     }
 
     prototype(Neos.Seo:OpenGraphMetaTags) {
+        type = 'article'
+        title = ${q(node).property('openGraphTitle') || q(node).property('titleOverride') || q(node).property('title')}
+        image = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+
         @context {
-            openGraphType = 'article'
-            openGraphTitle = ${q(node).property('openGraphTitle') || q(node).property('title')}
-            openGraphImage = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
+            openGraphType = ${this.type}
+            openGraphTitle = ${this.title}
+            openGraphImage = ${this.image}
         }
 
         openGraphTitleTag {
@@ -21,6 +25,17 @@ prototype(Shel.Blog:Document.Article) < prototype(Shel.Blog:Document.GenericBlog
 
         openGraphImageAttributeTags {
             openGraphImage = ${openGraphImage}
+        }
+    }
+
+    prototype(Neos.Seo:TwitterCard) {
+        image {
+            asset {
+                entryImage {
+                    condition = ${Type.instance(q(node).property('entryImage'), 'Neos\Media\Domain\Model\ImageInterface')}
+                    renderer = ${q(node).property('entryImage')}
+                }
+            }
         }
     }
 }
