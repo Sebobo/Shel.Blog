@@ -10,6 +10,7 @@ prototype(Shel.Blog:Component.SocialButtons) < prototype(Neos.Fusion:Component) 
     articleUrl = Neos.Neos:NodeUri {
         node = ${article}
         format = 'html'
+        absolute = true
     }
     articleUrl.@process.encode = ${String.rawUrlEncode(value)}
 
