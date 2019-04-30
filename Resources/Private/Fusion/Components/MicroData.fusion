@@ -55,6 +55,7 @@ prototype(Shel.Blog:Component.MicroData) < prototype(Neos.Fusion:Component) {
         <script type="application/ld+json">
             <Neos.Seo:StructuredData.RootObject
                 type="NewsArticle"
+                @process.wrap={value}
                 renderer.headline={props.data.headline}
                 renderer.datePublished={props.data.datePublished}
                 renderer.dateModified={props.data.dateModified}
