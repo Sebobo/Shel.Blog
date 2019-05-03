@@ -30,7 +30,7 @@ So it's very easy to extend and adapt to your needs.
 
 Add the dependency to your site package like this
 
-    `composer require --no-update shel/blog`
+    composer require --no-update shel/blog
     
 And then run `composer update` in your projects root folder.
 
