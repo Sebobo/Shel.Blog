@@ -81,3 +81,10 @@
     openGraphType:
       defaultValue: 'article'
       ui: {}
+    showTableOfContents:
+      type: boolean
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: 'document'

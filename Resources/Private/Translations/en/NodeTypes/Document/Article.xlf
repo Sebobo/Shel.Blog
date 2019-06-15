@@ -29,6 +29,9 @@
             <trans-unit id="properties.categories" xml:space="preserve">
                 <source>Categories</source>
             </trans-unit>
+            <trans-unit id="properties.showTableOfContents" xml:space="preserve">
+                <source>Show table of contents</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

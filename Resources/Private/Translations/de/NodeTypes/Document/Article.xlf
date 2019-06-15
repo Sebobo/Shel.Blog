@@ -38,6 +38,10 @@
                 <source>Categories</source>
                 <target>Kategorien</target>
             </trans-unit>
+            <trans-unit id="properties.showTableOfContents" xml:space="preserve">
+                <source>Show table of contents</source>
+                <target>Inhaltsverzeichnis anzeigen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

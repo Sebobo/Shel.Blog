@@ -14,6 +14,9 @@
             <trans-unit id="categories.label" xml:space="preserve">
                 <source>Categories:</source>
             </trans-unit>
+            <trans-unit id="tableOfContents" xml:space="preserve">
+                <source>Table of contents</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

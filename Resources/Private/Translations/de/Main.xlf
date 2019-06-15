@@ -18,6 +18,10 @@
                 <source>Categories:</source>
                 <target>Kategorien:</target>
             </trans-unit>
+            <trans-unit id="tableOfContents" xml:space="preserve">
+                <source>Table of contents</source>
+                <target>Inhaltsverzeichnis</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

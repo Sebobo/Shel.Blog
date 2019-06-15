@@ -1,0 +1,30 @@
+prototype(Shel.Blog:Component.TableOfContents) < prototype(Neos.Fusion:Component) {
+    @if.hasHeadlines = ${this.headlines}
+    @if.notAmp = ${blogAmpMode != true}
+    @if.enabled = ${q(documentNode).property('showTableOfContents') == true}
+    headlinesType = 'Neos.NodeTypes.BaseMixins:TitleMixin'
+    headlines = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof ' + this.headlinesType + ']').get()}
+    headlines.@process.structure = ${Shel.Blog.Structure.createTableOfContents(value, 'title')}
+
+    renderer = afx`
+        <nav class="blog-article__table-of-content">
+            <strong>{I18n.translate('Shel.Blog:Main:tableOfContents')}</strong>
+            <Shel.Blog:Component.TableOfContents.Items items={props.headlines}/>
+        </nav>
+    `
+}
+
+prototype(Shel.Blog:Component.TableOfContents.Items) < prototype(Neos.Fusion:Component) {
+    @if.hasItems = ${this.items}
+    items = ${[]}
+    renderer = afx`
+        <ol>
+            <Neos.Fusion:Loop items={props.items}>
+                <li>
+                    <a href={'#headline-' + item.node.identifier} title={item.label}>{item.label}</a>
+                    <Shel.Blog:Component.TableOfContents.Items items={item.items}/>
+                </li>
+            </Neos.Fusion:Loop>
+        </ol>
+    `
+}

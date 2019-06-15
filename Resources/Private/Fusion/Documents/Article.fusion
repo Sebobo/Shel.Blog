@@ -38,4 +38,8 @@ prototype(Shel.Blog:Document.Article) < prototype(Shel.Blog:Document.GenericBlog
             }
         }
     }
+
+    prototype(Neos.NodeTypes:Headline) {
+        attributes.id = ${'headline-' + node.identifier}
+    }
 }

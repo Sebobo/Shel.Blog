@@ -65,6 +65,8 @@ prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:ContentComponent) {
                 <Shel.Blog:Component.CategoryList @key="categoryList" categories={props.categories}/>
             </header>
 
+            <Shel.Blog:Component.TableOfContents @key="tableOfContents"/>
+
             <Neos.Neos:ContentCollection @key="content" attributes.class="blog-article__content" nodePath="main"/>
 
             <footer @key="footer" class="blog-article__footer">
