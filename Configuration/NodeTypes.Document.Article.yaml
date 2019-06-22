@@ -34,8 +34,9 @@
         inspector:
           position: 100
           group: plugin
-        aloha:
-          placeholder: i18n
+        inline:
+          editorOptions:
+            placeholder: i18n
     publicationDate:
       type: DateTime
       ui:
