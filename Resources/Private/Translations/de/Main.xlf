@@ -6,7 +6,7 @@
                 <source>more</source>
                 <target>mehr</target>
             </trans-unit>
-            <trans-unit id="noEntriesFound" xml:space="preserve">
+            <trans-unit id="blogEntry.noEntriesFound" xml:space="preserve">
                 <source>No articles found</source>
                 <target>Keine Beiträge gefunden</target>
             </trans-unit>
