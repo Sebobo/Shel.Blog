@@ -18,16 +18,16 @@ prototype(Shel.Blog:Component.ArticlePager) < prototype(Neos.Fusion:Component) {
     renderer = afx`
         <nav class="blog-article-pager">
             <ul>
-                <li class="blog-article-pager__prev" @if.hasPrevious={props.previousArticle}>
+                <li @key="prev" class="blog-article-pager__prev" @if.hasPrevious={props.previousArticle}>
                     <Neos.Fusion:Tag tagName="a" attributes.title={props.previousArticle.label}
                         content={props.previousArticle.label} @children="attributes.href">
                         <Neos.Neos:NodeUri node={props.previousArticle} additionalParams={props.linkArguments}/>
                     </Neos.Fusion:Tag>
                 </li>
-                <li class="blog-article-pager__current">
+                <li @key="current" class="blog-article-pager__current">
                     <span>{props.article.label}</span>
                 </li>
-                <li class="blog-article-pager__prev" @if.hasPrevious={props.nextArticle}>
+                <li @key="next" class="blog-article-pager__prev" @if.hasPrevious={props.nextArticle}>
                     <Neos.Fusion:Tag tagName="a" attributes.title={props.nextArticle.label}
                         content={props.nextArticle.label} @children="attributes.href">
                         <Neos.Neos:NodeUri node={props.nextArticle} additionalParams={props.linkArguments}/>
