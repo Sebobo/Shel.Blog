@@ -23,7 +23,7 @@ prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Component.Article) {
                 `
                 headline = afx`
                     <h3 class="blog-teaser__headline">
-                        <a href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title}>
+                        <a href={props.articleUri} title={props.title}>
                             {props.title}
                         </a>
                     </h3>
