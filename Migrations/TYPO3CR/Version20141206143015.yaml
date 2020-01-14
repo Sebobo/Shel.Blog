@@ -12,7 +12,7 @@ up:
           type: 'ChangeNodeType'
           settings:
             newType: 'Shel.Blog:BlogEntry'
-
+    -
       filters:
         -
           type: 'NodeType'
@@ -23,7 +23,7 @@ up:
           type: 'ChangeNodeType'
           settings:
             newType: 'Shel.Blog:BlogFeed'
-
+    -
       filters:
         -
           type: 'NodeType'
@@ -48,7 +48,7 @@ down:
           type: 'ChangeNodeType'
           settings:
             newType: 'SebastianHelzle.Blog:BlogEntry'
-
+    -
       filters:
         -
           type: 'NodeType'
@@ -59,7 +59,7 @@ down:
           type: 'ChangeNodeType'
           settings:
             newType: 'SebastianHelzle.Blog:BlogFeed'
-
+    -
       filters:
         -
           type: 'NodeType'
