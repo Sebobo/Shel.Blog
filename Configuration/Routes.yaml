@@ -32,9 +32,9 @@
     '@action': 'show'
     '@format': 'html'
     '--blog-pagination':
-      '@package': ''
-      '@subpackage': ''
-      '@controller': ''
+      '@package': 'Neos.ContentRepository'
+      '@subpackage': 'Viewhelpers\Widget'
+      '@controller': 'Paginate'
       '@action': 'index'
       '@format': 'html'
       'currentPage': '1'
