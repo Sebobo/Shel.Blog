@@ -8,7 +8,7 @@
     '@format': 'atom'
   routeParts:
     'node':
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandler'
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
 
 -
   name:  'AMP blog entries'
@@ -21,7 +21,7 @@
     '--blog-amplify': true
   routeParts:
     'node':
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandler'
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
 
 -
   name: 'Blog paginate'
@@ -40,5 +40,5 @@
       'currentPage': '1'
   routeParts:
     node:
-      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
   appendExceedingArguments: TRUE
