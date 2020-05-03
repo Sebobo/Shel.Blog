@@ -24,6 +24,23 @@ prototype(Shel.Blog:Layout.AtomFeed) < prototype(Neos.Fusion:Http.Message) {
 }
 
 ##
-# Calling a page with the format .atom will automatically call the xml based layout
+# Calling a page that is not a blog feed with the format .atom will create a redirect
 #
-atom = Shel.Blog:Layout.AtomFeed
+atom = Neos.Fusion:Http.Message {
+    httpResponseHead.headers {
+        Status = '307 Temporary Redirect'
+        Location = Neos.Neos:NodeUri {
+            node = ${documentNode}
+            format = 'html'
+        }
+    }
+}
+
+##
+# Calling a page with the format .atom will render the xml feed if it's a blog feed
+#
+root.shelBlogAtomFeed {
+    @position = 'before format'
+    condition = ${request.format == 'atom' && q(documentNode).is('[instanceof Shel.Blog:Document.Feed]')}
+    renderer = Shel.Blog:Layout.AtomFeed
+}
