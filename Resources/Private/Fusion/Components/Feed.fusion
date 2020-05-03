@@ -68,7 +68,7 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
 
         noEntriesFound = afx`
             <p class="blog-feed__no-articles">
-                {I18n.translate('Shel.Blog:Main:blogEntry.noEntriesFound', 'No articles found')}
+                {I18n.translate('Shel.Blog:Main:blogEntry.noEntriesFound')}
             </p>
         `
 
