@@ -8,3 +8,6 @@ Shel:
       enabled: false
       twitterId: ''
       facebookId: ''
+   analytics:
+      tagManager:
+        id: ~   
