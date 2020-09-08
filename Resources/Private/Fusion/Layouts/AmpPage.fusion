@@ -1,4 +1,16 @@
 prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
+    # Disable Neos.GoogleAnalytics and include amp tag manager -> https://support.google.com/tagmanager/answer/9205783?hl=en
+    googleTagManagerNoScript >
+    googleTracking >
+    googleTracking = Neos.Fusion:Join {
+        main = afx`
+            <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+            <amp-analytics config={'https://www.googletagmanager.com/amp.json?id=' + Configuration.setting('Shel.Blog.analytics.tagManager.id') + '&gtm.url=SOURCE_URL'} data-credentials="include"></amp-analytics>
+        `
+        @if.isset = ${Configuration.setting('Shel.Blog.amp.analytics.tagManager.id')}
+        @position = 'after headTag 100'
+    }
+
     # Additional scripts are not allowed with amp
     lastVisitedNodeScript >
 
