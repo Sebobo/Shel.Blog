@@ -10,4 +10,4 @@ Shel:
       facebookId: ''
    analytics:
       tagManager:
-        id: ~   
+        ampContainerId: ~

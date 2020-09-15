@@ -7,7 +7,7 @@ prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
             <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
             <amp-analytics config={'https://www.googletagmanager.com/amp.json?id=' + Configuration.setting('Shel.Blog.analytics.tagManager.id') + '&gtm.url=SOURCE_URL'} data-credentials="include"></amp-analytics>
         `
-        @if.isset = ${Configuration.setting('Shel.Blog.amp.analytics.tagManager.id')}
+        @if.isset = ${Configuration.setting('Shel.Blog.amp.analytics.tagManager.ampContainerId')}
         @position = 'after headTag 100'
     }
 
