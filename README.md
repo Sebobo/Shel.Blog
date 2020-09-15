@@ -151,8 +151,9 @@ Shel:
   Blog:
     analytics:
       tagManager:
-        id: <gtm tag manager id>
+        ampContainerId: <gtm tag manager id>
 ```
+Please refer to [this page](https://support.google.com/tagmanager/answer/9205783?hl=en) for a detailed instruction how to set up a tagmanager container for amp
 
 Please test the AMP version every time you add new features to your blog pages!
 Also be sure to check Google Search Console on your live site as it will inform you of errors.
