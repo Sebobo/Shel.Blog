@@ -27,6 +27,16 @@
           group: plugin
       validation:
         Neos.Neos/Validation/NotEmptyValidator: {  }
+    xmlLimit:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        inspector:
+          group: plugin
+          position: 'after limit'
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: { }
     itemsPerPage:
       type: integer
       defaultValue: 5

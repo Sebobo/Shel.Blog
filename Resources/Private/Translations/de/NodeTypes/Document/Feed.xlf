@@ -18,6 +18,10 @@
                 <source>Articles to show</source>
                 <target>Anzahl Artikel</target>
             </trans-unit>
+            <trans-unit id="properties.xmlLimit" xml:space="preserve">
+                <source>Articles to show in xml news feed</source>
+                <target>Anzahl Artikel im XML Newsfeed</target>
+            </trans-unit>
             <trans-unit id="properties.hideFeedLink" xml:space="preserve">
                 <source>Don't link feed</source>
                 <target>Feed nicht verlinken</target>

@@ -14,6 +14,9 @@
             <trans-unit id="properties.limit" xml:space="preserve">
                 <source>Articles to show</source>
             </trans-unit>
+            <trans-unit id="properties.xmlLimit" xml:space="preserve">
+                <source>Articles to show in xml news feed</source>
+            </trans-unit>
             <trans-unit id="properties.hideFeedLink" xml:space="preserve">
                 <source>Don't link feed</source>
             </trans-unit>
