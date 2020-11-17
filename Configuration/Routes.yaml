@@ -1,5 +1,4 @@
--
-  name:  'ATOM'
+- name:  'ATOM'
   uriPattern: '{node}.atom'
   defaults:
     '@package': 'Neos.Neos'
@@ -23,8 +22,7 @@
     'node':
       handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
 
--
-  name: 'Blog paginate'
+- name: 'Blog paginate'
   uriPattern: '{node}/browse/{--blog-pagination.currentPage}<defaultUriSuffix>'
   defaults:
     '@package': 'Neos.Neos'
@@ -35,6 +33,27 @@
       '@package': 'Neos.ContentRepository'
       '@subpackage': 'Viewhelpers\Widget'
       '@controller': 'Paginate'
+      '@action': 'index'
+      '@format': 'html'
+      'currentPage': '1'
+  routeParts:
+    node:
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
+  appendExceedingArguments: TRUE
+
+# For some reason in some projects the widget arguments are mostly empty, so we need another route
+# to be able to generate the correct uri
+- name: 'Blog paginate without widget controller argument'
+  uriPattern: '{node}/browse/{--blog-pagination.currentPage}<defaultUriSuffix>'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'html'
+    '--blog-pagination':
+      '@package': ''
+      '@subpackage': ''
+      '@controller': ''
       '@action': 'index'
       '@format': 'html'
       'currentPage': '1'
