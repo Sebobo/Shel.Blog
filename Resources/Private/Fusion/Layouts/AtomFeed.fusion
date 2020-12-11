@@ -22,6 +22,11 @@ prototype(Shel.Blog:Layout.AtomFeed) < prototype(Neos.Fusion:Http.Message) {
     prototype(Neos.Neos:ConvertUris) {
         absolute = true
     }
+
+    // Strip all non essentials html tags
+    prototype(Shel.Blog:BlogFeedEntry) {
+        content.@process.stripTags = ${String.stripTags(value, '<h1><h2><h3><h4><h5><h6><img><p><a><figure><figcaption><strong><em><i><br>')}
+    }
 }
 
 ##
