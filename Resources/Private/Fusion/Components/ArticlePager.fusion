@@ -5,7 +5,7 @@ prototype(Shel.Blog:Component.ArticlePager) < prototype(Neos.Fusion:Component) {
     nextArticle = ${q(this.article).next('[instanceof Shel.Blog:Document.Article]').get(0)}
 
     linkArguments = Neos.Fusion:Case {
-        default.condition = ${true}
+        default.condition = true
         default.renderer = ${[]}
         default.@position = 'end'
 

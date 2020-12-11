@@ -15,7 +15,7 @@ prototype(Shel.Blog:Layout.AtomFeed) < prototype(Neos.Fusion:Http.Message) {
     feed = Shel.Blog:Component.Feed {
         @position = 'after doctype'
         limit = ${q(node).property('xmlLimit')}
-        @process.contentElementWrapping.@if.wrapInFeed = ${false}
+        @process.contentElementWrapping.@if.wrapInFeed = false
     }
 
     // We only want absolute uris in the atom feed
