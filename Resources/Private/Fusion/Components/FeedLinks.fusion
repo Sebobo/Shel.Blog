@@ -25,7 +25,7 @@ prototype(Shel.Blog:Component.FeedLinks) < prototype(Neos.Fusion:Component) {
             workspace = ${node.context.workspace.name}
         }
         entryTags {
-            blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:Document.Feed')}
+            blogFeeds = ${Neos.Caching.nodeTypeTag('Shel.Blog:Document.Feed', node)}
         }
     }
 }
