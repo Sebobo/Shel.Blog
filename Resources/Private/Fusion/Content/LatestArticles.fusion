@@ -1,6 +1,8 @@
 prototype(Shel.Blog:Content.LatestArticles) < prototype(Shel.Blog:Component.Feed) {
     summary >
 
+    category = ${q(node).property('categoryFilter')}
+
     renderer = Neos.Fusion:Component {
         renderer = afx`
             <div class="blog-latest-articles">

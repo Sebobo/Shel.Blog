@@ -30,6 +30,10 @@
                 <source>Source feed</source>
                 <target>Artikelquelle</target>
             </trans-unit>
+            <trans-unit id="properties.categoryFilter" xml:space="preserve">
+                <source>Category filter</source>
+                <target>Kategorienfilter</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

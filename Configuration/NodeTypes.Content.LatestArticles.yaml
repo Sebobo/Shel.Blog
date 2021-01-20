@@ -42,6 +42,15 @@
         inspector:
           group: plugin
           editorOptions:
-            placeholder: 'Type to search for feeds'
             nodeTypes:
               - 'Shel.Blog:Document.Feed'
+    categoryFilter:
+      type: reference
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: plugin
+          editorOptions:
+            nodeTypes:
+              - 'Shel.Blog:Document.Category'

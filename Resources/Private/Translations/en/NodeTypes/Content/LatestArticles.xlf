@@ -23,6 +23,9 @@
             <trans-unit id="properties.sourceNode" xml:space="preserve">
                 <source>Source feed</source>
             </trans-unit>
+            <trans-unit id="properties.categoryFilter" xml:space="preserve">
+                <source>Category filter</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
