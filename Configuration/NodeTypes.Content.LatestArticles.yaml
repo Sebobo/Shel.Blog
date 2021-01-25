@@ -54,3 +54,13 @@
           editorOptions:
             nodeTypes:
               - 'Shel.Blog:Document.Category'
+    pinnedArticles:
+      type: references
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: plugin
+          editorOptions:
+            nodeTypes:
+              - 'Shel.Blog:Document.Article'

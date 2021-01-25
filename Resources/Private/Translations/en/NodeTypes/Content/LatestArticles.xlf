@@ -26,6 +26,9 @@
             <trans-unit id="properties.categoryFilter" xml:space="preserve">
                 <source>Category filter</source>
             </trans-unit>
+            <trans-unit id="properties.pinnedArticles" xml:space="preserve">
+                <source>Pinned articles</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

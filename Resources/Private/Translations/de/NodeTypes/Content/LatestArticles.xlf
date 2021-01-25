@@ -34,6 +34,10 @@
                 <source>Category filter</source>
                 <target>Kategorienfilter</target>
             </trans-unit>
+            <trans-unit id="properties.pinnedArticles" xml:space="preserve">
+                <source>Pinned articles</source>
+                <target>Angepinnte Artikel</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

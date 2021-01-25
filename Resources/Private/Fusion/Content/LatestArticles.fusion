@@ -2,6 +2,12 @@ prototype(Shel.Blog:Content.LatestArticles) < prototype(Shel.Blog:Component.Feed
     summary >
 
     category = ${q(node).property('categoryFilter')}
+    pinnedArticles = ${q(node).property('pinnedArticles')}
+
+    // Prepend pinned articles before applying limit
+    feedEntries.@process.prependPinnedArticles = ${q(this.pinnedArticles).add(value)}
+    feedEntries.@process.prependPinnedArticles.@if.set = ${this.pinnedArticles}
+    feedEntries.@process.prependPinnedArticles.@position = 'before slice'
 
     renderer = Neos.Fusion:Component {
         renderer = afx`
