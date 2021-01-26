@@ -27,8 +27,8 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     feedEntries.@process {
         filterByCategory = ${this.category && value ? q(value).filterByReference(this.category, 'categories').get() : value}
         sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC') : value}
-        slice = ${this.limit > 0 ? value.slice(0, this.limit) : value}
-        get = ${value.get()}
+        slice = ${(value && this.limit > 0) ? value.slice(0, this.limit) : value}
+        get = ${value ? value.get() : []}
     }
 
     # Create condition if paginated feed should be rendered
