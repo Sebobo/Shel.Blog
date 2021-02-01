@@ -26,7 +26,7 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:Document.Article]').get() : []}
     feedEntries.@process {
         filterByCategory = ${this.category && value ? q(value).filterByReference(this.category, 'categories').get() : value}
-        sort = ${value ? q(value).sortBlogEntries('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC') : value}
+        sort = ${value ? q(value).sort('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC') : value}
         slice = ${(value && this.limit > 0) ? value.slice(0, this.limit) : value}
         get = ${value ? value.get() : []}
     }
