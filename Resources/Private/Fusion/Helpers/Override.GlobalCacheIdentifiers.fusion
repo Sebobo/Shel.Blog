@@ -1,4 +1,0 @@
-prototype(Neos.Fusion:GlobalCacheIdentifiers) {
-    ampMode = ${request.pluginArguments['blog-amplify']}
-    blogPage = ${request.pluginArguments['blog-pagination'].currentPage}
-}
