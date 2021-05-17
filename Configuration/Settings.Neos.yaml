@@ -21,5 +21,3 @@ Neos:
       'Shel.Blog.Asset': 'Shel\Blog\Fusion\Helper\AssetHelper'
       'Shel.Blog.Format': 'Shel\Blog\Fusion\Helper\FormatHelper'
       'Shel.Blog.Structure': 'Shel\Blog\Fusion\Helper\StructureHelper'
-      # Hotfix, as `FileHelper` is not registered in older Neos versions
-      File: 'Neos\Eel\Helper\FileHelper'

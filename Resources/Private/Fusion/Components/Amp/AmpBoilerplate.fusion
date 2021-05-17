@@ -1,11 +1,14 @@
 prototype(Shel.Blog:Component.AmpBoilerplate) < prototype(Neos.Fusion:Component) {
+    boilerplate = ${StaticResource.content('Shel.Blog', 'Private/Fusion/Components/Amp/AmpBoilerplate.css')}
+    noScriptBoilerplate = ${StaticResource.content('Shel.Blog', 'Private/Fusion/Components/Amp/AmpBoilerplate.NoScript.css')}
+
     renderer = afx`
         <style amp-boilerplate>
-            <Neos.Fusion:Template templatePath="resource://Shel.Blog/Private/Styles/AmpBoilerplate.css"/>
+            {props.boilerplate}
         </style>
         <noscript>
             <style amp-boilerplate>
-                <Neos.Fusion:Template templatePath="resource://Shel.Blog/Private/Styles/AmpBoilerplate.NoScript.css"/>
+                {props.noScriptBoilerplate}
             </style>
         </noscript>
     `

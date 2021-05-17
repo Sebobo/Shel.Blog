@@ -1,5 +1,5 @@
 prototype(Shel.Blog:Component.AmpStyles) < prototype(Neos.Fusion:Component) {
-    stylesheet = ${File.readFile('resource://Shel.Blog/Private/Styles/Amp.css')}
+    stylesheet = ${StaticResource.content('Shel.Blog', 'Private/Components/Amp/Amp.css')}
 
     renderer = afx`<style amp-custom="">{props.stylesheet}</style>`
 
