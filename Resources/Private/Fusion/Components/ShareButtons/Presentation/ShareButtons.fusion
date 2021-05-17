@@ -1,0 +1,23 @@
+prototype(Shel.Blog:Component.ShareButtons.Renderer) < prototype(Neos.Fusion:Component) {
+    buttonDefinition = ${{}}
+    class = 'blog-article-social'
+    itemClassPrefix = ${this.class + '__'}
+
+    @if.hasButtons = ${this.buttonDefinition}
+
+    renderer = afx`
+        <section class={props.class}>
+            <Neos.Fusion:Loop items={props.buttonDefinition}>
+                <a
+                    class={props.itemClassPrefix + item.class}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    title={item.title}
+                    href={item.href}
+                >
+                    {item.icon} {item.label}
+                </a>
+            </Neos.Fusion:Loop>
+        </section>
+    `
+}

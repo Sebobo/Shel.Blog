@@ -1,0 +1,21 @@
+prototype(Shel.Blog:Component.ShareButtons) < prototype(Neos.Fusion:Component) {
+    settings = ${Configuration.setting('Shel.Blog.socialButtons')}
+
+    @if.enabled = ${this.settings.enabled}
+
+    article = null
+
+    renderer = Shel.Blog:Component.ShareButtons.Renderer {
+        buttonDefinition = Shel.Blog:Component.ShareButtons.ButtonDefinition {
+            articleUrl = Neos.Neos:NodeUri {
+                node = ${props.article}
+                format = 'html'
+                absolute = true
+                @process.encode = ${String.rawUrlEncode(value)}
+            }
+            text = ${String.rawUrlEncode(q(props.article).property('title'))}
+            twitterId = ${String.rawUrlEncode(props.settings.twitterId)}
+            facebookId = ${String.rawUrlEncode(props.settings.facebookId)}
+        }
+    }
+}
