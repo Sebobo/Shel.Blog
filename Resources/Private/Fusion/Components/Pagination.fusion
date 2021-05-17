@@ -1,0 +1,103 @@
+prototype(Shel.Blog:Component.Pagination) < prototype(Neos.Fusion:Component) {
+    currentPage = 0
+    totalResultsCount = 0
+    numberOfPages = 0
+    maxPages = 5
+
+    // Calculate display range for pagination nav
+    delta = ${String.toInteger(Math.min(this.maxPages, this.numberOfPages))}
+    end = ${Math.min(this.currentPage + this.delta, this.numberOfPages - 1)}
+    start = ${Math.max(this.currentPage - this.delta, 0)}
+
+    hasLessPages = ${this.start > 1}
+    hasMorePages = ${this.end + 1 < this.numberOfPages - 1}
+
+    isFirstPage = ${this.currentPage == 0}
+    isLastPage = ${this.currentPage == this.numberOfPages}
+
+    pages = ${Array.map(Array.range(this.start, this.end), step => String.toInteger(step))}
+
+    translationPackage = 'Shel.Blog'
+    translationSource = 'Pagination'
+
+    @if.hasPages = ${this.totalResultsCount > 0 && this.numberOfPages > 1}
+
+    renderer = afx`
+        <nav aria-label="Pagination">
+            <ul class="pagination">
+                <li class="pagination-previous">
+                    <Neos.Neos:NodeLink
+                        node={documentNode}
+                        absolute={true}
+                        addQueryString={true}
+                        arguments={{page: props.currentPage}}
+                        attributes.title={I18n.id('pagination.previousPage').value(I18n.translate('Shel.Blog:NodeTypes.Components.Pagination:go_to_previous_page')).package(props.translationPackage).source(props.translationSource)}
+                        @if.notFirstPage={!props.isFirstPage}
+                    >
+                    </Neos.Neos:NodeLink>
+                </li>
+                <li>
+                    <Neos.Neos:NodeLink
+                        node={documentNode}
+                        absolute={true}
+                        arguments={{page: 1}}
+                        addQueryString={true}
+                        attributes.title={I18n.id('pagination.goToFirstPage').value(I18n.translate('Shel.Blog:NodeTypes.Components.Pagination:go_to_first_page')).package(props.translationPackage).source(props.translationSource)}
+                        attributes.aria-setsize={props.numberOfPages}
+                        attributes.aria-posinset={1}
+                        @if.visible={props.start > 0}
+                    >
+                        1
+                    </Neos.Neos:NodeLink>
+                </li>
+                <li class="ellipsis" aria-hidden="true" @if.hasLessPages={props.hasLessPages}></li>
+                <Neos.Fusion:Loop items={props.pages}>
+                    <li class={props.currentPage == item ? 'current' : null}>
+                        <Neos.Neos:NodeLink
+                            node={documentNode}
+                            absolute={true}
+                            arguments={{page: item + 1}}
+                            addQueryString={true}
+                            attributes.title={I18n.id('pagination.goToPage').arguments([item + 1]).value('Go to page {0}').package(props.translationPackage).source(props.translationSource)}
+                            attributes.aria-setsize={props.numberOfPages}
+                            attributes.aria-posinset={item + 1}
+                            @if.notCurrent={props.currentPage != item}
+                        >
+                            {item + 1}
+                        </Neos.Neos:NodeLink>
+                        <span class="show-for-sr" @if.visible={props.currentPage == item}>
+                            {I18n.id('pagination.currentPage').value('You are on page {0}').arguments([item + 1]).package(props.translationPackage).source(props.translationSource)}
+                        </span>
+                        {props.currentPage == item ? item + 1 : ''}
+                    </li>
+                </Neos.Fusion:Loop>
+                <li class="ellipsis" aria-hidden="true" @if.hasMorePages={props.hasMorePages}></li>
+                <li>
+                    <Neos.Neos:NodeLink
+                        node={documentNode}
+                        absolute={true}
+                        arguments={{page: props.numberOfPages}}
+                        addQueryString={true}
+                        attributes.title={I18n.id('pagination.goToLastPage').value(I18n.translate('Shel.Blog:NodeTypes.Components.Pagination:go_to_last_page')).package(props.translationPackage).source(props.translationSource)}
+                        attributes.aria-setsize={props.numberOfPages}
+                        attributes.aria-posinset={props.numberOfPages}
+                        @if.visible={props.end < props.numberOfPages - 1}
+                    >
+                        {props.numberOfPages}
+                    </Neos.Neos:NodeLink>
+                </li>
+                <li class="pagination-next">
+                    <Neos.Neos:NodeLink
+                        node={documentNode}
+                        absolute={true}
+                        arguments={{page: props.currentPage + 2}}
+                        addQueryString={true}
+                        attributes.title={I18n.id('pagination.nextPage').value(I18n.translate('Shel.Blog:NodeTypes.Components.Pagination:go_to_next_page')).package(props.translationPackage).source(props.translationSource)}
+                        @if.notLastPage={!props.isLastPage}
+                    >
+                    </Neos.Neos:NodeLink>
+                </li>
+            </ul>
+        </nav>
+    `
+}
