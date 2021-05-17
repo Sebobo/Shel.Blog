@@ -1,0 +1,13 @@
+prototype(Shel.Blog:Component.TableOfContents) < prototype(Neos.Fusion:Component) {
+    // TODO: Disable TOS via article when it is in AMP mode
+    @if.notAmp = Shel.Blog:Helper.AmpMode {
+        value.@process.negate = ${!value}
+    }
+    @if.enabled = ${q(documentNode).property('showTableOfContents') == true}
+    headlinesType = 'Neos.NodeTypes.BaseMixins:TitleMixin'
+
+    renderer = Shel.Blog:Component.TableOfContents.Renderer {
+        headlines = ${q(documentNode).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof ' + props.headlinesType + ']').get()}
+        headlines.@process.structure = ${Shel.Blog.Structure.createTableOfContents(value, 'title')}
+    }
+}

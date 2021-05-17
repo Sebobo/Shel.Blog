@@ -1,0 +1,16 @@
+prototype(Shel.Blog:Component.TableOfContents.Items) < prototype(Neos.Fusion:Component) {
+    items = ${[]}
+    class = ''
+    idPrefix = 'headline-'
+
+    renderer = afx`
+        <ol class={props.class}>
+            <Neos.Fusion:Loop items={props.items}>
+                <li>
+                    <a href={'#' + props.idPrefix + item.identifier} title={item.label}>{item.label}</a>
+                    <Shel.Blog:Component.TableOfContents.Items items={item.items}/>
+                </li>
+            </Neos.Fusion:Loop>
+        </ol>
+    `
+}

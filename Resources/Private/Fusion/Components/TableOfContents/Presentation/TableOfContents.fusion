@@ -1,0 +1,14 @@
+prototype(Shel.Blog:Component.TableOfContents.Renderer) < prototype(Neos.Fusion:Component) {
+    headlines = ${[]}
+    class = 'blog-article__table-of-content'
+    header = ${I18n.translate('Shel.Blog:Main:tableOfContents')}
+
+    @if.hasHeadlines = ${this.headlines}
+
+    renderer = afx`
+        <nav class={props.class}>
+            <strong>{props.header}</strong>
+            <Shel.Blog:Component.TableOfContents.Items items={props.headlines}/>
+        </nav>
+    `
+}

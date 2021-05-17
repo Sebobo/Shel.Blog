@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Shel\Blog\Fusion\Helper;
 
 /*                                                                        *
@@ -20,11 +22,10 @@ class StructureHelper implements ProtectedContextAwareInterface
      * @return array
      * @throws NodeException
      */
-    public function createTableOfContents(array $nodes, $textProperty = 'title'): array
+    public function createTableOfContents(array $nodes, string $textProperty = 'title'): array
     {
         $items = [];
 
-        /** @var NodeInterface $node */
         foreach ($nodes as $node) {
             $text = $node->getProperty($textProperty);
             preg_match_all('/<h(\d)>(.+)<\/.*/mi', $text, $parts);
@@ -34,8 +35,8 @@ class StructureHelper implements ProtectedContextAwareInterface
 
             if (!empty($level) && !empty($label)) {
                 $items[]= [
-                    'node' => $node,
-                    'level'=> intval($level[0]),
+                    'identifier' => $node->getIdentifier(),
+                    'level'=> (int)$level[0],
                     'label' => $label[0],
                     'items' => [],
                 ];
