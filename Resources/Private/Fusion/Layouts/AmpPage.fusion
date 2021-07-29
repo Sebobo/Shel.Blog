@@ -62,7 +62,7 @@ prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
 
                 primaryContent = Neos.Neos:PrimaryContent {
                     shelBlogArticle {
-                        condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
+                        condition = true
                         type = 'Shel.Blog:Component.Article'
                     }
 
@@ -78,7 +78,6 @@ shelBlogArticleAmp = Shel.Blog:Layout.AmpPage
 
 root.shelBlogArticleAmp {
     @position = 'before format'
-    @context.blogAmpMode = Shel.Blog:Helper.AmpMode
-    condition = ${blogAmpMode}
+    condition = Shel.Blog:Helper.AmpMode
     renderPath = '/shelBlogArticleAmp'
 }
