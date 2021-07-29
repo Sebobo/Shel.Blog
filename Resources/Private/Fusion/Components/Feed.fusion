@@ -94,12 +94,17 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     @context.sourceNode = ${this.sourceNode}
 
     @cache {
-        mode = 'cached'
+        mode = 'dynamic'
         entryIdentifier {
             format = ${request.format}
             node = ${node}
-            editPreviewMode = ${node.context.currentRenderingMode.name}
         }
+        context {
+            site = 'site'
+            document = 'documentNode'
+            node = 'node'
+        }
+        entryDiscriminator = ${request.pluginArguments['blog-pagination'].currentPage || true}
         // Flush the blog feed when a blog article has been changed
         entryTags {
             1 = ${Neos.Caching.nodeTag(node)}
