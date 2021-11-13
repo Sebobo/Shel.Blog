@@ -1,14 +1,14 @@
-'Shel.Blog:Document.Feed':
+Shel.Blog:Document.Feed:
   superTypes:
-    'Neos.Neos:Document': true
+    Neos.Neos:Document: true
   constraints:
     nodeTypes:
-      'Neos.Neos:Document': false
-      'Shel.Blog:Document.Article': true
-      'Shel.Blog:Document.Category': true
+      Neos.Neos:Document: false
+      Shel.Blog:Document.Article: true
+      Shel.Blog:Document.Category: true
   ui:
     label: i18n
-    icon: icon-list-alt
+    icon: list-alt
     inspector:
       groups:
         plugin:
@@ -39,7 +39,7 @@
         Neos.Neos/Validation/NotEmptyValidator: { }
     itemsPerPage:
       type: integer
-      defaultValue: 5
+      defaultValue: 6
       ui:
         label: i18n
         reloadIfChanged: true
@@ -66,10 +66,10 @@
           group: plugin
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
+            allowEmpty: true
+            placeholder: i18n
             values:
-              '':
-                label: i18n
-              descending:
+              ascending:
                 label: i18n
     authorName:
       type: string
