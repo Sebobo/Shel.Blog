@@ -1,4 +1,4 @@
-prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Component.Article) {
+prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Document.Fragment.Article) {
     thumbnailWidth = 300
     thumbnailHeight = 200
     thumbnailAllowCropping = true

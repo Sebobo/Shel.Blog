@@ -1,4 +1,4 @@
-prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:ContentComponent) {
+prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComponent) {
     settings = ${Configuration.setting('Shel.Blog')}
     cldrFormat = ${this.settings.cldrFormat}
     localeFormatLength = ${this.settings.localeFormatLength}
@@ -23,10 +23,12 @@ prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:ContentComponent) {
     firstTextNode = ${q(node).children('main').find('[instanceof Neos.Neos:Content][text]').get(0)}
 
     summary = ${this.entrySummary != '' && this.entrySummary != null ? this.entrySummary  : (this.firstTextNode ? q(this.firstTextNode).property('text') : '')}
-    summary.@process.stripTags = ${String.stripTags(value)}
-    summary.@process.stripTags.@if.live = ${!documentNode.context.inBackend}
-    summary.@process.crop = ${String.crop(value, 200, '…')}
-    summary.@process.crop.@if.live = ${!documentNode.context.inBackend}
+    summary.@process {
+        stripTags = ${String.stripTags(value)}
+        stripTags.@if.live = ${!documentNode.context.inBackend}
+        crop = ${String.crop(value, 200, '…')}
+        crop.@if.live = ${!documentNode.context.inBackend}
+    }
 
     articleUri = Neos.Neos:NodeUri {
         node = ${node}
@@ -70,7 +72,7 @@ prototype(Shel.Blog:Component.Article) < prototype(Neos.Neos:ContentComponent) {
             <Neos.Neos:ContentCollection @key="content" attributes.class="blog-article__content" nodePath="main"/>
 
             <footer @key="footer" class="blog-article__footer">
-                <Shel.Blog:Component.SocialButtons article={node}/>
+                <Shel.Blog:Component.ShareButtons article={node}/>
                 <Shel.Blog:Component.ArticlePager article={node}/>
             </footer>
         </article>

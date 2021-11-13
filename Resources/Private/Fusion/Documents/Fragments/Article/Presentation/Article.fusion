@@ -1,0 +1,36 @@
+prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComponent) {
+    entryImage = null
+    authorName = ''
+    showAuthor = false
+    publicationDate = null
+    categories = null
+
+    renderer = afx`
+        <article class="blog-article">
+            <header @key="header" class="blog-article__header">
+                <figure class="blog-article__image" @key="image" @if.hasImage={props.entryImage}>
+                    {props.entryImage}
+                </figure>
+
+                <h1 class="blog-article__headline" @key="headline">{props.title}</h1>
+
+                <small class="blog-article__author" @key="author" @if.showAuthor={props.showAuthor}>
+                    {props.authorName}
+                </small>
+
+                <time class="blog-article__publication-date" @key="publicationDate">{props.publicationDate}</time>
+
+                <Shel.Blog:Component.CategoryList @key="categoryList" categories={props.categories}/>
+            </header>
+
+            <Shel.Blog:Component.TableOfContents @key="tableOfContents"/>
+
+            <Neos.Neos:ContentCollection @key="content" attributes.class="blog-article__content" nodePath="main"/>
+
+            <footer @key="footer" class="blog-article__footer">
+                <Shel.Blog:Component.ShareButtons article={node}/>
+                <Shel.Blog:Component.ArticlePager article={node}/>
+            </footer>
+        </article>
+    `
+}

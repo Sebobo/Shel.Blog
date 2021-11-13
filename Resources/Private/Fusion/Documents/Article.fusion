@@ -1,41 +1,21 @@
 prototype(Shel.Blog:Document.Article) < prototype(Shel.Blog:Document.GenericBlogPage) {
     prototype(Neos.Neos:PrimaryContent).shelBlogArticle {
-        condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
-        type = 'Shel.Blog:Component.Article'
+        condition = true
+        type = 'Shel.Blog:Document.Fragment.Article'
     }
 
     prototype(Neos.Seo:OpenGraphMetaTags) {
         type = 'article'
-        title = ${q(node).property('openGraphTitle') || q(node).property('titleOverride') || q(node).property('title')}
-        image = ${q(node).property('openGraphImage') || q(node).property('entryImage')}
-
-        @context {
-            openGraphType = ${this.type}
-            openGraphTitle = ${this.title}
-            openGraphImage = ${this.image}
-        }
-
-        openGraphTitleTag {
-            @context.openGraphTitle = ${openGraphTitle}
-        }
-
-        openGraphImageTag {
-            @context.openGraphImage = ${openGraphImage}
-        }
-
-        openGraphImageAttributeTags {
-            openGraphImage = ${openGraphImage}
+        image.entryImage {
+            condition = ${q(node).property('entryImage')}
+            renderer = ${q(node).property('entryImage')}
         }
     }
 
     prototype(Neos.Seo:TwitterCard) {
-        image {
-            asset {
-                entryImage {
-                    condition = ${Type.instance(q(node).property('entryImage'), 'Neos\Media\Domain\Model\ImageInterface')}
-                    renderer = ${q(node).property('entryImage')}
-                }
-            }
+        image.asset.entryImage {
+            condition = ${Type.instance(q(node).property('entryImage'), 'Neos\Media\Domain\Model\ImageInterface')}
+            renderer = ${q(node).property('entryImage')}
         }
     }
 

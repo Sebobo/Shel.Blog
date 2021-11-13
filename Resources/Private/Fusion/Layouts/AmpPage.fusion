@@ -63,7 +63,7 @@ prototype(Shel.Blog:Layout.AmpPage) < prototype(Neos.Neos:Page) {
                 primaryContent = Neos.Neos:PrimaryContent {
                     shelBlogArticle {
                         condition = ${q(node).is('[instanceof Shel.Blog:Document.Article]')}
-                        type = 'Shel.Blog:Component.Article'
+                        type = 'Shel.Blog:Document.Fragment.Article'
                     }
 
                     # Replace all image tags to make them compatible with AMP
