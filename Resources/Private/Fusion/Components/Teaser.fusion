@@ -5,47 +5,39 @@ prototype(Shel.Blog:Component.Teaser) < prototype(Shel.Blog:Document.Fragment.Ar
     thumbnailAllowUpScaling = true
 
     renderer {
-        attributes.class = 'blog-teaser'
+        className = 'blog-teaser'
+        content >
+        content = afx`
+            <Neos.Neos:Editable property="entrySummary" block={false} @if.inBackend={props.node.context.inBackend}/>
+            {props.node.context.inBackend ? '' : props.summary}
+        `
 
-        content {
-            header.attributes.class = 'blog-teaser__header'
+        renderer.content {
             header.content {
-                image = afx`
-                    <a @if.hasImage={props.entryImage} href={props.documentNode.context.inBackend ? '' : props.articleUri} title={props.title} class="blog-teaser__image">
-                        <figure>
-                            <Neos.Fusion:Tag tagName="img" @children="attributes.src"
-                                attributes.alt={props.alternativeText} attributes.title={props.title}
-                                attributes.width={props.thumbnail.width} attributes.height={props.thumbnail.height}>
-                                <Neos.Fusion:ResourceUri resource={props.thumbnail.resource}/>
-                            </Neos.Fusion:Tag>
-                        </figure>
+                image.attributes.class = ''
+                image.content.@process.wrap = afx`
+                    <a
+                        @if.hasImage={props.image}
+                        href={props.documentNode.context.inBackend ? '' : props.articleUri}
+                        title={props.title}
+                        class={props.className + '__image'}
+                    >
+                        {value}
                     </a>
                 `
-                headline = afx`
-                    <h3 class="blog-teaser__headline">
-                        <a href={props.articleUri} title={props.title}>
-                            {props.title}
-                        </a>
-                    </h3>
+                headline.tagName = 'h3'
+                headline.content = afx`
+                    <a href={props.articleUri} title={props.title}>
+                        {props.title}
+                    </a>
                 `
-                author.attributes.class = 'blog-teaser__author'
-                publicationDate.attributes.class = 'blog-teaser__publication-date'
                 categoryList >
             }
 
-            content = afx`
-                <p class="blog-teaser__content">
-                    <Neos.Neos:Editable property="entrySummary" block={false} @if.inBackend={props.node.context.inBackend}/>
-                    {props.node.context.inBackend ? '' : props.summary}
-                </p>
-            `
-
-            footer = afx`
-                <footer class="blog-teaser__footer">
-                    <a href={props.articleUri} class="blog-teaser__more" title={props.title}>
-                        {I18n.translate('Shel.Blog:Main:blogEntry.action.more')}
-                    </a>
-                </footer>
+            footer.content = afx`
+                <a href={props.articleUri} class="blog-teaser__more" title={props.title}>
+                    {I18n.translate('Shel.Blog:Main:blogEntry.action.more')}
+                </a>
             `
         }
     }

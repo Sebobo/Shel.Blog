@@ -8,10 +8,16 @@ prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComp
     node = ${node}
     identifier = ${node.identifier}
 
-    title = ${q(node).property('title')}
+    title = Neos.Neos:Editable {
+        property = 'title'
+        block = false
+    }
     entrySummary = ${q(node).property('entrySummary')}
     categories = ${q(node).property('categories') || []}
-    authorName = ${q(node).property('authorName')}
+    authorName = Neos.Neos:Editable {
+        property = 'authorName'
+        block = false
+    }
     alternativeText = ${q(node).property('alternativeText')}
     entryImage = ${q(node).property('entryImage')}
 
@@ -43,38 +49,20 @@ prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComp
     thumbnail = ${Shel.Blog.Asset.createThumbnail(this.entryImage, this.thumbnailWidth, null, this.thumbnailHeight, null, this.thumbnailAllowCropping, this.thumbnailAllowUpScaling)}
     thumbnail.@if.hasAsset = ${this.entryImage}
 
-    renderer = afx`
-        <article class="blog-article">
-            <header @key="header" class="blog-article__header">
-                <figure class="blog-article__image" @key="image" @if.hasImage={props.entryImage}>
-                    <Neos.Fusion:Tag tagName="img" @children="attributes.src"
-                        attributes.alt={props.alternativeText} attributes.title={props.title}
-                        attributes.width={props.thumbnail.width} attributes.height={props.thumbnail.height}>
-                        <Neos.Fusion:ResourceUri resource={props.thumbnail.resource}/>
-                    </Neos.Fusion:Tag>
-                </figure>
-
-                <h1 class="blog-article__headline" @key="headline">
-                    <Neos.Neos:Editable property="title" block={false}/>
-                </h1>
-
-                <small class="blog-article__author" @key="author" @if.showAuthor={props.showAuthor}>
-                    <Neos.Neos:Editable property="authorName" block={false}/>
-                </small>
-
-                <time class="blog-article__publication-date" @key="publicationDate">{props.publicationDate}</time>
-
-                <Shel.Blog:Component.CategoryList @key="categoryList" categories={props.categories}/>
-            </header>
-
-            <Shel.Blog:Component.TableOfContents @key="tableOfContents"/>
-
-            <Neos.Neos:ContentCollection @key="content" attributes.class="blog-article__content" nodePath="main"/>
-
-            <footer @key="footer" class="blog-article__footer">
-                <Shel.Blog:Component.ShareButtons article={node}/>
-                <Shel.Blog:Component.ArticlePager article={node}/>
-            </footer>
-        </article>
-    `
+    renderer = Shel.Blog:Document.Fragment.Article.Presentation {
+        title = ${props.title}
+        image = Neos.Fusion:ResourceUri {
+            resource = ${props.thumbnail.resource}
+        }
+        alternativeText = ${props.alternativeText}
+        imageWidth = ${props.thumbnail.width}
+        imageHeight = ${props.thumbnail.height}
+        authorName = ${props.authorName}
+        showAuthor = ${props.showAuthor}
+        publicationDate = ${props.publicationDate}
+        categories = ${props.categories}
+        content = Neos.Neos:ContentCollection {
+            nodePath = 'main'
+        }
+    }
 }

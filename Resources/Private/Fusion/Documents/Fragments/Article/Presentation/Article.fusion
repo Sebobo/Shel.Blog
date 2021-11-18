@@ -1,33 +1,46 @@
-prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComponent) {
-    entryImage = null
+prototype(Shel.Blog:Document.Fragment.Article.Presentation) < prototype(Neos.Fusion:Component) {
+    title = ''
+    image = null
+    imageWidth = null
+    imageHeight = null
+    alternativeText = ''
     authorName = ''
     showAuthor = false
     publicationDate = null
     categories = null
+    className = 'blog-article'
+    content = ''
 
     renderer = afx`
-        <article class="blog-article">
-            <header @key="header" class="blog-article__header">
-                <figure class="blog-article__image" @key="image" @if.hasImage={props.entryImage}>
-                    {props.entryImage}
+        <article class={props.className}>
+            <header @key="header" class={props.className + '__header'}>
+                <figure class={props.className + '__image'} @key="image" @if.hasImage={props.image}>
+                    <img
+                        src={props.image}
+                        alt={props.alternativeText}
+                        width={props.imageWidth}
+                        height={props.imageHeight}
+                    />
                 </figure>
 
-                <h1 class="blog-article__headline" @key="headline">{props.title}</h1>
+                <h1 class={props.className + '__headline'} @key="headline">{props.title}</h1>
 
-                <small class="blog-article__author" @key="author" @if.showAuthor={props.showAuthor}>
+                <small class={props.className + '__author'} @key="author" @if.showAuthor={props.showAuthor}>
                     {props.authorName}
                 </small>
 
-                <time class="blog-article__publication-date" @key="publicationDate">{props.publicationDate}</time>
+                <time class={props.className + '__publication-date'} @key="publicationDate">{props.publicationDate}</time>
 
                 <Shel.Blog:Component.CategoryList @key="categoryList" categories={props.categories}/>
             </header>
 
             <Shel.Blog:Component.TableOfContents @key="tableOfContents"/>
 
-            <Neos.Neos:ContentCollection @key="content" attributes.class="blog-article__content" nodePath="main"/>
+            <div class={props.className + '__content'} @key="content">
+                {props.content}
+            </div>
 
-            <footer @key="footer" class="blog-article__footer">
+            <footer @key="footer" class={props.className + '__footer'}>
                 <Shel.Blog:Component.ShareButtons article={node}/>
                 <Shel.Blog:Component.ArticlePager article={node}/>
             </footer>
