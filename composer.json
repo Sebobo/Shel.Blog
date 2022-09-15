@@ -4,7 +4,7 @@
     "license": "MIT",
     "description": "A blog package for Neos CMS based on fusion AFX. Also supports atom feeds and AMP.",
     "require": {
-        "neos/neos": "~7.2",
+        "neos/neos": "~7.2 || ^8.0",
         "neos/seo": "~3.2"
     },
     "keywords": [
