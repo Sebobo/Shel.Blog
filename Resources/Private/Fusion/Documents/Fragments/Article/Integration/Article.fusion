@@ -55,6 +55,7 @@ prototype(Shel.Blog:Document.Fragment.Article) < prototype(Neos.Neos:ContentComp
             resource = ${props.thumbnail.resource}
         }
         alternativeText = ${props.alternativeText}
+        articleUri = ${props.articleUri}
         imageWidth = ${props.thumbnail.width}
         imageHeight = ${props.thumbnail.height}
         authorName = ${props.authorName}
