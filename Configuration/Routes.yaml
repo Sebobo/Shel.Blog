@@ -9,19 +9,6 @@
     'node':
       handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
 
--
-  name:  'AMP blog entries'
-  uriPattern: 'amplify/{node}<defaultUriSuffix>'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    '@format': 'html'
-    '--blog-amplify': true
-  routeParts:
-    'node':
-      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface
-
 - name: 'Blog paginate'
   uriPattern: '{node}/browse/{--blog-pagination.currentPage}<defaultUriSuffix>'
   defaults:

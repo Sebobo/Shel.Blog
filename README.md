@@ -1,4 +1,4 @@
-# A simple configurable blog/news plugin for Neos CMS with AMP support                                
+# A simple configurable blog/news plugin for Neos CMS               
 
 [![Latest Stable Version](https://poser.pugx.org/shel/blog/v/stable)](https://packagist.org/packages/shel/blog)
 [![Total Downloads](https://poser.pugx.org/shel/blog/downloads)](https://packagist.org/packages/shel/blog)
@@ -18,13 +18,11 @@ So it's very easy to extend and adapt to your needs.
 * Blog articles with their own template and navigation elements
 * Categories to group articles, optionally with their own feeds
 * Social buttons for Twitter and Facebook which can be extended
-* Easily customizeable
-* AMP support for individual blog articles
+* Easily customizable
 
 ### Coming up
 
 * Author pages which can be referenced in articles (optional)
-* Make AMP styles more customizable and integrate https://www.ampstart.com/templates#news-blog by default
 
 ## Installation
 
@@ -103,13 +101,12 @@ Remember that you need to render the `Neos.Neos:PrimaryContent` object somewhere
 
 ### Configure allowed content types
 
-By default the blog article allows most elements defined in `Neos.NodeTypes`.
+By default, the blog article allows most elements defined in `Neos.NodeTypes`.
 To add your own types, add `'Shel.Blog:Constraint.Article': true` as supertype to them.
 
-The reason for this is that there might come new elements via plugins that don't work well
-with the blog in standard or AMP mode.
+The reason for this is that there might come new elements via plugins that don't work well with the blog.
 
-Therefore you should make sure that those elements work well there.
+Therefore, you should make sure that those elements work well there.
 
 ### HTML content
 
@@ -126,59 +123,6 @@ All active pages of type `Shel.Blog:Document.Feed` will automatically be linked 
 
 Category pages can work the same but their feed link is hidden by default.
 You can enable this by unchecking `Hide feed link` in the categories inspector options. 
-
-### AMP rendering
-
-As AMP itself is still work in progress, this feature is also work in progress.
-This package tries to provide good defaults you can start with and customize to your needs.
-As everything is written in Fusion, you can override and change anything you want.
-
-After you publish some blog articles with the help of this package, Google should be able to find the AMP 
-versions of each article after a few hours or days and provide the AMP version in its search results.
-
-Each blog article automatically includes a link in the `head` to its AMP version.
-The package includes a default CSS for the AMP version and renders the primary content area.
-
-If you have additional custom content elements in a blog article like videos and other stuff
-you might need to provide processors to make them compatible with AMP. 
-See the `replaceImgTags` image processor as example.
-
-Please test the AMP version every time you add new features to your blog pages!
-Also be sure to check Google Search Console on your live site as it will inform you of errors.
-
-Pull request with improvements to this feature are very welcome!
-
-#### Customizing
-
-The site is rendered as an array in the `Shel.Blog:Layout.AmpPage` object.
-It contains a content object in its body section which is an array you can override and extend with additional content.
-By default it provides basic layout components such as header, breadcrumb, blog content and pagination.
-
-In the stylesheets section a basic CSS file provided by this package is added inline; see the `Shel.Blog:Component.AmpStyles` object.
-Replace it or add another stylesheet to modify the output. Remember that the styles need to be inline for AMP.
-
-Don't add additional JavaScript as this is currently not supported with AMP.
-
-Check out https://www.ampproject.org/docs/get_started/create to learn more on how to get started with AMP.
-
-#### Debugging
-
-Verify the output of your blog with the developer mode for AMP by loading the AMP version and 
-adding `#development=1` to the url.
-Open the developer tools of your browser and AMP will show you its verification result.    
-
-Other plugins and packages you might have installed might break AMP compatibility!
-Please validate the rendered code by using the browser validator or any other method 
-described [here](https://www.ampproject.org/docs/fundamentals/validate).
-
-Before you create an issue for the AMP mode please run the validation and add the result to the issue.
-
-#### Turning off AMP rendering mode
-
-You can turn this off with this fusion script:
-
-    root.shelBlogArticleAmp >
-    prototype(Neos.Neos:Page).head.ampLink >
 
 #### Routing
 

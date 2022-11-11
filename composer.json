@@ -2,7 +2,7 @@
     "name": "shel/blog",
     "type": "neos-plugin",
     "license": "MIT",
-    "description": "A blog package for Neos CMS based on fusion AFX. Also supports atom feeds and AMP.",
+    "description": "A blog package for Neos CMS based on fusion AFX. Also supports atom feeds.",
     "require": {
         "neos/neos": "~7.2 || ^8.0",
         "neos/seo": "~3.2"
@@ -11,8 +11,7 @@
         "Neos CMS",
         "RSS",
         "Atom",
-        "Blog",
-        "AMP"
+        "Blog"
     ],
     "authors": [
         {

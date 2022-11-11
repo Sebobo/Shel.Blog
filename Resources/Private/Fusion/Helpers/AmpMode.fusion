@@ -1,3 +1,0 @@
-prototype(Shel.Blog:Helper.AmpMode) < prototype(Neos.Fusion:Value) {
-    value = ${!!request.pluginArguments['blog-amplify']}
-}

@@ -8,11 +8,6 @@ prototype(Shel.Blog:Component.ArticlePager) < prototype(Neos.Fusion:Component) {
         default.condition = true
         default.renderer = ${[]}
         default.@position = 'end'
-
-        amp.condition = Shel.Blog:Helper.AmpMode
-        amp.renderer = Neos.Fusion:DataStructure {
-            '--blog-amplify' = true
-        }
     }
 
     renderer = afx`

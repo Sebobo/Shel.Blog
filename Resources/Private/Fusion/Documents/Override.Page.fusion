@@ -54,20 +54,6 @@ prototype(Neos.Neos:Page) {
             @if.notFirstPage = ${currentBlogPage > 1}
         }
 
-        ampLink = Neos.Fusion:Tag {
-            tagName = 'link'
-            attributes {
-                rel = 'amphtml'
-                href = Neos.Neos:NodeUri {
-                    node = ${documentNode}
-                    absolute = true
-                    additionalParams = ${{'--blog-amplify': true}}
-                }
-            }
-            @if.isBlogEntry = ${isBlogEntry}
-            @if.notAmp = ${blogAmpMode != true}
-        }
-
         blogMicroData = Shel.Blog:Component.MicroData {
             node = ${documentNode}
             @if.isBlogEntry = ${isBlogEntry}

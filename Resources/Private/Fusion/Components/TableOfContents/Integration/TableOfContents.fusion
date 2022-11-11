@@ -1,8 +1,4 @@
 prototype(Shel.Blog:Component.TableOfContents) < prototype(Neos.Fusion:Component) {
-    // TODO: Disable TOS via article when it is in AMP mode
-    @if.notAmp = Shel.Blog:Helper.AmpMode {
-        value.@process.negate = ${!value}
-    }
     @if.enabled = ${q(documentNode).property('showTableOfContents') == true}
     headlinesType = 'Neos.NodeTypes.BaseMixins:TitleMixin'
 
