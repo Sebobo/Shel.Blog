@@ -34,7 +34,7 @@ class FilterByReferenceOperation extends AbstractOperation
      *
      * @var int
      */
-    protected static $priority = 100;
+    protected static $priority = 90;
 
     /**
      * {@inheritdoc}
