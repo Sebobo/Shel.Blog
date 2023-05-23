@@ -42,13 +42,13 @@
                 <source>Sorting</source>
                 <target>Sortierung</target>
             </trans-unit>
-            <trans-unit id="properties.sortingDirection.selectBoxEditor.values." xml:space="preserve">
-                <source>Oldest first</source>
-                <target>Älteste zuerst</target>
-            </trans-unit>
-            <trans-unit id="properties.sortingDirection.selectBoxEditor.values.descending" xml:space="preserve">
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.placeholder" xml:space="preserve">
                 <source>Newest first</source>
                 <target>Neuste zuerst</target>
+            </trans-unit>
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.values.ascending" xml:space="preserve">
+                <source>Oldest first</source>
+                <target>Älteste zuerst</target>
             </trans-unit>
             <trans-unit id="properties.description" xml:space="preserve">
                 <source>Description for the feed</source>

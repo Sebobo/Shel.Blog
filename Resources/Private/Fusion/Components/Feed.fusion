@@ -26,7 +26,7 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     feedEntries = ${this.sourceNode != null ? q(this.sourceNode).find('[instanceof Shel.Blog:Document.Article]').get() : []}
     feedEntries.@process {
         filterByCategory = ${this.category && value ? q(value).filterByReference(this.category, 'categories').get() : value}
-        sort = ${value ? q(value).sort('publicationDate', this.sortingDirection == 'descending' ? 'DESC' : 'ASC') : value}
+        sort = ${value ? q(value).sort('publicationDate', this.sortingDirection == 'ascending' ? 'ASC' : 'DESC') : value}
         slice = ${(value && this.limit > 0) ? value.slice(0, this.limit) : value}
         get = ${value ? value.get() : []}
     }
@@ -36,7 +36,7 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
     renderFeed = ${Array.length(this.feedEntries) > 0 && this.currentBlogPage > 0 && this.currentBlogPage <= this.maxNumberOfPages}
 
     # Setup source node to retrieve blog posts from
-    lastUpdatedNode = ${this.sortingDirection == 'descending' ? Array.first(this.feedEntries) : Array.last(this.feedEntries)}
+    lastUpdatedNode = ${this.sortingDirection == 'ascending' ? Array.last(this.feedEntries) : Array.first(this.feedEntries)}
     lastUpdated = ${q(this.lastUpdatedNode).property('publicationDate')}
     lastUpdated.@process.fallback = ${value != '' && value != null ? value : q(this.lastUpdatedNode).property('_lastPublicationDateTime')}
 

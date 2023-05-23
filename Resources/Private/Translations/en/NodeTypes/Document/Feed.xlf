@@ -35,11 +35,11 @@
             <trans-unit id="properties.sortingDirection" xml:space="preserve">
                 <source>Sorting</source>
             </trans-unit>
-            <trans-unit id="properties.sortingDirection.selectBoxEditor.values." xml:space="preserve">
-                <source>Oldest first</source>
-            </trans-unit>
-            <trans-unit id="properties.sortingDirection.selectBoxEditor.values.descending" xml:space="preserve">
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.placeholder" xml:space="preserve">
                 <source>Newest first</source>
+            </trans-unit>
+            <trans-unit id="properties.sortingDirection.selectBoxEditor.values.ascending" xml:space="preserve">
+                <source>Oldest first</source>
             </trans-unit>
         </body>
     </file>
