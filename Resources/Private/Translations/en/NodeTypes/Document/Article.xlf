@@ -14,6 +14,9 @@
             <trans-unit id="properties.authorName.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Enter author here</source>
             </trans-unit>
+            <trans-unit id="properties.entrySummary" xml:space="preserve">
+                <source>Summary</source>
+            </trans-unit>
             <trans-unit id="properties.entryImage" xml:space="preserve">
                 <source>Preview image</source>
             </trans-unit>

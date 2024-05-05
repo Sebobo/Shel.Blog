@@ -18,6 +18,10 @@
                 <source>Enter author here</source>
                 <target>Autor hier angeben</target>
             </trans-unit>
+            <trans-unit id="properties.entrySummary" xml:space="preserve">
+                <source>Summary</source>
+                <target>Zusammenfassung</target>
+            </trans-unit>
             <trans-unit id="properties.entryImage" xml:space="preserve">
                 <source>Preview image</source>
                 <target>Vorschaubild</target>

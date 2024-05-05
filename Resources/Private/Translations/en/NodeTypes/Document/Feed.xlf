@@ -41,6 +41,12 @@
             <trans-unit id="properties.sortingDirection.selectBoxEditor.values.ascending" xml:space="preserve">
                 <source>Oldest first</source>
             </trans-unit>
+            <trans-unit id="properties.categoriesFolder" xml:space="preserve">
+                <source>Categories folder</source>
+            </trans-unit>
+            <trans-unit id="properties.categoriesFolder.ui.help.message" xml:space="preserve">
+                <source>Select a page here where blog categories should be searched for and added to</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -54,6 +54,14 @@
                 <source>Description for the feed</source>
                 <target>Beschreibung des Feeds</target>
             </trans-unit>
+            <trans-unit id="properties.categoriesFolder" xml:space="preserve">
+                <source>Categories folder</source>
+                <target>Kategorien Ordner</target>
+            </trans-unit>
+            <trans-unit id="properties.categoriesFolder.ui.help.message" xml:space="preserve">
+                <source>Select a page here where blog categories should be searched for and added to</source>
+                <target>Wählen Sie hier eine Seite aus, auf der nach Blog-Kategorien gesucht und diese hinzugefügt werden sollen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
