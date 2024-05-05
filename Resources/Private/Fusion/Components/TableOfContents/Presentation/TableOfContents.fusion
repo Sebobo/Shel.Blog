@@ -6,9 +6,11 @@ prototype(Shel.Blog:Component.TableOfContents.Renderer) < prototype(Neos.Fusion:
     @if.hasHeadlines = ${this.headlines}
 
     renderer = afx`
-        <nav class={props.class}>
-            <strong>{props.header}</strong>
-            <Shel.Blog:Component.TableOfContents.Items items={props.headlines}/>
-        </nav>
+        <aside>
+            <nav class={props.class}>
+                <strong>{props.header}</strong>
+                <Shel.Blog:Component.TableOfContents.Items items={props.headlines} />
+            </nav>
+        </aside>
     `
 }
