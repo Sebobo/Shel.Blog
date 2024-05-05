@@ -31,6 +31,7 @@
         inlineEditable: true
         label: i18n
         reloadIfChanged: true
+        showInCreationDialog: true
         inspector:
           position: 100
           group: plugin
@@ -42,6 +43,7 @@
       ui:
         label: i18n
         reloadIfChanged: true
+        showInCreationDialog: true
         inspector:
           position: 200
           group: plugin
@@ -50,6 +52,7 @@
       ui:
         label: i18n
         reloadIfChanged: true
+        showInCreationDialog: true
         inspector:
           position: 300
           group: plugin
@@ -58,6 +61,7 @@
       ui:
         label: i18n
         reloadIfChanged: true
+        showInCreationDialog: true
         inspector:
           position: 400
           group: plugin
@@ -66,6 +70,8 @@
       search:
         fulltextExtractor: '${Indexing.extractHtmlTags(node.properties.entrySummary)}'
       ui:
+        label: i18n
+        showInCreationDialog: true
         inlineEditable: true
         inline:
           editorOptions:
@@ -75,10 +81,15 @@
       type: references
       ui:
         label: i18n
+        showInCreationDialog: true
         inspector:
           group: 'document'
           editorOptions:
             nodeTypes: ['Shel.Blog:Document.Category']
+            threshold: 1
+            createNew:
+              path: 'ClientEval: parentNode ? parentNode.properties.categoriesFolder : "."'
+              type: 'Shel.Blog:Document.Category'
     openGraphType:
       defaultValue: 'article'
       ui: {}
@@ -86,6 +97,7 @@
       type: boolean
       ui:
         label: i18n
+        showInCreationDialog: true
         reloadPageIfChanged: true
         inspector:
           group: 'document'
