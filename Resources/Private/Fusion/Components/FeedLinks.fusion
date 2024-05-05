@@ -1,6 +1,6 @@
 prototype(Shel.Blog:Component.FeedLinks) < prototype(Neos.Fusion:Component) {
-    renderer = Neos.Fusion:Collection {
-        collection = ${q(site).find('[instanceof Shel.Blog:Document.Feed][hideFeedLink != true]')}
+    renderer = Neos.Fusion:Loop {
+        items = ${q(site).find('[instanceof Shel.Blog:Document.Feed][hideFeedLink != true]')}
         itemName = 'feed'
         iterationName = 'iteration'
         itemRenderer = Neos.Fusion:Tag {

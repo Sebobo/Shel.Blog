@@ -73,8 +73,8 @@ prototype(Shel.Blog:Component.Feed) < prototype(Neos.Neos:ContentComponent) {
             </p>
         `
 
-        feedContent = Neos.Fusion:Collection {
-            collection = ${props.feedEntries}
+        feedContent = Neos.Fusion:Loop {
+            items = ${props.feedEntries}
             itemName = 'node'
             itemRenderer = Neos.Fusion:Case {
                 atom {
