@@ -143,6 +143,18 @@ If you have additional custom content elements in a blog article like videos and
 you might need to provide processors to make them compatible with AMP. 
 See the `replaceImgTags` image processor as example.
 
+If you have installed the neos/googleanalytics package aside with shel/blog all analytics tags will be diabled to be AMP confirmative.  
+You could add a tag manager with
+
+```yaml
+Shel:
+  Blog:
+    analytics:
+      tagManager:
+        ampContainerId: <gtm tag manager id>
+```
+Please refer to [this page](https://support.google.com/tagmanager/answer/9205783?hl=en) for a detailed instruction how to set up a tagmanager container for amp
+
 Please test the AMP version every time you add new features to your blog pages!
 Also be sure to check Google Search Console on your live site as it will inform you of errors.
 
