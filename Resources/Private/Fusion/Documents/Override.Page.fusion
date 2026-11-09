@@ -20,6 +20,11 @@ prototype(Neos.Neos:Page) {
             }
         }
 
+        metaRobotsTag {
+            attributes.content.@process.override = 'noindex,follow'
+            attributes.content.@process.override.@if.isBlogFeed = ${isBlogFeed && currentBlogPage > 1}
+        }
+
         nextBlogPageLink = Neos.Fusion:Tag {
             tagName = 'link'
             itemsPerPage = ${q(documentNode).property('itemsPerPage') || 5}
